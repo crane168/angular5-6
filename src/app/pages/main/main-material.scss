@@ -1,0 +1,202 @@
+@import "../../../assets/scss/variable";
+
+#logo{
+  height: 64px;
+  position: relative;
+  box-shadow: 0 1px 4px 0 rgba(0,21,41,0.12);
+  .gene-header-toolbar{
+    height: 64px;
+    background: #26404D;
+    box-shadow: 0 1px 4px 0 rgba(0,21,41,0.12);
+    padding: 0;
+    position: relative;}
+  .secondary-menu{
+    position: absolute;
+    right: 30px;
+    span.mat-button-wrapper{
+      color: rgba(255,255,255,0.85);
+    }
+  }
+  .search-bar{
+    position: absolute;
+    right: 265px;
+    input{
+      border: none;
+      background: #26404D;
+      border-bottom: 1px solid #D8D8D8;
+      font-size: 14px;
+      color: rgba(255,255,255,0.65);
+    }
+  }
+}
+body .gene-header-toolbar.mat-toolbar{
+  background: #FFFFFF;
+}
+body .mat-sidenav-content{
+  background: #FFFFFF !important;
+}
+.mat-menu-content{
+  background-color: #ECEFF1;
+}
+.gene-user-thumb{
+  margin: 0 0.7rem;
+  padding: 0 !important;
+  height: 50px;
+  line-height: 50px;
+}
+.sidebar-area{
+  padding-top: 30px;
+}
+.example-sidenav-content {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}
+.morePanel{
+  background-color: #61C2C9;
+}
+.userName{
+  color: #8A5A44!important;
+  margin-left: .5rem;
+  margin-top: 0!important;
+}
+:host ::ng-deep .breadheader {
+  font-size: 14px;
+  //height: 64px;
+  //line-height: 60px;
+  p-breadcrumb {
+    display: inline-block;
+    background-color: transparent;
+
+    .ui-breadcrumb {
+      background-color: transparent;
+      border: none;
+      padding: 0;
+      ul {
+        background-color: transparent;
+        list-style: none!important;
+        padding:0;
+        li {
+          background-color: transparent;
+        }
+        .fa-chevron-right {
+          &:before {
+            display: block;
+            content: "/";
+            float: right;
+          }
+        }
+      }
+    }
+  }
+}
+#sidebar{
+  i{
+    font-size: 16px;
+    color: rgba(0,0,0,0.80);
+  }
+  span{
+    font-family: PingFangSC-Regular;
+    font-size: 14px;
+    color: #000000;
+  }
+}
+.sidebar-logo{
+  padding:0 !important;
+  margin-bottom:28px;
+}
+body .gene-logo{
+  padding:0 !important;
+}
+.navbar-brand{
+  color: $main-color;
+  font-size: 16px;
+}
+.language{
+  text-align: center;
+  margin-top: 20px;
+  div{
+    width: 47%;
+    float: left;
+  }
+  div:last-child{
+    width: 45%
+  }
+  img{
+    width: 29px;height: 20px;margin-right: 10px;
+  }
+  img:last-child{
+    margin-left: 10px;
+    margin-right: 0;
+  }
+  span{
+    cursor: pointer;
+    font-size: 16px;
+    color: $font-color;
+  }
+}
+//.padding tree-root .node-content-wrapper {
+//  padding: 2px 0px;
+//
+//}
+.mat-drawer.mat-drawer-side{
+  z-index: -1 !important;
+}
+
+.chat-panel{
+  .fileDetailList{
+    max-width:300px;
+    >div{
+      margin:5px 0;
+    }
+    span.title{
+      font-size:14px;
+      font-weight:bolder;
+    }
+    .fileName{
+    }
+    .scope,.tag{
+      background-color: lightgray;
+      box-shadow: #2f3033 1px 1px 1px 1px inset;
+      padding:2px;
+      border-radius: 5px;
+      margin-right:10px;
+      line-height: 24px;
+    }
+  }
+}
+.noNotice{
+  width: 300px;
+  text-align: center;
+  margin-top:100px;
+  color: gray;
+}
+.noticeBtn{
+  outline: none!important;
+  position: relative;
+  .tips{
+    position:absolute;
+    top: 18px;
+    left: 28px;
+    width: 5px;
+    height: 5px;
+    border-radius:50%;
+    background-color: red;
+  }
+}
+.noticeHeader{
+  background-color: $main-color!important;
+}
+:host ::ng-deep .notice-tab-group{
+  .mat-tab-labels{
+
+  }
+}
+:host ::ng-deep .mat-tab-label{
+  width: 50%!important;
+}
+.sidenav-scrollbar-container{
+  height:600px;
+  overflow: auto;
+}

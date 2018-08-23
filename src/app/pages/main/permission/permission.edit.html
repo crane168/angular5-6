@@ -1,0 +1,131 @@
+<div class="OrgContainer" #OrgContainer>
+    <div class="leftBox">
+        <div class="OrgBox">
+            <tree-root
+                    #OrgTree
+                    [nodes]="orgTreeSource"
+                    (activate)="onOrgNodeSelected($event)"
+                    (deactivate)="onOrgDeactive($event)"></tree-root>
+
+            <!--操作按钮-->
+            <div class="permitOprs">
+                <div>
+                    <button mat-button class="moreCategories mat-raised-button" (click)="editOrgClick($event,1,'org')" >添加</button>
+                    <!--</div><div class="mat-button-focus-overlay"></div></button>&ndash;&gt;-->
+                </div>
+                <div>
+                    <button mat-button class="moreCategories mat-raised-button" (click)="editOrgClick($event,2,'org')" >修改</button>
+                </div>
+                <div>
+                    <button mat-button class="moreCategories mat-raised-button" (click)="editOrgClick($event,3,'org')" >删除</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="permitBox">
+        <!--loading-->
+        <mat-progress-spinner style="position: absolute;left:50%;left:50%;transform:translate(-50%);" *ngIf="!isShowPermitContent" mode="indeterminate"
+                              [value]="100" color="primary" [strokeWidth]="5" [diameter]="40"></mat-progress-spinner>
+        <div class="permitContent" *ngIf="isShowPermitContent">
+            <div class="example-header permitSearchBox" *ngIf="showFilterBox">
+                <mat-form-field >
+                    <input matInput #orgFilter (keyup)="applyFilter($event)" placeholder="搜索员工姓名..">
+                </mat-form-field>
+            </div>
+            <mat-tab-group
+                    class="demo-tab-group"
+                    (selectedTabChange)="orgSelectedTabs($event)"
+                    [(selectedIndex)]="activeTabIndex">
+                <mat-tab label="全部员工">
+                    <div class="tab1-content">
+                        <div class="example-container mat-elevation-z8">
+                            <mat-table
+                                    [dataSource]="employeeDataSource"
+                                    matSort>
+                                <!-- Checkbox Column -->
+                                <ng-container matColumnDef="weight">
+                                    <mat-header-cell *matHeaderCellDef mat-sort-header>
+                                        选择
+                                    </mat-header-cell>
+                                    <mat-cell *matCellDef="let row">
+                                        <mat-checkbox
+                                                [checked]="!!row.weight"
+                                                (change)="employeeChangeOpr($event,row)"
+                                                [disabled]="!row.state">
+                                        </mat-checkbox>
+                                    </mat-cell>
+                                </ng-container>
+                                <!-- ID Column -->
+                                <ng-container matColumnDef="userId">
+                                    <mat-header-cell *matHeaderCellDef mat-sort-header> 用户ID</mat-header-cell>
+                                    <mat-cell *matCellDef="let row"> {{row.userId}}</mat-cell>
+                                </ng-container>
+
+                                <!-- Name Column -->
+                                <ng-container matColumnDef="userName">
+                                    <mat-header-cell *matHeaderCellDef mat-sort-header> 用户名称</mat-header-cell>
+                                    <mat-cell *matCellDef="let row"> {{row.userName}}</mat-cell>
+                                </ng-container>
+                                <!--operation Column-->
+                                <ng-container matColumnDef="operaTion">
+                                    <mat-header-cell *matHeaderCellDef mat-sort-header> 操作</mat-header-cell>
+                                    <mat-cell *matCellDef="let row" style="color:#ccc">
+                                        <span (click)="operaTionClick($event,1,row)">权限设置</span> |
+                                        <span (click)="operaTionClick($event,2,row)">重置密码</span>
+                                    </mat-cell>
+                                </ng-container>
+                                <mat-header-row *matHeaderRowDef="employeeDisplayedColumns"></mat-header-row>
+                                <mat-row *matRowDef="let row; columns: employeeDisplayedColumns;">
+                                </mat-row>
+                            </mat-table>
+                            <mat-paginator #paginatorForOrgDataSource
+                                           [pageSize]="employeePageSize"
+                                           [pageSizeOptions]="[5, 10, 25,100]"
+                                           [length]="employeeLength"
+                                           (page)="changeEmployeePaginat($event)">
+                            </mat-paginator>
+                        </div>
+                    </div>
+                </mat-tab>
+                <mat-tab label="权限设置">
+                    <div class="tab2-content">
+                        <div class="example-container mat-elevation-z8">
+                            <mat-table
+                                    [dataSource]="permitDataSource"
+                                    matSort>
+                                <!-- Checkbox Column -->
+                                <ng-container matColumnDef="weight">
+                                    <mat-header-cell *matHeaderCellDef mat-sort-header>
+                                        选择
+                                    </mat-header-cell>
+                                    <mat-cell *matCellDef="let row">
+                                        <mat-checkbox
+                                                [checked]="!!row.weight"
+                                                (change)="permitChangeOpr($event,row)"
+                                                [disabled]="!row.state">
+                                        </mat-checkbox>
+                                    </mat-cell>
+                                </ng-container>
+                                <!-- ID Column -->
+                                <ng-container matColumnDef="id">
+                                    <mat-header-cell *matHeaderCellDef mat-sort-header> 权限ID</mat-header-cell>
+                                    <mat-cell *matCellDef="let row"> {{row.id}}</mat-cell>
+                                </ng-container>
+                                <!-- Name Column -->
+                                <ng-container matColumnDef="name">
+                                    <mat-header-cell *matHeaderCellDef mat-sort-header> 权限名称</mat-header-cell>
+                                    <mat-cell *matCellDef="let row"> {{row.name}}</mat-cell>
+                                </ng-container>
+
+                                <mat-header-row *matHeaderRowDef="permitDisplayedColumns"></mat-header-row>
+                                <mat-row *matRowDef="let row; columns: permitDisplayedColumns;">
+                                </mat-row>
+                            </mat-table>
+                        </div>
+                    </div>
+                </mat-tab>
+            </mat-tab-group>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,61 @@
+<div class="personalInforContainer">
+
+    <div class="OrgContainer" >
+        <div class="col-md-6 col-md-offset-3 personalInfor">
+            <form  (submit)="personalInfor()"  novalidate [formGroup]="personalForm" >
+                <div class="personal-name">请更改您的个人信息</div>
+                <div class="form-group" >
+                    <mat-form-field class="example-full-width">
+                        <input matInput placeholder="请输入昵称，注意：昵称不能重复"  type="text" [(ngModel)]="model.updateUserName" formControlName="username"
+                               [class.invalid]="!personalForm.controls.username.valid && personalForm.controls.username.dirty"
+                        >
+                    </mat-form-field>
+                    <mat-error *ngIf="!personalForm.controls.username.valid && personalForm.controls.username.dirty">只能输入中文、英文、数字以及下划线，长度在1~10之间</mat-error>
+                </div>
+                <div class="form-group" >
+                    <mat-form-field class="example-full-width">
+                        <input matInput placeholder="请输入姓名"  type="text" [(ngModel)]="model.updateName" formControlName="name"
+                               [class.invalid]="!personalForm.controls.name.valid && personalForm.controls.name.dirty"
+                        >
+                    </mat-form-field>
+                    <mat-error *ngIf="!personalForm.controls.name.valid && personalForm.controls.name.dirty">只能输入中文、英文、数字以及下划线，长度在1~10之间</mat-error>
+                </div>
+                <div class="form-group" >
+                    <mat-form-field class="example-full-width">
+                        <input matInput placeholder="请输入工号"  type="text" [(ngModel)]="model.updateNo" formControlName="userno"
+                               [class.invalid]="!personalForm.controls.userno.valid && personalForm.controls.userno.dirty"
+                        >
+                    </mat-form-field>
+                    <mat-error *ngIf="!personalForm.controls.userno.valid && personalForm.controls.userno.dirty">只支持数字，长度至少为1</mat-error>
+                </div>
+                <div class="form-group" >
+                    <mat-form-field class="example-full-width">
+                        <input matInput placeholder="请输入邮箱，注意：修改后，登录需使用新的邮箱；邮箱不能重复"  type="email" [(ngModel)]="model.updateEmail" formControlName="useremail"
+                               [class.invalid]="!personalForm.controls.useremail.valid && personalForm.controls.useremail.dirty"
+                        >
+                    </mat-form-field>
+                    <mat-error *ngIf="!personalForm.controls.useremail.valid && personalForm.controls.useremail.dirty">请输入正确的邮箱</mat-error>
+                </div>
+                <div class="form-group" >
+                    <mat-form-field class="example-full-width">
+                        <input matInput placeholder="请输入手机，注意：手机号不能重复"  type="text" [(ngModel)]="model.updateTel" formControlName="usermobile"
+                               [class.invalid]="!personalForm.controls.usermobile.valid && personalForm.controls.usermobile.dirty"
+                        >
+                    </mat-form-field>
+                    <mat-error *ngIf="!personalForm.controls.usermobile.valid && personalForm.controls.usermobile.dirty">请输入正确的手机号</mat-error>
+                </div>
+                <!--<div class="form-group" >-->
+                    <!--<mat-form-field class="example-full-width">-->
+                        <!--<input matInput placeholder="请输入手机，注意：手机号不能重复"  type="text"-->
+
+                        <!--&gt;-->
+                    <!--</mat-form-field>-->
+                    <!--<mat-error >请输入职位名称</mat-error>-->
+                <!--</div>-->
+                <div class="form-group btn-infor">
+                    <button mat-button class="moreCategories mat-raised-button personal-y"  [disabled]="!personalForm.valid">保存修改</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

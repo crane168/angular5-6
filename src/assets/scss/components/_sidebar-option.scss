@@ -1,0 +1,105 @@
+//customizer
+.gene-customizer {
+    right: 0;
+    width: 300px;
+    backface-visibility: hidden;
+    background: #fff none repeat scroll 0 0;
+    bottom: 0;
+    height: 100vh;
+    position: fixed;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    right: -300px;
+    top: 0;
+    transition: right 0.4s cubic-bezier(0.05, 0.74, 0.2, 0.99) 0s;
+    width: 300px;
+    z-index: 99;
+    mat-card-content {
+        padding: 2rem 0;
+        .mat-checkbox-layout {
+            display: block;
+            width: 100%;
+        }
+        .mat-checkbox-label-before .mat-checkbox-inner-container {
+            float: right;
+            margin-left: 8px;
+            margin-right: auto;
+            order: 0;
+        }
+    }
+    .customizer-toggle {
+        background: #1565c0 none repeat scroll 0 0;
+        border: medium none;
+        color: #fff;
+        cursor: pointer;
+        height: 45px;
+        left: -45px;
+        line-height: 45px;
+        position: absolute;
+        text-align: center;
+        top: 25%;
+        width: 45px;
+        .mat-icon {
+            line-height: 45px;
+        }
+    }
+    .theme-options {
+        >div {
+            margin-bottom: 1rem;
+            margin-bottom: 1rem;
+            padding-left: 2rem;
+            padding-right: 2rem;
+        }
+        h3 {
+            padding-left: 2rem;
+            padding-right: 2rem;
+        }
+        .mat-divider {
+            margin-bottom: 1rem;
+        }
+    }
+}
+.customizer-in .gene-customizer {
+    right: 0;
+}
+.boxed {
+    box-shadow: 0 0 9px rgba(0, 0, 0, 0.4);
+    margin: 0 auto;
+    width: 1170px;
+}
+.app-dark {
+    .gene-customizer .customizer-toggle {
+        background: #ffe082;
+        color: #000;
+    }
+}
+.collapsed-sidebar mat-sidenav .sidebar-panel:not(:hover) .mat-list-item>.mat-list-item-content>a>.menu-caret,
+.collapsed-sidebar mat-sidenav .sidebar-panel:not(:hover) .mat-list-item>.mat-list-item-content>a>span:not(.menu-badge) {
+    display: none;
+}
+.collapsed-sidebar mat-sidenav.mat-sidenav-opened~.mat-sidenav-content {
+    margin-left: 4rem !important;
+}
+.collapsed-sidebar mat-sidenav .sidebar-panel:not(:hover) {
+    width: 4rem;
+    min-width: 4rem;
+}
+.collapsed-sidebar mat-sidenav .sidebar-panel {
+    transition: all 0.3s ease-in-out 0s;
+}
+.collapsed-sidebar {
+    .gene-user-thumb {
+        display: none;
+    }
+    .logo-text {
+        display: none;
+    }
+}
+.collapsed-sidebar mat-sidenav .sidebar-panel:not(:hover) .sub-menu {
+    display: none;
+    visibility: hidden;
+}
+.collapsed-sidebar[dir="rtl"] mat-sidenav.mat-sidenav-opened~.mat-sidenav-content,
+[dir="rtl"] .collapsed-sidebar mat-sidenav.mat-sidenav-opened~.mat-sidenav-content {
+    margin-left: 0 !important;
+    margin-right: 4rem !important;
+}

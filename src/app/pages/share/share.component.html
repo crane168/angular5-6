@@ -1,0 +1,64 @@
+<div class="container" #shareContainer>
+    <div class="tabContainer">
+        <div class="header">
+            <span class="people">{{shareUser}}</span>给您加密分享了文件
+            <span class="time-con">
+                <countdown
+                        *ngIf="!isToDeadLine"
+                        [config]="countConfig"
+                        (finished)="onFinished($event)">
+                    剩余时间：$!h!时$!m!分$!s!秒
+                </countdown>
+                <span *ngIf="isToDeadLine">已过期</span>
+            </span>
+        </div>
+        <div class="shareBody" *ngIf="isToDeadLine">分享时间到了，下次早点来哟！！</div>
+        <div *ngIf="!isToDeadLine">
+            <mat-tab-group
+                    class="demo-tab-group"
+                    (selectedTabChange)="SelectedShareTabs($event)"
+                    [(selectedIndex)]="activeTabIndex">
+                <mat-tab label="验证密码">
+                    <div class="tab1-content">
+                        <div class="example-container mat-elevation-z8" *ngIf="!isShowFileLists">
+                            <p>请输入提取密码:</p>
+                            <input type="text" name="" id="password" [(ngModel)]="accessCode">
+                        </div>
+                        <dl *ngIf="isShowFileLists">
+                            <dt>
+                                <span>文件名</span>
+                                <span>操作</span>
+                            </dt>
+                            <dd *ngFor="let file of files">
+                                <span>{{file.name}}</span>
+                                <span><a routerLink="/portal/{{ctx.domain}}/main/detail/{{file.id}}">浏览</a></span>
+                            </dd>
+                        </dl>
+                    </div>
+                </mat-tab>
+                <mat-tab label="扫描二维码">
+                    <div class="tab2-content">
+                        <div class="example-container mat-elevation-z8">
+                            <!--TODO:二维码 待解决，安装后，module无效-->
+                            <ngx-qrcode
+                                    qrc-element-type="url"
+                                    [qrc-value]="urlVal"
+                                    qrc-class="aclass"></ngx-qrcode>
+                        </div>
+                    </div>
+                </mat-tab>
+                <mat-tab label="Token令牌验证">
+                    <div class="tab3-content">
+                        <div class="example-container mat-elevation-z8">
+                            <div class="tokenNumContainer">
+                                <input type="text" [(ngModel)]="tokenNum.value" class="tokenNumItemBox"
+                                       *ngFor="let tokenNum of tokenNums"/>
+                            </div>
+                        </div>
+                    </div>
+                </mat-tab>
+            </mat-tab-group>
+            <button [disabled]="btnDisabled" (click)="toCheckShare($event)">{{btnVal}}</button>
+        </div>
+    </div>
+</div>

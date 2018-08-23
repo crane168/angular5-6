@@ -1,0 +1,109 @@
+<h2 mat-dialog-title>选择签字模板</h2>
+
+<mat-dialog-content>
+    <mat-card>
+        <mat-card-content>
+            <mat-tab-group class="dlg-signature-tab-group"
+                           [(selectedIndex)]="activeType">
+                <mat-tab label="选择模板">
+                    <div class="dlg-signature-content">
+                        <div *ngIf="!cardList.length" style="text-align: center;line-height: 50px;">
+                            暂无签名模板！
+                        </div>
+                        <div
+                                *ngFor="let card of cardList;let index=index;"
+                                class="templet-card"
+                                [ngClass]="{'active':choseIndex===index}"
+                                (click)="choseTemplate(card,index)">
+                            <!--<div class="preview-template" [id]="card._id.$oid"></div>-->
+                            <div class="preview-template">
+                                <div class="active" *ngFor="let active of card.activities,let ind=index">
+                                    <p class="active-name">{{active.activityDefName}}</p>
+                                    <div class="sign-names">
+                                        <span *ngFor="let part of active.parts">{{part.name}};</span>
+                                    </div>
+                                    <!--<div *ngIf="ind!==card.activities.length-1" class="line"></div>-->
+                                    <div *ngIf="ind!==card.activities.length-1" class="line">
+                                        <i class="fa fa-long-arrow-down"></i>
+                                    </div>
+                                   <!-- <tree-root
+                                            #treeview
+                                            [nodes]="active.parts"
+                                            [options]="treeoptions"
+                                    ></tree-root>-->
+                                </div>
+                            </div>
+                            <p>{{card.processDefName}}</p>
+                        </div>
+                    </div>
+                </mat-tab>
+                <mat-tab label="选择签字人">
+                    <div class="dlg-signature-content">
+                        <ul>
+                            <li>
+                                <span class="name">名称</span>
+                                <span class="email">邮件</span>
+                                <span class="expire">处理期限</span>
+                                <span class="agent">代理人</span>
+                                <span class="handle">操作</span>
+                            </li>
+                            <li *ngFor="let info of choseDataList;let num=index;">
+                                <span class="name">{{info.userName}}</span>
+                                <span class="email">{{info.email}}</span>
+                                <span class="expire">{{info.expireDay?info.expireDay+'天':''}}</span>
+                                <span class="agent">{{info.agentName}}</span>
+                                <span class="handle">
+                                    <button type="button" (click)="delSiger($event,num)">删除</button>
+                                </span>
+                            </li>
+                            <li *ngIf="isAddSiger">
+                                <span class="name">
+                                   <!-- <select [(ngModel)]="sigerInfo" (change)="selectSign($event)">
+                                        <option [value]="''" disabled>请选择签字人</option>
+                                        <option [value]="user.name" *ngFor="let user of userList">
+                                            {{user.name}}
+                                        </option>
+                                    </select>
+                                    <div *ngIf="nameErrorTip">请选择签字人</div>-->
+                                <mat-chip-list #chipSign>
+                                    <!--<mat-chip *ngIf="chip && chip.userName">-->
+                                        <!--{{chip.userName}}-->
+                                        <!--<mat-icon matChipRemove>cancel</mat-icon>-->
+                                    <!--</mat-chip>-->
+
+                                    <input readonly placeholder="选择签字人..."
+                                   [matChipInputFor]="chipSign"
+                                           [value]="currentUser.userName"
+                                   (click)="selectSign($event)"/>
+                                </mat-chip-list>
+                                    <!--<input placeholder="签字人姓名" (click)="selectSign" [(ngModel)]="sigerInfo" disabled>-->
+                                </span>
+                                <span class="email">
+                                    <input placeholder="邮箱" [(ngModel)]="currentUser.email" disabled>
+                                    <!--<div *ngIf="emailErrorTip">请输入正确邮箱地址</div>-->
+                                </span>
+                                <span class="expire">
+                                    <input type="text" style="border:1px solid #ccc;" [(ngModel)]="currentUser.expireDay" placeholder="期限" >天
+                                </span>
+                                <span class="agent">{{currentUser.agentName}}</span>
+                                <span class="handle">
+                                    <button type="button" (click)="confirmSiger($event)">确定</button>
+                                </span>
+                            </li>
+                        </ul>
+                        <button type="button" (click)="addSiger($event)">
+                            + 添加
+                        </button>
+                    </div>
+                </mat-tab>
+            </mat-tab-group>
+        </mat-card-content>
+    </mat-card>
+</mat-dialog-content>
+
+
+<div mat-dialog-actions>
+    <button mat-button (click)="close(0)" class="cancel">取消</button>
+    <button mat-button (click)="close(1)" class="send">确定</button>
+</div>
+

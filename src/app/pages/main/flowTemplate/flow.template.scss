@@ -1,0 +1,50 @@
+.flowTplcon{
+  padding-bottom:100px;
+  .more-operator{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom:20px;
+  }
+  .search{
+    width: 250px;
+    margin-right:40px;
+    position: relative;
+    input {
+      color: #000;
+      border-radius: 4px;
+      width: 100%;
+      height: 28px;
+      padding-left: 10px;
+      outline: none;
+      border: 1px solid rgba(217, 217, 217, 1);
+      font-size: 12px;
+    }
+    button {
+      position: absolute;
+      right: 8px;
+      top: 50%;
+      margin-top: -6px;
+      width: 14px;
+      height: 14px;
+      color: rgba(0, 0, 0, 0.25);
+      background: transparent;
+      outline: none;
+      cursor: pointer;
+      i {
+        display: block;
+        font-size: 12px;
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+  .new-tpl-btn{
+    button{
+      background: #009688;
+      border-radius: 2px;
+      color:#fff;
+      font-size: 14px;
+      padding:2px 4px;
+    }
+  }
+}

@@ -1,0 +1,461 @@
+<!--<div class="y-survey">-->
+    <!--<div class="y-survey-werp">-->
+        <!--<div class="y-survey-nav">-->
+            <!--<div class="title"><i class="icon-updated"></i><strong>cloud</strong></div>-->
+            <!--<div class="menu">-->
+                <!--<ul>-->
+                    <!--<li class="active" (click)="surveyClick(0)" [class.active]="surveyItem==0">空间概况</li>-->
+                    <!--<li (click)="surveyClick(1)" [class.active]="surveyItem==1">空间设置</li>-->
+                <!--</ul>-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--<div [style.display]="surveyItem==0 ? 'block' : 'none'" style="padding:10px 5px;display:inline-block; ">-->
+            <!--<div class="y-survey-lefe">-->
+                <!--<section class="y-survey-section">-->
+                    <!--<header class="sec-hd">基础数据</header>-->
+                    <!--<div class="sec-bd">-->
+                        <!--<div class="card-list">-->
+                            <!--<div class="card-sec">-->
+                                <!--<div class="card-hd">-->
+                                    <!--<div>存储总量</div>-->
+                                <!--</div>-->
+                                <!--<div class="card-bd">-->
+                                    <!--<strong>0</strong>-->
+                                    <!--<span>Byte</span>-->
+                                <!--</div>-->
+                                <!--<div class="row" >-->
+                                    <!--<div class="col-md-6">-->
+                                        <!--<div echarts [options]="pieoptions" class="demo-chart" style="width: 330px;height: 400px"></div>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                            <!--<div class="card-sec">-->
+                                <!--<div class="card-hd">-->
+                                    <!--<div>本月外网流量</div>-->
+                                <!--</div>-->
+                                <!--<div class="card-bd">-->
+                                    <!--<strong>0</strong>-->
+                                    <!--<span>Byte</span>-->
+                                <!--</div>-->
+                                <!--<div id="chart1" echarts  [options]="columnoptions" theme="macarons" class="demo-chart"></div>-->
+                            <!--</div>-->
+                            <!--<div class="card-sec">-->
+                                <!--<div class="card-hd">-->
+                                    <!--<div>本月请求次数</div>-->
+                                <!--</div>-->
+                                <!--<div class="card-bd">-->
+                                    <!--<strong>0</strong>-->
+                                <!--</div>-->
+                                <!--<div id="chart2" echarts [options]="reqoptions" theme="macarons" class="demo-chart"></div>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</section>-->
+                <!--<section class="y-survey-section">-->
+                    <!--<header class="sec-hd">基础配置</header>-->
+                    <!--<div class="sec-bd">-->
+                        <!--<div class="intro-list">-->
+                            <!--<div class="list-top">-->
+                                <!--<div class="intro-list-item">-->
+                                    <!--<div class="ic"><i class="icon-connection"></i></div>-->
+                                    <!--<div class="info">-->
+                                        <!--<div class="info-title">域名管理</div>-->
+                                        <!--<div><span>可将用户自己的域名绑定到 OSS 域名上，并支持 CDN 一键加速</span></div>-->
+                                    <!--</div>-->
+                                    <!--<div class="info-bg">-->
+                                        <!--<button (click)="domainClick()">查看详情</button>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                                <!--<div class="intro-list-item">-->
+                                    <!--<div class="ic"><i class="icon-msg"></i></div>-->
+                                    <!--<div class="info">-->
+                                        <!--<div class="info-title">事件通知</div>-->
+                                        <!--<div><span>配置 MNS 事件通知（回调）功能，关注 Bucket 事件</span></div>-->
+                                    <!--</div>-->
+                                    <!--<div class="info-bg">-->
+                                        <!--<button>查看详情</button>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                                <!--<div class="intro-list-item">-->
+                                    <!--<div class="ic"><i class="icon-copy"></i></div>-->
+                                    <!--<div class="info">-->
+                                        <!--<div class="info-title">跨区域复制</div>-->
+                                        <!--<div><span>可实现账户内不同区域之间的 Bucket 同步备份</span></div>-->
+                                    <!--</div>-->
+                                    <!--<div class="info-bg">-->
+                                        <!--<button>查看详情</button>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                            <!--<div class="list-top">-->
+                                <!--<div class="intro-list-item">-->
+                                    <!--<div class="ic"><i class="icon-security-safe"></i></div>-->
+                                    <!--<div class="info">-->
+                                        <!--<div class="info-title">安全令牌</div>-->
+                                        <!--<div><span>通过 RAM 和 STS 为子账号授予临时的访问权限</span></div>-->
+                                    <!--</div>-->
+                                    <!--<div class="info-bg">-->
+                                        <!--<button>查看详情</button>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                                <!--<div class="intro-list-item">-->
+                                    <!--<div class="ic"><i class="icon-scan"></i></div>-->
+                                    <!--<div class="info">-->
+                                        <!--<div class="info-title">安全扫描</div>-->
+                                        <!--<div><span>可提供一键扫描 APP 漏洞和恶意代码服务</span></div>-->
+                                    <!--</div>-->
+                                    <!--<div class="info-bg">-->
+                                        <!--<button>查看详情</button>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                                <!--<div class="intro-list-item">-->
+                                    <!--<div class="ic"><i class="icon-safe"></i></div>-->
+                                    <!--<div class="info">-->
+                                        <!--<div class="info-title">内容安全</div>-->
+                                        <!--<div><span>智能内容识别服务，快速识别违规风险，如色情、暴恐、垃圾广告等</span></div>-->
+                                    <!--</div>-->
+                                    <!--<div class="info-bg">-->
+                                        <!--<button>查看详情</button>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</section>-->
+                <!--<section class="y-survey-section">-->
+                    <!--<header class="sec-hd">数据处理</header>-->
+                    <!--<div class="sec-bd">-->
+                        <!--<div class="intro-list">-->
+                            <!--<div class="list-top">-->
+                                <!--<div class="intro-list-item">-->
+                                    <!--<div class="ic"><i class="icon-photography"></i></div>-->
+                                    <!--<div class="info">-->
+                                        <!--<div class="info-title">图片服务</div>-->
+                                        <!--<div><span>支持在 OSS 端对图片文件进行缩放、裁剪、水印等处理</span></div>-->
+                                        <!--<div class="info-bg">-->
+                                            <!--<button>查看详情</button>-->
+                                        <!--</div>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                                <!--<div class="intro-list-item">-->
+                                    <!--<div class="ic"><i class="icon-video-play"></i></div>-->
+                                    <!--<div class="info">-->
+                                        <!--<div class="info-title">视频点播</div>-->
+                                        <!--<div><span>OSS 可配合视频点播（VOD）服务，实现一站式音视频点播</span></div>-->
+                                        <!--<div class="info-bg">-->
+                                            <!--<button>查看详情</button>-->
+                                        <!--</div>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                                <!--<div class="intro-list-item">-->
+                                    <!--<div class="ic"><i class="icon-video-1"></i></div>-->
+                                    <!--<div class="info">-->
+                                        <!--<div class="info-title">媒体转码</div>-->
+                                        <!--<div><span>OSS 可配合媒体转码服务，将多媒体数据转码成多种终端播放格式</span></div>-->
+                                        <!--<div class="info-bg">-->
+                                            <!--<button>查看详情</button>-->
+                                        <!--</div>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</section>-->
+            <!--</div>-->
+            <!--<div class="y-survey-right">-->
+                <!--<div class="link-bar">-->
+                    <!--<div class="links-shown">-->
+                        <!--<a href="javascript:;" class="next-btn next-btn-normal next-btn-large">新手入门</a>-->
+                        <!--<a href="javascript:;" class="next-btn next-btn-normal next-btn-large">开发者指南</a>-->
+                        <!--<a href="javascript:;" class="next-btn next-btn-normal next-btn-large">SDK 下载</a>-->
+                        <!--<a href="javascript:;" class="next-btn next-btn-normal next-btn-large">更多</a>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<div class="quick">-->
+                    <!--<div class="quick-item">-->
+                        <!--<span><em>2</em> 个 Bucket</span>-->
+                        <!--<div class="btns">-->
+                            <!--<button (click)="panelshow()">新建 Bucket</button>-->
+                            <!--<a href="javacript:;" class="key">Access Key</a>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <!--<div class="quick-item">-->
+                        <!--<span class="span">0 条报警规则，0 已报警，0 预警状态，0 已禁用</span>-->
+                        <!--<i class="icon-security-safe"></i>-->
+                        <!--<div class="btns">-->
+                            <!--<a href="javacript:;" class="key">设置报警规则</a>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <!--<div class="quick-item">-->
+                        <!--<span>暂无可用资源包，<a href="javascript:;" class="price">查看价格介绍</a></span>-->
+                        <!--<div class="btns">-->
+                            <!--<a href="javacript:;" class="key">购买资源包</a>-->
+                            <!--<a href="javacript:;" class="key">消费明细</a>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<div class="space">-->
+                    <!--<div class="col">-->
+                        <!--<div class="header-space">-->
+                            <!--<div class="title">空间设置</div>-->
+                            <!--<a href="javascript:;"><i class="icon-edit"></i>空间设置</a>-->
+                        <!--</div>-->
+                        <!--<ul>-->
+                            <!--<li>存储区域</li>-->
+                            <!--<li>华东</li>-->
+                            <!--<li>默认首页设置</li>-->
+                            <!--<li>关闭</li>-->
+                            <!--<li>空间 404 页面设置</li>-->
+                            <!--<li>已开启</li>-->
+                            <!--<li>maxAge</li>-->
+                            <!--<li>31536000</li>-->
+                            <!--<li>访问日志</li>-->
+                            <!--<li>关闭</li>-->
+                            <!--<li>原图保护</li>-->
+                            <!--<li>关闭</li>-->
+                        <!--</ul>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="slide-panel-mask" *ngIf="maskShow!=0"></div>-->
+            <!--&lt;!&ndash;  -&#45;&#45;&#45;&#45;      新建 Bucket          &ndash;&gt;-->
+            <!--<div class="slide-panels" *ngIf="panelShow!=0" [@moveInState]>-->
+                <!--<div class="panel-container">-->
+                    <!--<div class="panel-header">-->
+                        <!--<div class="panel-title">-->
+                            <!--<h4>新建 Bucket</h4>-->
+                            <!--<a href="javascript:;">帮助文档</a>-->
+                        <!--</div>-->
+                        <!--<i class="icon-cancel" (click)="panelhid()"></i>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<div class="panel-body">-->
+                    <!--<div style="height: 100%;border-bottom: 1px solid #d7d8d9;">-->
+                        <!--<div class="next-row">-->
+                            <!--<label for=""><span>Bucket 名称</span></label>-->
+                            <!--<div class="control">-->
+                                <!--<div class="input">-->
+                                    <!--<input type="text">-->
+                                <!--</div>-->
+                                <!--<div class="item-explain">-->
+                                    <!--<p>Bucket 命名规范：</p>-->
+                                    <!--<ol>-->
+                                        <!--<li>只能包含小写字母，数字和短横线</li>-->
+                                        <!--<li>必须以小写字母和数字开头和结尾</li>-->
+                                        <!--<li>长度限制在 3-64 之间</li>-->
+                                    <!--</ol>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <!--<div class="next-row">-->
+                            <!--<label for=""><span>区域</span></label>-->
+                            <!--<div class="control" >-->
+                                <!--<select name="" id="">-->
+                                    <!--<option value="">华北</option>-->
+                                    <!--<option value="">西北</option>-->
+                                <!--</select>-->
+                                <!--<div>相同区域内的产品内网可以互通；订购后不支持更换区域，请谨慎选择</div>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <!--<div class="next-row">-->
+                            <!--<label for=""><span>Endpoint</span></label>-->
+                            <!--<div class="control" style="width: 66%">-->
+                                <!--<div>oss-cn-beijing.aliyuncs.com</div>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <!--<div class="next-row">-->
+                            <!--<label for=""><span>存储类型</span></label>-->
+                            <!--<div class="control" style="width: 66%">-->
+                                <!--<div class="storage-type">-->
+                                    <!--<div class="storage">-->
+                                        <!--<ul>-->
+                                            <!--<li class="active" (click)="storageClick(0)" [class.active]="storageItem==0">标准存储</li>-->
+                                            <!--<li (click)="storageClick(1)" [class.active]="storageItem==1">低频访问</li>-->
+                                            <!--<li (click)="storageClick(2)" [class.active]="storageItem==2">归档存储</li>-->
+                                        <!--</ul>-->
+                                    <!--</div>-->
+                                    <!--<div style="display: inline-block">-->
+                                        <!--<div class="stand" [style.display]="storageItem==0 ? 'block' : 'none'">高可靠、高可用、高性能，数据会经常被访问到</div>-->
+                                        <!--<div class="stand" [style.display]="storageItem==1 ? 'block' : 'none'">数据长期存储、较少访问，存储单价低于标准类型</div>-->
+                                        <!--<div class="stand" [style.display]="storageItem==2 ? 'block' : 'none'">数据长期存储、基本不访问，存储单价低于低频访问型</div>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <!--<div class="next-row">-->
+                            <!--<label for=""><span>读写类型</span></label>-->
+                            <!--<div class="control" style="width: 66%">-->
+                                <!--<div class="storage-type">-->
+                                    <!--<div class="storage">-->
+                                        <!--<ul>-->
+                                            <!--<li class="active" (click)="readwriteClick(0)" [class.active]="readwriteItem==0">私有</li>-->
+                                            <!--<li (click)="readwriteClick(1)" [class.active]="readwriteItem==1">公共读</li>-->
+                                            <!--<li (click)="readwriteClick(2)" [class.active]="readwriteItem==2">公共读写</li>-->
+                                        <!--</ul>-->
+                                    <!--</div>-->
+                                    <!--<div style="display: inline-block">-->
+                                        <!--<div class="stand" [style.display]="readwriteItem==0 ? 'block' : 'none'">私有：对文件的所有访问操作需要进行身份验证</div>-->
+                                        <!--<div class="stand" [style.display]="readwriteItem==1 ? 'block' : 'none'">数据长期存储、较少访问，存储单价低于标准类型</div>-->
+                                        <!--<div class="stand" [style.display]="readwriteItem==2 ? 'block' : 'none'">数据长期存储、基本不访问，存储单价低于低频访问型</div>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <!--<div class="footer-btn">-->
+                        <!--<button>确定</button>-->
+                        <!--<button (click)="panelhid()">取消</button>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--&lt;!&ndash;&#45;&#45;&#45;&#45; 新建 Bucket&#45;&#45;&#45;&#45;&ndash;&gt;-->
+            <!--&lt;!&ndash;&#45;&#45;&#45;&#45; 查看域名&#45;&#45;&#45;&#45;&ndash;&gt;-->
+            <!--<div class="slide-panels" [@moveInState] *ngIf="domain!=0">-->
+                <!--<div class="panel-container">-->
+                    <!--<div class="panel-header">-->
+                        <!--<div class="panel-title">-->
+                            <!--<h4>绑定用户域名的 Bucket</h4>-->
+                            <!--<a href="javascript:;">帮助文档</a>-->
+                        <!--</div>-->
+                        <!--<i class="icon-cancel" (click)="domainhid()"></i>-->
+                    <!--</div>-->
+                    <!--<div class="panel-body ">-->
+                        <!--<div class="body-table">-->
+                            <!--<div class="table-title">-->
+                                <!--<ul>-->
+                                    <!--<li>Bucket 名称</li>-->
+                                    <!--<li>区域</li>-->
+                                    <!--<li>用户域名（个)</li>-->
+                                    <!--<li>操作</li>-->
+                                <!--</ul>-->
+                            <!--</div>-->
+                            <!--<div class="table-item">-->
+                                <!--<ul>-->
+                                    <!--<li></li>-->
+                                    <!--<li></li>-->
+                                    <!--<li></li>-->
+                                    <!--<li></li>-->
+                                <!--</ul>-->
+                                <!--<div>暂无数据</div>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--&lt;!&ndash;&#45;&#45;&#45;&#45; 查看域名&#45;&#45;&#45;&#45;&ndash;&gt;-->
+        <!--</div>-->
+    <!--</div>-->
+
+    <!--<div [style.display]="surveyItem==1 ? 'block' : 'none'" style="padding:10px 40px;display:flex;">-->
+        <!--<div class="setting">-->
+            <!--<div class="setting-body">-->
+                <!--<section class="s-item">-->
+                    <!--<div class="rows">-->
+                        <!--<div class="item-title">文件客户端缓存 maxAge </div>-->
+                        <!--<div class="item-body">-->
+                            <!--<p>通过配置 maxAge 实现在规定的时效内使客户端缓存更新的效果，单位：秒</p>-->
+                            <!--<div class="item-body-c1">-->
+                                <!--<div class="c1-input"><input type="text"></div>-->
+                                <!--<div>-->
+                                    <!--<button type="button">取消</button>-->
+                                    <!--<button type="submit">保存设置</button>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</section>-->
+                <!--<section class="s-item">-->
+                    <!--<div class="rows">-->
+                        <!--<div class="item-title">默认首页设置 </div>-->
+                        <!--<div class="item-body">-->
+                            <!--<p>开启功能后，空间根目录中的 index.html（或 index.htm）文件将会作为默认首页进行展示。</p>-->
+                            <!--<div class="item-body-c1">-->
+                                <!--<div>-->
+                                    <!--<span class="closed">关闭</span>-->
+                                    <!--<span id="div1" class="open1" [class.open1]="enabled" [class.close1]="!enabled">-->
+                                      <!--<span id="div2" class="open2" [class.open2]="enabled" [class.close2]="!enabled" (click)="changeEnableParam(1)"></span>-->
+                                    <!--</span>-->
+                                    <!--<span class="start">开启</span>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</section>-->
+                <!--<section class="s-item">-->
+                    <!--<div class="rows">-->
+                        <!--<div class="item-title">空间日志 </div>-->
+                        <!--<div class="item-body">-->
+                            <!--<p>1. 空间日志指直接访问该空间的日志，当天的日志两天后可下载；</p>-->
+                            <!--<p>2. 空间日志不包括七牛 CDN 域名的 <a href="javascript:;">访问日志</a>。</p>-->
+                            <!--<div class="item-body-c1">-->
+                                <!--<div style="margin-bottom: 20px;">-->
+                                    <!--<span class="closed">关闭</span>-->
+                                    <!--<span id="div1" class="open1" [class.open1]="enabled" [class.close1]="!enabled">-->
+                                      <!--<span id="div2" class="open2" [class.open2]="enabled" [class.close2]="!enabled" (click)="changeEnableParam(2)"></span>-->
+                                    <!--</span>-->
+                                    <!--<span class="start">开启</span>-->
+                                <!--</div>-->
+                                <!--<div>-->
+                                    <!--<button type="button">取消</button>-->
+                                    <!--<button type="submit">保存设置</button>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</section>-->
+                <!--<section class="s-item">-->
+                    <!--<div class="rows">-->
+                        <!--<div class="item-title">空间 404 页面设置 </div>-->
+                        <!--<div class="item-body">-->
+                            <!--<p>配置 HTTP 请求时的 404 页面。设置的页面须保存在当前空间内。</p>-->
+                            <!--<div class="item-body-c1">-->
+                                <!--<div style="margin-bottom: 20px;">-->
+                                    <!--<span class="closed">默认配置</span>-->
+                                    <!--<span id="div1" class="open1" [class.open1]="enabled" [class.close1]="!enabled">-->
+                                      <!--<span id="div2" class="open2" [class.open2]="enabled" [class.close2]="!enabled" (click)="changeEnableParam(3)"></span>-->
+                                    <!--</span>-->
+                                    <!--<span class="start">自定义配置</span>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                            <!--<p>当前配置显示效果如下：</p>-->
+                            <!--<div class="box">error":"Document not found</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</section>-->
+                <!--<section class="s-item">-->
+                    <!--<div class="rows">-->
+                        <!--<div class="item-title">原图保护 </div>-->
+                        <!--<div class="item-body">-->
+                            <!--<p>原图保护是七牛云存储针对媒体类源文件的保护措施。</p>-->
+                            <!--<div class="item-body-c1">-->
+                                <!--<button type="button">开启原图保护</button>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</section>-->
+                <!--<section class="s-item">-->
+                    <!--<div class="rows">-->
+                        <!--<div class="item-title">访问控制 </div>-->
+                        <!--<div class="item-body">-->
+                            <!--<p>当前访问的空间为公开空间，私有空间需要拥有者的授权链接才可访问 ，改变访问控制可能使当前正在运行的程序和该空间的域名无法正常使用。切换空间属性后需10分钟生效。</p>-->
+                            <!--<div class="item-body-c1">-->
+                                <!--<button type="button">改为私有空间</button>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</section>-->
+                <!--<section class="s-item">-->
+                    <!--<div class="rows">-->
+                        <!--<div class="item-title">删除空间 </div>-->
+                        <!--<div class="item-body">-->
+                            <!--<p>一旦删除空间，就永远无法再恢复过来，请确认是否有必要删除该空间！此操作会影响到和这个空间相关程序的运行。</p>-->
+                            <!--<div class="item-body-c1">-->
+                                <!--<button type="button">删除</button>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</section>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+<!--</div>-->

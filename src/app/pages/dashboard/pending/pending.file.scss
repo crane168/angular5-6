@@ -1,0 +1,86 @@
+.pendingcon{
+  position: relative;
+  .more-operator{
+    width: 100%;
+    height: 62px;
+    display: flex;
+    justify-content: flex-end;
+    align-items:center;
+    .operator{
+      display: flex;
+      align-items: center;
+      margin-top:14px;
+      i {
+        cursor: pointer;
+        position: relative;
+        font-style: normal;
+        font-size: 12px;
+        margin-right: 20px;
+        color: rgba(0, 0, 0, 0.54);
+        &:before {
+          position: absolute;
+          bottom: 16px;
+          left: 2px;
+          font-style: normal;
+          font-size: 22px;
+          color: rgba(93, 94, 97, 1);
+        }
+      }
+    }
+    .search{
+      margin-right:40px;
+      position: relative;
+      input {
+        color: #000;
+        border-radius: 4px;
+        width: 152px;
+        height: 28px;
+        padding-left: 10px;
+        outline: none;
+        border: 1px solid rgba(217, 217, 217, 1);
+        font-size: 12px;
+      }
+      button {
+        position: absolute;
+        right: 8px;
+        top: 50%;
+        margin-top: -6px;
+        width: 14px;
+        height: 14px;
+        color: rgba(0, 0, 0, 0.25);
+        background: transparent;
+        outline: none;
+        cursor: pointer;
+        i {
+          display: block;
+          font-size: 12px;
+          width: 100%;
+          height: 100%;
+        }
+      }
+    }
+  }
+}
+
+.search
+
+.search input::-webkit-input-placeholder {
+  color: rgba(0, 0, 0, 0.25);
+}
+
+.search input:-moz-placeholder {
+  color: rgba(0, 0, 0, 0.25);
+}
+
+.search input::-moz-placeholder {
+  color: rgba(0, 0, 0, 0.25);
+}
+
+.search input:-ms-input-placeholder {
+  color: rgba(0, 0, 0, 0.25);
+}
+
+//已处理的待办颜色置灰
+.handled{
+  color:#E6E6E6;
+}

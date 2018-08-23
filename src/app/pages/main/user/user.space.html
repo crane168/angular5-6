@@ -1,0 +1,48 @@
+<div class="userspaceContainer">
+    <div class="OrgContainer" >
+        <div class=" spaceInfor">
+            <form  (submit)="userspaceInfor()"  novalidate [formGroup]="userspaceForm" >
+                <div class="userspace-name">库存空间管理</div>
+                <div class="form-group" >
+                    <span class="name">库名：</span>
+                    <mat-form-field class="example-full-width">
+                        <input matInput placeholder="请输入库名称" [class.invalid]="!userspaceForm.controls.libraryname.valid &&userspaceForm.controls.libraryname.dirty" [(ngModel)]="model.name"  type="text" formControlName="libraryname"
+                        >
+                    </mat-form-field>
+                    <mat-error *ngIf="!userspaceForm.controls.libraryname.valid &&userspaceForm.controls.libraryname.dirty">只能输入汉字、字母、数字、下划线，长度在1~15个字符之间</mat-error>
+                </div>
+                <div class="form-group" >
+                    <span class="icon">图标库：</span>
+                    <mat-form-field class="example-full-width">
+                        <input matInput placeholder="请输入网络地址" [class.invalid]="!userspaceForm.controls.libraryicon.valid &&userspaceForm.controls.libraryicon.dirty" [(ngModel)]="model.icon"  type="text" formControlName="libraryicon"
+                        >
+                    </mat-form-field>
+                    <mat-error *ngIf="!userspaceForm.controls.libraryicon.valid &&userspaceForm.controls.libraryicon.dirty">请输入正确的网络地址，以http、https、ftp或file开头。</mat-error>
+                </div>
+                <div class="form-group" style="margin-bottom: 2rem;">
+                    <span class="set">设置空间大小：</span>
+                    <select #boxSize (change)="onSizeChanged($event)">
+                        <option value="10" [selected]="true">10m</option>
+                        <option value="100">100m</option>
+                        <option value="1000">1G</option>
+                        <option value="10000">10G</option>
+                        <option value="100000">100G</option>
+                        <option value="1000000">1T</option>
+                    </select>
+                </div>
+                <div class="form-group" >
+                    <span class="storage">库储存方式：</span>
+                    <mat-radio-group class="example-radio-group" >
+                        <mat-radio-button class="example-radio-button" [checked]="true" >
+                        </mat-radio-button>Cloud存储
+                    </mat-radio-group>
+                </div>
+
+                <div class="form-group btn-psw">
+                    <!--<button mat-button class="moreCategories mat-raised-button cancel-y" [disabled]="!userspaceForm.valid">取消</button>-->
+                    <button mat-button class="moreCategories mat-raised-button userspace-y" [disabled]="!userspaceForm.valid">保存</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,30 @@
+@import "../../../assets/scss/variable";
+.register{
+  margin: 200px auto;
+  width: 500px;
+}
+.register-name{
+  text-align: center;
+  font-size: 20px;
+  color: rgba(0,0,0,0.87);
+  letter-spacing: 0.56px;
+  margin-bottom: 30px;
+}
+
+mat-form-field{
+  width: 500px;
+}
+.form-control{
+  font-size: 12px;
+}
+.btn-primary{
+  cursor: pointer;
+}
+.form-group button.register-y{
+  width: 500px;
+  height: 37px;
+  min-height: 37px;
+  background: $main-color;
+  color: #fff;
+  margin-top: 10px;
+}

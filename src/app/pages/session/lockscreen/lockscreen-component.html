@@ -1,0 +1,23 @@
+<div fxLayout="row" fxLayoutAlign="center start"  class="gene-user-section height-full pad-t-xl">
+  <div fxLayout="column" fxFlex.xl="30" fxFlex.lg="30" fxFlex.md="60" fxFlex.sm="70"  fxFlex.xs="100">
+    <mat-card>
+      <mat-card-content>
+        <form #form="ngForm" (ngSubmit)="onSubmit()">
+         <h2 class="text-center  mrgn-b-lg mat-text-warn">Session Expired !</h2>
+          <div class="login-logo text-center">
+            <img class="img-circle" src="assets/img/user-1.jpg" alt="user" title="user"/>
+          </div>
+            <h4 class="text-center">John Doe</h4>
+          <div fxLayout="column" fxLayoutAlign="space-around">
+            <div>
+              <mat-form-field style="width: 100%">
+                <input matInput placeholder="Username" name="username" required [(ngModel)]="username">
+              </mat-form-field>
+            </div>
+            <div style="text-align: center;"> <button class="mat-blue-800" mat-raised-button type="submit" [disabled]="!form.valid">Unlock</button></div>
+          </div>
+        </form>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

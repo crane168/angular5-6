@@ -1,0 +1,72 @@
+<div class="flowTplcon" #flowTplContainer>
+    <div class="more-operator">
+        <div class="search">
+            <input type="text" placeholder="请输入搜索内容" (keyup)="doSearch($event)" [(ngModel)]="tplSearchKey">
+            <button type="submit" style="cursor: default">
+                <i class="icon-search"></i>
+            </button>
+        </div>
+        <div class="new-tpl-btn">
+            <button (click)="newTemplate($event)">新建模板</button>
+        </div>
+    </div>
+
+    <mat-accordion>
+        <mat-expansion-panel
+                *ngFor="let tpl of tplList,let ind=index"
+                (opened)="panelOpenState = true"
+                             (closed)="panelOpenState = false">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    {{tpl.processDefName}}
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+
+            <mat-table
+                    [dataSource]="tpl.tmpActivities">
+                <!-- order Column -->
+                <ng-container matColumnDef="order">
+                    <mat-header-cell *matHeaderCellDef style="flex: 0.2;">
+                        序号
+                    </mat-header-cell>
+                    <mat-cell *matCellDef="let row" style="flex: 0.2;">
+                        {{row.order}}
+                    </mat-cell>
+                </ng-container>
+                <!-- stepName Column -->
+                <ng-container matColumnDef="stepName">
+                    <mat-header-cell *matHeaderCellDef  > 环节名称</mat-header-cell>
+                    <mat-cell *matCellDef="let row"> {{row.partName}}</mat-cell>
+                </ng-container>
+                <!-- members Column -->
+                <ng-container matColumnDef="members">
+                    <mat-header-cell *matHeaderCellDef  > 参与人员列表</mat-header-cell>
+                    <mat-cell *matCellDef="let row">
+                        <!--<span *ngFor="let member of row.members">
+                            {{member.name}} &nbsp; {{member.email}}
+                        </span>-->
+                        {{row.signName}}
+                    </mat-cell>
+                </ng-container>
+                <!-- handle Column -->
+                <ng-container matColumnDef="handle">
+                    <mat-header-cell *matHeaderCellDef style="flex: 0.3;"> 操作</mat-header-cell>
+                    <mat-cell *matCellDef="let row,let num=index" style="flex: 0.3;">
+                        <button (click)="tplEdit($event,tpl)">编辑</button>
+                        <span>|</span>
+                        <button (click)="delSigner($event,num,row.actId,ind)">删除</button>
+                    </mat-cell>
+                </ng-container>
+
+
+                <mat-header-row *matHeaderRowDef="flowTplDisplayedColumns"></mat-header-row>
+                <mat-row *matRowDef="let row; columns: flowTplDisplayedColumns;">
+                </mat-row>
+            </mat-table>
+
+        </mat-expansion-panel>
+    </mat-accordion>
+
+
+</div>
+

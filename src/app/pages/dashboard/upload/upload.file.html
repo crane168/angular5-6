@@ -1,0 +1,191 @@
+<div class="uploadcon" #uploadContainer>
+    <div class="uploadContainer">
+        <div class="title">
+            <div class="type"><span class="file-num">选择文件类型：</span>
+                <select #seletType (change)="seletChange($event)">
+                    <option value="bks" [selected]="true">bks</option>
+                    <option value="word">word</option>
+                    <option value="exc">exc</option>
+                </select>
+            </div>
+            <!--<div><span class="file-num">文件编号：</span>-->
+                <!--<input type="text" [disabled]="isNotEditFileNo" placeholder="文件编号..." [(ngModel)]="fileNo"-->
+                       <!--(blur)="checkSeriaNum()">-->
+                <!--<p style="color: red;text-align: right;font-size: 12px" *ngIf="!errorShow">文件编号是必填的！</p>-->
+                <!--&lt;!&ndash;<span class="num">210323</span>&ndash;&gt;-->
+            <!--</div>-->
+            <!--<div><span class="file-num">文件修订版次:</span>-->
+                <!--<input type="text" placeholder="文件的版本编号..." [(ngModel)]="edition">-->
+                <!--&lt;!&ndash;<span class="num">1.13</span>&ndash;&gt;-->
+            <!--</div>-->
+        </div>
+        <div class="system-num">
+            <span class="file-num">文件编号:</span>
+            <input type="text" [(ngModel)]="selectValues" disabled>
+        </div>
+        <!--<div class="version">-->
+            <!--<span class="file-num">版本编号:</span>-->
+            <!--<input type="text" [(ngModel)]="edition" disabled>-->
+        <!--</div>-->
+        <div class="uploadPath">
+            <span class="clearfix">选择文件分类：</span>
+            <mat-chip-list #chipCategory>
+                <mat-chip *ngFor="let category of categories;let idx=index;" (removed)="removeNode(categories,idx)">
+                    {{category.name}}
+                    <mat-icon matChipRemove>cancel</mat-icon>
+                </mat-chip>
+
+                <input readonly placeholder="选择文件分类..."
+                       [matChipInputFor]="chipCategory"
+                       (click)="selectCategory()"/>
+            </mat-chip-list>
+        </div>
+        <br>
+        <div class="uploadPath">
+            <span>选择阅读范围：</span>
+
+            <mat-chip-list #chipScope>
+                <mat-chip *ngFor="let scope of scopes;let idx=index;" (removed)="removeNode(scopes,idx)">
+                    {{scope.name}}
+                    <mat-icon matChipRemove>cancel</mat-icon>
+                </mat-chip>
+
+                <input readonly placeholder="选择阅读范围..."
+                       [matChipInputFor]="chipScope"
+                       (click)="selectScope()"/>
+            </mat-chip-list>
+        </div>
+        <div class="security">
+            <span>文件发布级别：</span>
+            <mat-radio-group class="example-radio-group" [(ngModel)]="security">
+                <mat-radio-button class="example-radio-button" *ngFor="let item of securities" [value]="item.id">
+                    <i class="{{item.icon}}"></i>{{item.name}}
+                </mat-radio-button>
+            </mat-radio-group>
+        </div>
+        <div class="describe newfolder">
+            <span>选择我的文件夹：</span>
+            <input readonly placeholder="选择文件夹..." [(ngModel)]="folder.name" (click)="selectFolder()"/>
+            <!--<div *ngIf="folderCount==0" style="margin-left: 163px;">-->
+            <!--<a target="_blank" routerLink="/portal/{{ctx.domain}}/userFolder">您没有设置个人文件夹,请点击此处设置</a>-->
+            <!--</div>-->
+        </div>
+        <div class="addTags ">
+            <span class="tag">添加文件标签：</span>
+            <mat-chip-list #chipList>
+                <mat-chip *ngFor="let tag of tags;let idx=index;" [selectable]="selectable"
+                          [removable]="removable" (removed)="removeTag(idx)">
+                    {{tag}}
+                    <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+                </mat-chip>
+                <input placeholder="添加标签..."
+                       [matChipInputFor]="chipList"
+                       [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                       [matChipInputAddOnBlur]="addOnBlur"
+                       (matChipInputTokenEnd)="addTag($event)"/>
+            </mat-chip-list>
+        </div>
+        <div class="describe" style="width: 100%;margin-bottom: 20px;">
+            <span>文件描述：</span>
+            <input type="text" placeholder="文件描述..." [(ngModel)]="note">
+        </div>
+        <div class="uploadDetailContainer">
+            <dl>
+                <dt>
+                    <span>文件名称</span>
+                    <span>大小</span>
+                    <span>上传进度</span>
+                    <span>状态</span>
+                    <span>操作</span>
+                </dt>
+                <dd *ngFor="let item of uploader.queue">
+                    <span title="{{item?.file?.name}}"><strong>{{ item?.file?.name }}</strong></span>
+                    <span *ngIf="uploader.options.isHTML5">{{ item?.file?.size/1024/1024 | number:'.2' }} MB</span>
+                    <span *ngIf="uploader.options.isHTML5">
+                        <div class="progress" style="margin-bottom: 0;">
+                            <div class="progress-bar" role="progressbar"
+                                 [ngStyle]="{ 'width': item.progress + '%' }"></div>
+                        </div>
+                        </span>
+                    <span class="text-center">
+                        <span *ngIf="item.isSuccess"><i class="icon-upload-successfully"
+                                                        style="color: #28a745"></i></span>
+                        <span *ngIf="item.isCancel"><i class="glyphicon glyphicon-ban-circle"></i></span>
+                        <span *ngIf="item.isError">x</span>
+                        </span>
+                    <span>
+                            <button type="button" class="btn btn-danger btn-xs"
+                                    (click)="item.remove()">
+                                <span class="glyphicon glyphicon-trash"></span> 移除
+                            </button>
+                        </span>
+                </dd>
+            </dl>
+        </div>
+        <div class="progressContainer">
+            <div class="btns">
+                <div class="fakeContainer">选择文件
+                    <input type="file" class="chooseFile" ng2FileSelect
+                           [uploader]="uploader" multiple (change)="selectedFileOnChanged($event)"/><br/>
+                    <input *ngIf="!isShowUploadContainer" [disabled]="isNotChoseFile" type="file" class="chooseFile"
+                           ng2FileSelect
+                           [uploader]="uploader" (change)="selectedFileOnChanged($event)"/><br/>
+                </div>
+            </div>
+
+            <button type="button" class=" btn2 btn-danger "
+                    (click)="uploader.clearQueue()" [disabled]="!uploader.queue.length">
+                <span class="glyphicon glyphicon-trash"></span> 全部移除
+            </button>
+            <button type="button" class="btn btn-success "
+                    (click)="doUpload()" [disabled]="!uploader.getNotUploadedItems().length">
+                <span class="glyphicon glyphicon-upload">全部上传</span>
+            </button>
+
+        </div>
+        <!--<div class="singleUpload" *ngIf="!isShowUploadContainer">-->
+        <!--<div class="singleCon">-->
+        <!--<div class="updateUpload" *ngFor="let item of uploader.queue">-->
+        <!--<span title="{{item?.file?.name}}"><strong>{{ item?.file?.name }}</strong></span>-->
+        <!--<span *ngIf="uploader.options.isHTML5">{{ item?.file?.size/1024/1024 | number:'.2' }} MB</span>-->
+        <!--<span *ngIf="uploader.options.isHTML5">-->
+        <!--<div class="progress" style="margin-bottom: 0;background: red">-->
+        <!--<div class="progress-bar" role="progressbar"-->
+        <!--[ngStyle]="{ 'width': item.progress + '%' }"></div>-->
+        <!--</div>-->
+        <!--</span>-->
+        <!--<span class="text-center">-->
+        <!--<span *ngIf="item.isSuccess"><i class="icon-upload-successfully"-->
+        <!--style="color: #28a745"></i></span>-->
+        <!--<span *ngIf="item.isCancel"><i class="glyphicon glyphicon-ban-circle"></i></span>-->
+        <!--<span *ngIf="item.isError">x</span>-->
+        <!--</span>-->
+        <!--<span>-->
+        <!--<button type="button" class="btn btn-success btn-xs"-->
+        <!--(click)="uploaderFiles('update')"-->
+        <!--[disabled]="item.isReady || item.isUploading || item.isSuccess">-->
+        <!--<span class="glyphicon glyphicon-upload"></span> 上传-->
+        <!--</button>-->
+        <!--<button type="button" class="btn btn-danger btn-xs"-->
+        <!--(click)="uploader.clearQueue()">-->
+        <!--<span class="glyphicon glyphicon-trash"></span> 移除-->
+        <!--</button>-->
+        <!--</span>-->
+        <!--</div>-->
+        <!--</div>-->
+        <!--</div>-->
+    </div>
+    <div class="upload-r">
+        <div class="r-title" *ngIf="isShowVersionTitle">版本更新记录</div>
+        <div class="r-list">
+            <ul class="infor-title" *ngFor="let version of versionHistories">
+                <li>上传时间:<span>{{version.timestamp |date:"yyyy-MM-dd hh:mm:ss a"}}</span></li>
+                <li>上传人:<span>{{version.userName}}</span></li>
+                <li>文件版本号:<span>{{version.version.toFixed(2)}}</span></li>
+                <li>文件编号:<span></span></li>
+                <li><span>文件描述:</span><span>{{version.note}}</span></li>
+            </ul>
+        </div>
+    </div>
+</div>
+

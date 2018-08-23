@@ -1,0 +1,54 @@
+<div class="auth-setting-container">
+    <div mat-dialog-title style="display: flex;justify-content: space-between">
+        <div>选择签字人</div>
+    </div>
+    <mat-form-field style="width: 245px;">
+        <input matInput #filter (keyup)="applyFilter($event)" placeholder="搜索...">
+    </mat-form-field>
+
+    <mat-dialog-content style="margin-top:20px;height: 500px;">
+        <mat-table
+                [dataSource]="authSettingDataSource"
+                matSort>
+            <!-- Checkbox Column -->
+            <ng-container matColumnDef="weight" *ngIf="!data.isSigleChose">
+                <mat-header-cell *matHeaderCellDef>
+                    选择
+                    <!--<mat-checkbox [(ngModel)]="checkedAll" (change)="checkAllSigners($event)"></mat-checkbox>-->
+                </mat-header-cell>
+                <mat-cell *matCellDef="let row">
+                    <mat-checkbox
+                            [(ngModel)]="row.isChecked"
+                            (change)="checkSigner($event,row)">
+                    </mat-checkbox>
+                </mat-cell>
+            </ng-container>
+            <!-- partment Column -->
+            <ng-container matColumnDef="partment">
+                <mat-header-cell *matHeaderCellDef> 部门</mat-header-cell>
+                <mat-cell *matCellDef="let row" > {{(row.org &&row.org.length>0)?row.org[0].orgName:'暂无'}}</mat-cell>
+            </ng-container>
+            <!-- name Column -->
+            <ng-container matColumnDef="name">
+                <mat-header-cell *matHeaderCellDef> 用户名称</mat-header-cell>
+                <mat-cell *matCellDef="let row" > {{row.userName}}</mat-cell>
+            </ng-container>
+
+            <mat-header-row *matHeaderRowDef="authSettingDisplayedColumns"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: authSettingDisplayedColumns;" (click)="choseSign($event,row)" [ngClass]="{'sigleChosed':chosedId==row.userId}">
+            </mat-row>
+        </mat-table>
+        <mat-paginator #paginatorForUserDataSource
+                       [pageSize]="employeePageSize"
+                       [pageSizeOptions]="[5, 10, 25,100]"
+                       [length]="employeeLength"
+                       (page)="changeEmployeePaginat($event)">
+        </mat-paginator>
+    </mat-dialog-content>
+    <div mat-dialog-actions>
+        <button mat-button (click)="close(0)" class="cancel">取消</button>
+        <button mat-button (click)="close(1)" cdkFocusInitial class="confirm" [disabled]="data.isSigleChose?(!result.singleChosePerson):(!result.checkedList.length)">{{data.isSigleChose?'确认授权':'确定'}}</button>
+    </div>
+</div>
+
+

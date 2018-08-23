@@ -1,0 +1,36 @@
+.center-container{
+  width: 100%;
+  padding-left:250px;
+}
+//angular-tree版
+:host ::ng-deep #centerSide{
+  .mat-expansion-panel{
+    cursor:pointer;
+    background-color: rgba(204, 227, 0, 1);
+    .mat-expansion-panel-content{
+      background-color: rgba(193, 214, 0, 1);
+    }
+  }
+  .angular-tree-component {
+    .node-content-wrapper{
+      &:hover{
+        background-color: transparent;
+        box-shadow:none;
+      }
+      &:focus{
+        outline: none;
+      }
+    }
+    .node-content-wrapper-active, .node-content-wrapper.node-content-wrapper-active:hover, .node-content-wrapper-active.node-content-wrapper-focused{
+      background-color: transparent;
+      box-shadow: none;
+      color:#fff;
+    }
+    .node-content-wrapper-focused{
+      background-color: transparent;
+    }
+    .node-content-wrapper-active, .node-content-wrapper-focused, .node-content-wrapper:hover{
+      box-shadow: none;
+    }
+  }
+}

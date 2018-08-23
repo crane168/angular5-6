@@ -1,0 +1,20 @@
+<div class="UserAuthSetting" >
+    <div class="auth-person">
+        <span class="label">授权人：</span>
+        <input placeholder="请选择授权人" required disabled [(ngModel)]="agentInfo.agentName">
+        <button class="chose" (click)="choseAuthPerson($event)">选择授权人</button>
+    </div>
+    <div class="auth-expire">
+        <span class="label">授权天数：</span>
+        <select [(ngModel)]="agentInfo.days">
+            <option value="3">3天</option>
+            <option value="5">5天</option>
+            <option value="7">7天</option>
+            <option value="15">15天</option>
+        </select>
+    </div>
+    <div class="auth-btns">
+        <button class="cancel" (click)="cancelAuth($event)">取消授权</button>
+        <button class="confirm" (click)="confirmAuth($event)">确认授权</button>
+    </div>
+</div>

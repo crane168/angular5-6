@@ -1,0 +1,21 @@
+<h2 mat-dialog-title>选择我的文件夹</h2>
+
+<mat-dialog-content>
+
+    <div class="tree-box">
+        <tree-root
+                 #treeview
+                [nodes]="nodes"
+                 (activate)="selectItem($event)"
+                [options]="treeoptions"
+        ></tree-root>
+    </div>
+
+</mat-dialog-content>
+
+
+<div mat-dialog-actions>
+    <button mat-button (click)="close(0)">取消</button>
+    <button mat-button (click)="close(1)" cdkFocusInitial>确定</button>
+</div>
+

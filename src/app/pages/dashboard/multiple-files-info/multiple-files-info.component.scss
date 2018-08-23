@@ -1,0 +1,129 @@
+.overview-right{
+  box-shadow: -10px 0 24px  rgba(0,0,0,0.17);
+  background-color: rgba(235, 235, 235, 1);
+  height: 100%;
+  overflow-y: auto;
+  position: fixed;
+  top:70px;
+  z-index: 2;
+  width: 260px;
+  right:0;
+  padding:0px 20px 0;
+  .single-file-info{
+    //border-bottom:1px solid rgba(0,0,0,0.51);
+    padding-bottom:15px;
+    padding-top: 28px;
+    .thumbnail{
+      text-align: center;
+      margin-bottom: 25px;
+      .backbtn{
+        position: absolute;
+        left:10px;
+        top: 10px;
+        font-size:12px;
+        a{
+          color:#009688 !important;
+          padding-left: 10px;
+        }
+      }
+      img{
+        display: inline-block;
+        width: 151px;
+        height: 184px;
+        background-color: #fff;
+      }
+    }
+    .more-info{
+      padding-left:49px;
+      font-size: 14px;
+      line-height: 16px;
+      margin-bottom: 8px;
+      color: rgba(0,0,0,0.87);
+      span:nth-child(1){
+        display: inline-block;
+        color:rgba(0,0,0,0.54);
+        width: 56px;
+        text-align: right;
+        margin-right:16px;
+      }
+    }
+  }
+  .file-batch-process{
+    //min-height: 426px;
+    border-bottom:1px solid rgba(0,0,0,0.51);
+    overflow: auto;
+    .title{
+      height: 42px;
+      line-height: 42px;
+      font-size: 16px;
+      text-align: center;
+      color: rgba(0,0,0,0.54);
+      position: relative;
+      .backbtn{
+        position: absolute;
+        left:-10px;
+        top: 0;
+        font-size:12px;
+        a{
+          color:#009688 !important;
+          padding-left: 10px;
+        }
+      }
+      p{
+
+      }
+    }
+    .file-list{
+      li{
+        font-size: 14px;
+        height: 40px;
+        color:rgba(0,0,0,0.87);
+        line-height: 40px;
+        position: relative;
+        border-bottom:1px solid rgba(216,216,216,1);
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        padding-right:24px;
+        a.deletebtn{
+          position: absolute;
+          right: 0;
+          top: 50%;
+          margin-top:-12px;
+          width: 24px;
+          height: 24px;
+          border-radius: 50%;
+          color: rgba(0,0,0,0.3);
+          &:before{
+            position: absolute;
+            left:0;
+            top:0;
+            font-size:20px;
+            color: rgba(0,0,0,0.3);
+          }
+        }
+      }
+    }
+    .fileInfo{
+      padding: 20px 0 0 0px;
+      p{
+        margin-bottom: 15px;
+        font-size: 14px;
+        span:nth-child(1){
+          //color:rgba(0,0,0,0.54);
+          text-align: right;
+          width: 64px;
+          margin-right:8px;
+          font-size: 14px;
+        }
+        span{
+          color:rgba(0,0,0,0.87);
+        }
+      }
+    }
+  }
+}
+.linear-gradient{
+  height: 1px;
+  background: linear-gradient(to right, rgba(255,253,253,0.38),rgba(0,0,0,0.51),rgba(255,253,253,0.38));
+}

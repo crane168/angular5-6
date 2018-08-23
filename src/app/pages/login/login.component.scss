@@ -1,0 +1,65 @@
+@import "../../../assets/scss/variable";
+
+.login{
+  margin: 200px auto;
+  width: 530px;
+}
+.login-name{
+  text-align: center;
+  font-size: 20px;
+  color: rgba(0,0,0,0.87);
+  letter-spacing: 0.56px;
+  margin-bottom: 30px;
+}
+.help-block{
+  color: red;
+}
+.btn-primary {
+  color: #fff;
+  background-color: #00c1de;
+  border-color: #00c1de;
+}
+.btn-link {
+  font-weight: 400;
+  color: #00c1de;
+  background-color: transparent;
+}
+.form-control{
+  font-size: 12px;
+}
+.btn-primary{
+  cursor: pointer;
+}
+mat-form-field{
+  width: 500px;
+}
+.form-group button.login-y{
+  width: 500px;
+  height: 37px;
+  min-height: 37px;
+  background: $main-color;
+  color: #fff;
+  margin-top: 10px;
+
+}
+.language{
+  float: right;
+  color: #ccc;
+  a{
+    text-decoration:none;
+  }
+}
+a{
+  color: #ccc;
+}
+.active{
+  color: #00c1de;
+}
+.register{
+  font-size: 18px;
+  float: right;
+  color: #00c1de;
+}
+.register:hover{
+  color: $main-color;
+}

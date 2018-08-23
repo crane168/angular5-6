@@ -1,0 +1,77 @@
+.personalDirContainer{
+  position: relative;
+  //box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2), 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12);
+
+  .OrgContainer{
+    height: 765px;
+    background:#fff;
+    //box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2), 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12);
+    position: relative;
+    .OrgBox{
+      position: absolute;
+      left: 2%;
+      top: 100px;
+      width: 64%;
+      height: auto;
+      border-radius: 10px;
+      //box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12)
+    }
+  }
+  .permitOprs{
+    position: absolute;
+    top:70px;
+    right:100px;
+    display: flex;
+    justify-content: space-around;
+    >div{
+      margin-right:20px;
+    }
+    button{
+      width: 75px;
+      min-width: 75px;
+      height: 30px;
+      line-height: 30px;
+      border-radius: 6px;
+    }
+  }
+
+  .delBox{
+    margin:20px 0;
+    padding-left:10px;
+  }
+
+}
+:host ::ng-deep .mat-elevation-z8{
+  box-shadow: none;
+}
+:host ::ng-deep .jqx-window{
+  position: absolute;
+  left:50%;
+  top:50%;
+  transform:-50%;
+}
+:host ::ng-deep .mat-progress-spinner.mat-progress-spinner-indeterminate-animation[mode=indeterminate]{
+  position:absolute;
+  top:50%!important;
+  left:50%!important;
+  transform:translate(-50%)!important;
+}
+:host ::ng-deep .angular-tree-component{
+  padding: 30px 0 30px 0px;
+  font-size:16px;
+  .tree-node{
+    input{
+      font-size:18px;
+    }
+    //height:50px;
+  }
+}
+.modalTitle{
+  height: 18px;
+}
+//:host ::ng-deep .node-content-wrapper span{
+//  white-space: nowrap;
+//  text-overflow: ellipsis;
+//  overflow: hidden;
+//}
+

@@ -1,0 +1,48 @@
+@import "../../../../assets/scss/variable";
+.UserFace{
+  height: 685px;
+}
+//.picture{
+//  margin-top: 50px;
+//  position: relative;
+//  line-height: 31px;
+//  height: 31px;
+//  text-align: center;
+//  border-radius: .25rem;
+//  color: #ffffff;
+//  cursor: pointer;
+//}
+.UserFace a.upload-img{
+ width: 70px;
+ display: inline-block;
+ margin-bottom: 10px;
+ height: 31px;
+ line-height: 31px;
+ text-align: center;
+ color: #FFFFFF;
+ background-color: #61C2C9;
+ font-size: 14px;
+ border-radius: 2px;
+ text-decoration: none;
+ cursor: pointer;
+ position: absolute;
+}
+ button{
+  display: inline-block;
+  width: 71px;
+  height: 31px;
+  margin-left: 20px;
+  font-size: 14px;
+  border-radius: 5px;
+  text-align: center;
+  line-height: 31px;
+  color: #fff;
+  cursor: pointer;
+  outline: none;
+  background: #17923c
+}
+
+.uploadBtn{
+ background-color:$main-color!important;
+}
+

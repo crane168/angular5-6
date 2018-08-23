@@ -1,0 +1,23 @@
+.address span,.theme span,.time span{
+  font-size: 18px;
+  color: rgba(0,0,0,0.54) ;
+}
+.theme span{
+  padding-left: 35px;
+}
+mat-select{
+  height: 30px !important;
+}
+button.send{
+  background: #009688;
+  color: #FFFFFF;
+  border-radius: 2px;
+}
+button.cancel{
+  background: #90A4AE;
+  border-radius: 2px;
+  color: #FFFFFF;
+}
+//:host ::ng-deep .mat-dialog-container{
+//  padding: 0 !important;
+//}

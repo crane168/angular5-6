@@ -1,0 +1,71 @@
+{
+  "menu":{
+    "myFolder":"My Folder",
+    "fileCloud":"FileCloud",
+    "uploadFile":"UploadFile",
+    "pendingFile":"PendingFile",
+    "settings":{
+      "value":"Settings",
+      "org":"Organization permission Settings",
+      "file":"File Settings",
+      "signFlowTemplate":"signature process template"
+    },
+    "control":"Monitoring",
+    "cluster":"Cluster",
+    "userCenter":{
+      "value":"User Center",
+      "userFolder":"Personal Folder",
+      "userProfile":"Edit Information",
+      "userPassword":"Change Password",
+      "userSpace":"Storage Space Management",
+      "userSign":"user sign",
+      "userFace":"user photo",
+      "userAuth":"authorization setting",
+      "UserSpecialPassword":"SpecialPassword",
+      "Specialpwd":{
+        "setpwd":"Set the password",
+        "setplaceholder":"Please enter the password",
+        "confirmplaceholder":"Please enter the confirmation password",
+        "pwdprompt":"Only lowercase letters, Numbers, and underscores, length between 6 ~ 21",
+        "confirmpwd":"Confirm password",
+        "confirmpwdprompt":"Confirm password does not agree with a password",
+        "cancel":"cancel",
+        "confirm":"confirm"
+      }
+    }
+
+  },
+  "login":"Login",
+  "loginprompt":{
+    "emailprompt":"Please enter the email address",
+    "pwdprompt":"Please enter the password",
+    "emailcheck":"Please enter a valid email",
+    "pwdcheck":"Please enter a valid password"
+  },
+  "logout":"Logout",
+  "register":"Register",
+  "changeLanguage":{
+    "value":"Language",
+    "en":"English",
+    "cn":"Chinese"
+  },
+  "search":"Search Keys...",
+  "header":{
+    "Home":"Home",
+    "UploadFile":"UploadFile",
+    "PendingFile":"PendingFile",
+    "signFlowTemplate":"FlowTemplate",
+    "Monitor":"Monitor",
+    "PersonalFolder":"Personal Folder",
+    "Profile":"Profile",
+    "SetPwd":"Set Password",
+    "SetInfo":"Set Information",
+    "SetSpace":"Set Space",
+    "UserAuthSetting":"Set Authorization",
+    "SpecialPassword":"Special Password",
+    "Cluster":"Cluster monitoring",
+    "OrgPermitSettings":"Organization Permission Settings",
+    "CategorySettings":"Category Settings",
+    "SignFlowTemplate":"Flow Template"
+  }
+}

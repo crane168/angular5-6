@@ -1,0 +1,46 @@
+@import "../../../../assets/scss/variable";
+.UserSign{
+  height: 685px;
+}
+.UserSign a.upload-img{
+  width: 70px;
+  display: inline-block;
+  margin-bottom: 10px;
+  height: 31px;
+  line-height: 31px;
+  text-align: center;
+  color: #FFFFFF;
+  background-color: #61C2C9;
+  font-size: 14px;
+  border-radius: 2px;
+  text-decoration: none;
+  cursor: pointer;
+  position: absolute;
+}
+button{
+  display: inline-block;
+  width: 71px;
+  height: 31px;
+  margin-left: 20px;
+  font-size: 14px;
+  border-radius: 5px;
+  text-align: center;
+  line-height: 31px;
+  color: #fff;
+  cursor: pointer;
+  outline: none;
+  background: #17923c
+}
+.img{
+  width: 500px;
+  height: 500px;
+  float: right;
+}
+.img img{
+  width: 400px;
+  height: 400px;
+}
+
+.uploadBtn{
+  background-color:$main-color;
+}

@@ -1,0 +1,55 @@
+.UserAuthSetting{
+  padding-top:30px;
+  font-size: 14px;
+  >div{
+    display: flex;
+    height: 30px;
+    line-height: 30px;
+    margin-bottom:20px;
+  }
+  .label{
+    width: 100px;
+    font-size: 14px;
+    color: rgba(0,0,0,0.87);
+    text-align: right;
+  }
+  input,select,button{
+    outline: none;
+    border:none;
+  }
+  input,select{
+    border: 1px solid #D8D8D8;
+    border-radius: 4px;
+    padding:0 5px;
+    margin-right:5px;
+    width: 160px;
+  }
+  .auth-person{
+    .chose{
+      font-size: 14px;
+      color: #006F68;
+      background-color: transparent;
+      cursor:pointer;
+    }
+  }
+  .auth-btns{
+    margin-left:180px;
+    button{
+      width: 80px;
+      height: 30px;
+      border-radius: 2px;
+      box-shadow: none;
+      color:#fff;
+      margin-top:30px;
+      margin-right:10px;
+    }
+    .cancel{
+      background: #90A4AE;
+      box-shadow: 0 0 2px 0 rgba(0,0,0,0.12), 0 2px 2px 0 rgba(0,0,0,0.24);
+    }
+    .confirm{
+      background: #009688;
+      box-shadow: 0 0 2px 0 rgba(0,0,0,0.12), 0 2px 2px 0 rgba(0,0,0,0.24);
+    }
+  }
+}

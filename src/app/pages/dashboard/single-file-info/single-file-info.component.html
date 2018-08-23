@@ -1,0 +1,39 @@
+<div class="overview"
+     *ngIf="isShowSingle"
+     (click)="singleShow()"
+     [@fadeInOut]="'in'"
+></div>
+<div class="overview-left clearfix"
+     *ngIf="isShowSingle"
+     [@flyInOut]="'in'"
+>
+  <div class="personal-info clearfix">
+    <div class="profile">
+      <img src="../../../assets/images/personalCenter.png" alt="头像">
+      <p class="name">{{ctx.userName}}<span>市场经营部</span></p>
+      <p class="employee-ID">员工编号：1234789</p>
+    </div>
+    <div class="connect email icon-ic-mail">电子邮箱</div>
+    <div class="connect telphone icon-ic-phone">电话</div>
+    <div class="connect wechat icon-icon-wx">微信</div>
+  </div>
+  <div class="directory">
+    <div class="title">我的文档分类</div>
+    <!--<tree-->
+    <!--#pTree-->
+    <!--[settings]="settings"-->
+    <!--[tree]="personalTree"-->
+    <!--&gt;</tree>-->
+
+    <tree-root
+            #pTree
+            [nodes]="personalTree"></tree-root>
+    <!--(active)-->
+  </div>
+</div>
+<app-multiple-files-info
+        [isShowSingle]="isShowSingle"
+        [isShowMultiple]="isShowMultiple"
+        [totalSize]="totalSize"
+        (hideSingle)="hideSingle($event)"
+></app-multiple-files-info>

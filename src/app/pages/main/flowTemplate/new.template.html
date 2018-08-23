@@ -1,0 +1,76 @@
+<div class="newTplcon" #NewTplContainer>
+    <div class="header">
+        <span><a routerLink="/portal/{{ctx.domain}}/flowTpl">返回上一页</a></span>
+    </div>
+    <div class="content">
+        <div class="flow-name">
+            <span class="label">流程名称：</span>
+            <span>
+                <input appDebounceClick [debounceTime]="500" type="text" [(ngModel)]="tplInfo.tplName" (debounceKeyup)="getFlowId($event)">
+            </span>
+        </div>
+        <div class="flow-number">
+            <span class="label">流程编号：</span>
+            <span>
+                <input type="text" [(ngModel)]="tplInfo.flowId" disabled>
+            </span>
+        </div>
+        <div class="chose-signature-content">
+            <ul>
+                <li>
+                    <span class="order">序号</span>
+                    <span class="partName">环节名称</span>
+                    <span class="sign">签字人</span>
+                    <span class="expire">有效期限</span>
+                    <span class="handle">操作</span>
+                </li>
+                <li *ngFor="let info of tplInfo.chosePartList;let num=index;">
+                    <span class="order">{{num+1}}</span>
+                    <span class="partName">{{info.partName}}</span>
+                    <span class="sign">{{info.signName}}</span>
+                    <span class="expire">{{info.expireDay?info.expireDay+'天':''}}</span>
+                    <span class="handle">
+                                    <button type="button" (click)="delSigner($event,num,info.actId)">删除</button>
+                                </span>
+                </li>
+                <li *ngIf="isAddSigner">
+                                <span class="order">
+                                    {{tplInfo.chosePartList.length+1}}
+                                </span>
+                    <span class="partName">
+                        <input type="text" appDebounceClick [debounceTime]="500" [(ngModel)]="newPart.activityDefName" placeholder="请填写环节名称" (debounceKeyup)="getActId($event)">
+                    </span>
+                    <span class="sign line">
+                        <mat-chip-list #chipSign>
+                            <mat-chip *ngFor="let sign of newPart.parts;">
+                                {{sign.userName}}
+                            </mat-chip>
+
+                            <input readonly placeholder="选择签字人..."
+                                   [matChipInputFor]="chipSign"
+                                   (click)="selectSign($event)"/>
+                        </mat-chip-list>
+
+
+                    </span>
+                    <span class="expire">
+                        <input type="text" style="border:1px solid #ccc;" [(ngModel)]="newPart.expireDay" placeholder="请输入环节有效期限" >天
+                    </span>
+                    <span class="handle">
+                                    <button type="button" (click)="confirmSigner($event)">确定</button>
+                                    <button type="button" (click)="cancelSigner($event)">取消</button>
+                                </span>
+                </li>
+            </ul>
+            <button type="button" (click)="addSigner($event)">
+                + 添加
+            </button>
+        </div>
+    </div>
+    <hr>
+    <div class="btns">
+        <button (click)="publishTpl($event)" class="publish">发布</button>
+        <button (click)="saveTpl($event)" class="reset">暂存</button>
+    </div>
+</div>
+

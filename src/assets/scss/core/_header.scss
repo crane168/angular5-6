@@ -1,0 +1,57 @@
+//Header
+
+.gene-ham-icon {
+    margin-right: 1rem;
+}
+.gene-header-toolbar{
+    .mat-button, .mat-icon-button, .mat-raised-button,.mat-input-element{
+        color: $header-font-color;
+    }
+}
+mat-sidenav.sidebar-panel .sub-menu {
+    padding-top: 0;
+    overflow: hidden;
+    -webkit-transition: 0.5s cubic-bezier(0.35, 0, 0.25, 1);
+    -moz-transition: 0.5s cubic-bezier(0.35, 0, 0.25, 1);
+    transition: 0.5s cubic-bezier(0.35, 0, 0.25, 1);
+    -webkit-transition-property: max-height;
+    -moz-transition-property: max-height;
+    transition-property: max-height;
+}
+mat-sidenav.sidebar-panel .sub-menu a {
+    margin-left: 30px;
+}
+mat-sidenav .sidebar-panel .navigation .open>.mat-list-item-content>.sub-menu {
+    max-height: 1000px;
+}
+.sub-menu {
+    padding-top: 0;
+    overflow: hidden;
+    max-height: 0;
+    -webkit-transition: .5s cubic-bezier(.35, 0, .25, 1);
+    -moz-transition: .5s cubic-bezier(.35, 0, .25, 1);
+    transition: .5s cubic-bezier(.35, 0, .25, 1);
+    -webkit-transition-property: max-height;
+    -moz-transition-property: max-height;
+    transition-property: max-height;
+}
+.relative {
+    position: relative;
+}
+body .gene-header-toolbar.mat-toolbar {
+    background: $header-bg-color;
+}
+//
+.app-dark {
+    .gene-header-toolbar.mat-toolbar {
+        background: rgba(54, 54, 54, 1);
+          .mat-button, .mat-icon-button, .mat-raised-button,.mat-input-element{
+        color: white;
+    }
+    }
+}
+[dir="rtl"] {
+    .gene-ham-icon {
+        margin-left: 1rem;
+    }
+}

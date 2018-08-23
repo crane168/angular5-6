@@ -1,0 +1,56 @@
+<div mat-dialog-title style="display: flex;justify-content: space-between">
+    <div>{{isChoseUser?'选择用户':'文件授权'}}</div>
+    <mat-form-field style="width: 245px;">
+        <input matInput #filter (keyup)="applyFilter($event)" placeholder="Filter users">
+    </mat-form-field>
+</div>
+<div class="currentPerson" *ngIf="(authorizePerson&&authorizePerson.length>0) && !isChoseUser">
+    当前授权用户：{{authorizePerson}}
+</div>
+<div *ngIf="grantEndTime && !isChoseUser">
+    授权截止时间：{{grantEndTime | date:'yyyy-MM-dd hh:mm:ss a'}}
+</div>
+
+<mat-dialog-content style="margin-top:-20px;">
+    <div *ngIf="!isChoseUser">
+        过期时间：
+        <mat-form-field [floatLabel]="'auto'" [color]="'primary'">
+            <mat-select placeholder="天数" [(ngModel)]="currentDay" [required]="true"
+                        #dayControl="ngModel">
+                <mat-option *ngFor="let day of days" [value]="day.value">
+                    {{ day.viewValue }}
+                </mat-option>
+            </mat-select>
+            <mat-error>你必须选一个</mat-error>
+        </mat-form-field>
+    </div>
+    <mat-radio-group
+            name="more_options"
+            [labelPosition]="'start'"
+            [required]="true"
+            [disabled]="false"
+            (change)="choseUnique($event)"
+            [(ngModel)]="authorizePersonId">
+        <mat-radio-button
+                (click)="getUserInfo($event,user)"
+                *ngFor="let user of users"
+                style="display: block;margin:5px 0;"
+                [id]="user.userId"
+                [checked]="user.isChecked"
+                name="more_options"
+                [value]="user.userName" >
+            {{user.userName}}
+        </mat-radio-button>
+    </mat-radio-group>
+    <mat-paginator #paginatorForOrgDataSource
+                   [pageSize]="employeePageSize"
+                   [pageSizeOptions]="[5, 10, 25,100]"
+                   [length]="employeeLength"
+                   (page)="changeEmployeePaginat($event)">
+    </mat-paginator>
+</mat-dialog-content>
+<div mat-dialog-actions>
+    <button mat-button (click)="close(0)" class="cancel">取消</button>
+    <button mat-button (click)="close(1)" cdkFocusInitial class="confirm" [disabled]="isChoseUser?(!chosedUser):(!currentDay || !authorizePersonId)">{{isChoseUser?'确定':'确认授权'}}</button>
+</div>
+

@@ -1,0 +1,26 @@
+<h2 mat-dialog-title>{{result.dialogTitle}}</h2>
+
+<mat-dialog-content>
+
+    <label *ngIf="result.showAddOrModify">名称：
+        <mat-form-field class="example-full-width" >
+            <input [(ngModel)]="result.editorIptVal" matInput (keyup)="checkStrNum()">
+        </mat-form-field>
+        <mat-error *ngIf="checkStrNum()">请输入1~15个字符</mat-error>
+    </label><br>
+    <label *ngIf="result.showAddOrModify">Name：
+        <mat-form-field class="example-full-width" >
+            <input [(ngModel)]="result.editorEnIptVal" matInput (keyup)="checkenStrNum()">
+        </mat-form-field>
+        <mat-error *ngIf="checkenStrNum()">Please enter 1 ~ 15 characters</mat-error>
+    </label>
+    <div class="delBox" *ngIf="!result.showAddOrModify" style="margin-bottom:20px;">{{result.delContent}}</div>
+
+</mat-dialog-content>
+
+
+<div mat-dialog-actions style="display: flex;justify-content: space-around;">
+    <button mat-button (click)="close(0)" style="outline: none;" >取消</button>
+    <button mat-button (click)="close(1)" style="outline: none;" [disabled]="result.showAddOrModify && (checkStrNum()||checkenStrNum())">确定</button>
+</div>
+

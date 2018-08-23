@@ -1,0 +1,68 @@
+﻿
+<div style="width: 100%;height: 100%;position: fixed;">
+    <div class="col-md-6 col-md-offset-3 register" >
+        <form (submit)="register()" novalidate [formGroup]="registerForm" >
+            <div class="register-name">注册</div>
+            <div class="form-group" >
+                <mat-form-field class="example-full-width">
+                    <input matInput placeholder="注册邮箱"  type="email"
+                           #email formControlName="email"
+                           [class.invalid]="!registerForm.controls.email.valid &&registerForm.controls.email.dirty" [(ngModel)]="model.email"
+                    >
+                </mat-form-field>
+                <mat-error *ngIf="!registerForm.controls.email.valid  &&  registerForm.controls.email.dirty">
+                   请输入正确的邮箱
+                </mat-error>
+            </div>
+            <div class="form-group" >
+                <mat-form-field class="example-full-width">
+                    <input matInput placeholder="用户昵称"
+                           #username formControlName="username" type="username"
+                           [class.invalid]="!registerForm.controls.username.valid &&registerForm.controls.username.dirty" [(ngModel)]="model.name"
+                    >
+                </mat-form-field>
+                <mat-error *ngIf="!registerForm.controls.username.valid  &&  registerForm.controls.username.dirty">
+                    只能输入中文、英文、数字以及下划线，长度在1~10之间
+                </mat-error>
+            </div>
+            <div class="form-group" >
+                <mat-form-field class="example-full-width">
+                    <input matInput placeholder="密码"  type="password"
+                           #password formControlName="password"
+                           [class.invalid]="!registerForm.controls.password.valid &&registerForm.controls.password.dirty" [(ngModel)]="model.password"
+                    >
+                </mat-form-field>
+                <mat-error *ngIf="!registerForm.controls.password.valid  &&  registerForm.controls.password.dirty">
+                    只能大小写字母、数字以及下划线，长度在6~21之间
+                </mat-error>
+            </div>
+            <div class="form-group" >
+                <mat-form-field class="example-full-width">
+                    <input matInput placeholder="确认密码" type="password"  formControlName="confirmPwd"
+                           [class.valid]="!passwordMatchValidator(registerForm)"
+                    >
+                </mat-form-field>
+                <mat-error *ngIf="registerForm.controls.confirmPwd.valid&&passwordMatchValidator(registerForm)">确认密码与原密码不一致</mat-error>
+            </div>
+            <!--暂时隐藏 公司domain选项 以及 注册公司-->
+            <!--<div class="form-group" >-->
+                <!--<mat-form-field class="example-full-width">-->
+                    <!--<input matInput placeholder="公司domain"-->
+                           <!--readonly-->
+                           <!--type="text"-->
+                           <!--#domain formControlName="domain"-->
+                           <!--[class.invalid]="!registerForm.controls.domain.valid &&registerForm.controls.domain.dirty" [(ngModel)]="model.domain"-->
+                    <!--&gt;-->
+                <!--</mat-form-field>-->
+                <!--<mat-error *ngIf="!registerForm.controls.domain.valid  &&  registerForm.controls.domain.dirty">-->
+                    <!--请输入一个有效的domain.-->
+                <!--</mat-error>-->
+            <!--</div>-->
+            <div class="form-group">
+                <button class="moreCategories mat-raised-button register-y" mat-button [disabled]="!registerForm.valid">注册</button>
+                <img *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+                <button class="moreCategories mat-raised-button register-y" mat-button routerLink="/login" >返回</button>
+            </div>
+        </form>
+    </div>
+</div>

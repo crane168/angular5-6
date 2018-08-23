@@ -1,0 +1,82 @@
+
+<div class="pendingcon" #pendingContainer>
+    <div class="more-operator">
+        <div class="operator">
+            <!--<i class="operator delete icon-delete" (click)="doDel($event)"><i>删除</i></i>-->
+            <i class="operator icon-sort" (click)="doSort($event)">排序</i>
+        </div>
+        <div class="search">
+            <input type="text" placeholder="请输入搜索内容" (keyup)="doSearch($event)" [(ngModel)]="pendingSearchKey">
+            <button type="submit" style="cursor: default">
+                <i class="icon-search"></i>
+            </button>
+        </div>
+    </div>
+    <mat-table
+            [dataSource]="pendingDataSource"
+            matSort>
+        <!-- Checkbox Column -->
+        <ng-container matColumnDef="order">
+            <mat-header-cell *matHeaderCellDef>
+                序号
+                <!--<mat-checkbox [(ngModel)]="checkedAll" (change)="checkAllPending($event)" ></mat-checkbox>-->
+            </mat-header-cell>
+            <mat-cell *matCellDef="let row">
+                {{row.order}}
+                <!--<mat-checkbox
+                        [(ngModel)]="row.isChecked"
+                        (change)="checkPending($event,row)"
+                        [disabled]="row.state=='已处理'">
+                </mat-checkbox>-->
+            </mat-cell>
+        </ng-container>
+        <!-- Name Column -->
+        <ng-container matColumnDef="fileName">
+            <mat-header-cell *matHeaderCellDef mat-sort-header style="flex:2;"> 文件名</mat-header-cell>
+            <mat-cell *matCellDef="let row" [ngClass]="{'handled':row.state>1}" style="flex:2;">
+                {{(row.fileInfo &&row.fileInfo.name) ?row.fileInfo.name:''}}
+            </mat-cell>
+        </ng-container>
+        <!-- size Column -->
+        <ng-container matColumnDef="fileSize">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> 大小</mat-header-cell>
+            <mat-cell *matCellDef="let row" [ngClass]="{'handled':row.state>1}"> {{(row.fileInfo && row.fileInfo.size )? (row.fileInfo.size| byteToMb):0 }}</mat-cell>
+        </ng-container>
+        <!-- expire Column -->
+        <ng-container matColumnDef="fileExpire">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> 时间限制</mat-header-cell>
+            <mat-cell *matCellDef="let row" [ngClass]="{'handled':row.state>1}"> {{row.expireDay?row.expireDay:0}}天</mat-cell>
+        </ng-container>
+        <!-- count Column -->
+       <!-- <ng-container matColumnDef="count">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> 催办次数</mat-header-cell>
+            <mat-cell *matCellDef="let row" [ngClass]="{'handled':row.state>1}"> {{row.fileInfo && row.fileInfo.count}}</mat-cell>
+        </ng-container>-->
+        <!-- title Column -->
+        <ng-container matColumnDef="title">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> 标题</mat-header-cell>
+            <mat-cell *matCellDef="let row" [ngClass]="{'handled':row.state>1}"> {{row.state<=1?'待处理':'已处理'}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="handle">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> 操作</mat-header-cell>
+            <mat-cell style="cursor: pointer;" *matCellDef="let row" [ngClass]="{'handled':row.state>1}" (click)="goToDetail($event,row)">查看</mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="pendingDisplayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: pendingDisplayedColumns;">
+        </mat-row>
+    </mat-table>
+
+    <p *ngIf="!pendingLength" style="text-align: center;padding:20px 0;">暂无待办事项！</p>
+
+    <mat-paginator
+            *ngIf="pendingLength"
+            #paginatorForPendingDataSource
+                   [pageSize]="pendingPageSize"
+                   [pageSizeOptions]="[5, 10, 25,100]"
+                   [length]="pendingLength"
+                   (page)="changePendingPaginat($event)">
+    </mat-paginator>
+</div>
+

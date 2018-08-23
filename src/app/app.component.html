@@ -1,0 +1,6 @@
+<router-outlet></router-outlet>
+<jaspero-alerts [defaultSettings]="alertOptions"></jaspero-alerts>
+<jaspero-confirmations [defaultSettings]="confirmOptions"></jaspero-confirmations>
+<!--loading-->
+<mat-progress-spinner style="position: absolute;left:50%;top:50%;transform:translate(-50%);z-index: 9999" *ngIf="ctx.isShowLoading" mode="indeterminate"
+                      [value]="100" color="primary" [strokeWidth]="5" [diameter]="40"></mat-progress-spinner>

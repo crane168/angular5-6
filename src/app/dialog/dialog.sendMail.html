@@ -1,0 +1,55 @@
+<h2 mat-dialog-title  >分享</h2>
+
+<mat-dialog-content >
+    <div class="address">
+        <span>邮件地址：</span>
+        <mat-form-field>
+            <input [(ngModel)]="mailAddress" matInput placeholder="请输入邮箱地址" [formControl]="emailFormControl">
+            <mat-error *ngIf="emailFormControl.hasError('required')">
+                邮箱地址是必填写
+            </mat-error>
+            <mat-error *ngIf="emailFormControl.hasError('pattern')">
+                请填写正确邮箱地址
+            </mat-error>
+        </mat-form-field>
+    </div>
+    <div class="theme">
+       <span >主题：</span>
+        <mat-form-field>
+            <input [(ngModel)]="mailTitle" matInput placeholder="主题" >
+            <mat-error>主题是必填项</mat-error>
+        </mat-form-field>
+    </div>
+    <div class="time">
+        <span >过期时间：</span>
+        <mat-form-field [floatLabel]="'auto'" [color]="'primary'">
+            <mat-select placeholder="天数" [(ngModel)]="currentDay" [required]="true"
+                        #dayControl="ngModel">
+                <mat-option *ngFor="let day of days" [value]="day.value">
+                    {{ day.viewValue }}
+                </mat-option>
+            </mat-select>
+            <mat-error>你必须选择</mat-error>
+        </mat-form-field>
+        <mat-form-field [floatLabel]="'auto'" [color]="'primary'">
+            <mat-select placeholder="小时" [(ngModel)]="currentHour" [required]="true"
+                        #hourControl="ngModel">
+                <mat-option *ngFor="let hour of hours" [value]="hour.value">
+                    {{ hour.viewValue }}
+                </mat-option>
+            </mat-select>
+            <mat-error>你必须选择</mat-error>
+        </mat-form-field>
+    </div>
+    <div>
+        <textarea [(ngModel)]="mailContent" placeholder="请输入邮件内容" class="demo-textarea" cols="130" rows="10"></textarea>
+    </div>
+
+</mat-dialog-content>
+
+
+<div mat-dialog-actions>
+    <button mat-button (click)="close(0)" class="cancel">取消</button>
+    <button mat-button (click)="close(1)" class="send">发送</button>
+</div>
+

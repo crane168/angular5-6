@@ -1,0 +1,36 @@
+﻿
+<div *ngIf="!ctx.isShowLoading" style="width: 100%;height: 100%;position: fixed;">
+    <div class="col-md-6 col-md-offset-3 login">
+        <form  (submit)="login()"  novalidate [formGroup]="loginForm" >
+            <div class="login-name">{{ 'login' | translate }}</div>
+            <div class="form-group" >
+                <mat-form-field class="example-full-width">
+                    <input matInput placeholder="{{'loginprompt.emailprompt' | translate }}"  type="email"
+                           #email formControlName="email"
+                           [class.invalid]="!loginForm.controls.email.valid &&loginForm.controls.email.dirty" [(ngModel)]="model.email"
+                    >
+                </mat-form-field>
+                <div *ngIf="!loginForm.controls.email.valid  &&  loginForm.controls.email.dirty" class="help-block"><p>{{'loginprompt.emailcheck' | translate }}</p></div>
+            </div>
+            <div class="form-group" >
+                <mat-form-field class="example-full-width">
+                    <input matInput placeholder="{{'loginprompt.pwdprompt' | translate }}" type="password"
+                           #password formControlName="password"
+                           [class.invalid]="!loginForm.controls.password.valid &&loginForm.controls.password.dirty" [(ngModel)]="model.password"
+                    >
+                </mat-form-field>
+                <div *ngIf="!loginForm.controls.password.valid  &&  loginForm.controls.password.dirty" class="help-block"><p>{{'loginprompt.pwdcheck' | translate }}</p></div>
+            </div>
+            <div class="form-group">
+                <a routerLink="/register" class="register" style="float: left;">{{ 'register' | translate }}</a>
+                <!--<a routerLink="/company" class="register">注册公司</a>-->
+                <div class="language">
+                    <a href="javascript:;" (click)="languageClick(0)" [class.active]="languagetype==0" class="active" >CN</a> |
+                    <a href="javascript:;" (click)="languageClick(1)" [class.active]="languagetype==1">EN</a>
+                </div>
+                <img *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+                <button class="moreCategories mat-raised-button login-y" mat-button [disabled]="!loginForm.valid">{{ 'login' | translate }}</button>
+            </div>
+        </form>
+    </div>
+</div>

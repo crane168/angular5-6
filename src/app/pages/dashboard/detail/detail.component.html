@@ -1,0 +1,432 @@
+<div class="y-detail">
+    <div class="y-detailCentent">
+        <!--<span (click)="shrinKage()" style="display: block;text-align: right"> <i class="fa fa-edit upload"></i></span>-->
+        <div class="right-show">
+            <img src="../assets/images/show.png" alt="收起/展开" (click)="shrinKage()" >
+        </div>
+        <div class="y-detail-left">
+            <!--<div class="crumb">-->
+            <!--&lt;!&ndash;<span (click)="goToFileLists()">返回上一页</span>&ndash;&gt;-->
+            <!--&lt;!&ndash;<p-breadcrumb [model]="breadcrumbItems"></p-breadcrumb>&ndash;&gt;-->
+            <!--</div>-->
+            <!--<div class="icons">-->
+                <!--<a href="{{downloadFileSrc}}" target="_blank" title="下载原文件"><i class="icon-group-53 download"></i></a>-->
+                <!--<i class="icon-upload upload" (click)="editMask(2)" title="更新上传文件"></i>-->
+                <!--<i class="icon-share share" (click)="editMask(3)" title="分享"></i>-->
+                <!--<i class="icon-delete delete" (click)="editMask(4)" title="删除文件"></i>-->
+                <!--<i class="fa fa-edit upload" (click)="editMask(5)" title="发起签字"></i>-->
+            <!--</div>-->
+            <div class="content">
+                <!--<div class="file">-->
+                    <!--<div class="file-icon">-->
+                        <!--<i class="icon-zip zip"></i>-->
+                        <!--<span class="version">版本：{{fileInfos.version}}</span>-->
+                    <!--</div>-->
+                    <!--<div class="file-conten">-->
+                        <!--<span class="file-name">{{fileInfos.name}}</span>-->
+                        <!--<div class="time">-->
+                            <!--<span>上传时间</span>-->
+                            <!--<span>{{fileInfos.timestamp |date:"yyyy-MM-dd hh:mm:ss a"}}</span>-->
+                            <!--<span style="float: right;">作者：<span>{{fileInfos.userName}}</span></span>-->
+                        <!--</div>-->
+                        <!--<div class="last-time">-->
+                            <!--<span>最后更新时间</span>-->
+                            <!--<span>{{fileInfos.lastModified |date:"yyyy-MM-dd hh:mm:ss a"}}</span>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<hr>-->
+                <!--新增签字展示表格 start-->
+                <div class="sign-result-container" *ngIf="flowData">
+                    <h4 class="file-name">
+                        {{fileInfos.name}}
+                    </h4>
+                    <table class="result-tb result-tb-part-1" border="1" ngbCollapse>
+                        <tr>
+                            <td>
+                                {{fileInfos.name}}
+                            </td>
+                            <td>
+                                Document number
+                                文档编号
+                            </td>
+                            <td>
+                                Version
+                                版本 {{fileInfos.version}}
+                            </td>
+                        </tr>
+                    </table>
+                    <table class="result-tb result-tb-part-2" border="1" ngbCollapse>
+                        <tr>
+                            <td >
+                                Review and Approval of Validation Plan
+                                验证计划的审查和审批
+                            </td>
+                        </tr>
+                    </table>
+                    <table *ngIf="signedList.length>0" class="result-tb result-tb-part-3" border="1" ngbCollapse>
+                        <tr>
+                            <td colspan="4">
+                                Review and Approval of Validation Plan
+                                验证计划的审查和审批
+                            </td>
+                        </tr>
+                        <tr>
+                            <td >
+                                打印者姓名
+                            </td>
+                            <td >
+                                签名
+                            </td>
+                            <td >
+                                日期
+                            </td>
+                            <td >
+                                描述
+                            </td>
+                        </tr>
+                        <tr *ngFor="let signedItem of signedList">
+                            <td >
+                                {{signedItem.part.name}}
+                            </td>
+                            <td >
+                                {{signedItem.part.name}}
+                            </td>
+                            <td >
+                                {{signedItem.completime}}
+                            </td>
+                            <td >
+                                {{signedItem.approveMsg}}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="4">
+                                签署本文件，并且确保解决了所有的电脑验证事宜
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <!--新增签字展示表格 end-->
+
+                <div class="pdfContainer">
+                    <div class="pdf" *ngIf="isShowPdf" id="pdfCon">
+                        <pdf-viewer
+                                [src]="pdfSrc"
+                                [(page)]="page"
+                                [rotation]="rotation"
+                                [autoresize]="true"
+                                [original-size]="false"
+                                [fit-to-page]="true"
+                                [zoom]="zoom"
+                                [show-all]="true"
+                                [render-text]="true"
+                                [external-link-target]="'blank'"
+                                (after-load-complete)="afterLoadComplete($event)"
+                                (error)="onError($event)"
+                                (on-progress)="onProgress($event)"
+                        ></pdf-viewer>
+                    </div>
+                    <div class="holdHeader" *ngIf="isShowPdf">
+                        <!--暂时隐藏滚动页码-->
+                        <!--<span class="pdfPage">{{showPage}}/{{ pdf?.numPages }}</span>-->
+                        <!--<a href="{{pdfSrc}}" class="externalLink" title="打开新连接" style="color:#000;" >-->
+                            <!--<i class="fa fa-external-link"></i></a>-->
+                        <!--<span class="rotateBtn" title="顺时针旋转" (click)="rotate(90)"><i-->
+                                <!--class="fa fa-rotate-right"></i></span>-->
+                        <!--<a href="{{downloadPdfSrc}}" class="downLoadBtn" title="下载PDF" style="color:#000;"><i-->
+                                <!--class="fa fa-download"></i></a>-->
+                        <div class="icons">
+                            <a href="{{downloadFileSrc}}" target="_blank" title="下载原文件"><i class="icon-group-53 download"></i></a>
+                            <i class="icon-upload upload" (click)="editMask(2)" title="更新上传文件"></i>
+                            <i class="icon-share share" (click)="editMask(3)" title="分享"></i>
+                            <i class="icon-delete delete" (click)="editMask(4)" title="删除文件"></i>
+                            <i class="fa fa-edit upload" (click)="editMask(5)" title="发起签字" *ngIf="!flowData"></i>
+                        </div>
+                    </div>
+                    <div class="holdOperators" *ngIf="isShowPdf">
+                        <div class="adaptHtml" title="适合页面" (click)="setZoom(1)"><i class="fa fa-arrows-alt"></i></div>
+                        <div class="incrementZoom" title="放大" (click)="incrementZoom(0.1)"><i class="fa fa-plus"></i>
+                        </div>
+                        <div class="decrementZoom" title="缩小" (click)="incrementZoom(-0.1)"><i class="fa fa-minus"></i>
+                        </div>
+                        <div class="rotateBtn" title="顺时针旋转" (click)="rotate(90)"><i
+                                class="fa fa-rotate-right"></i>
+
+                        </div>
+                        <div class="downLoadBtn">
+                            <a href="{{downloadPdfSrc}}"  title="下载PDF" style="color:#000;"><i
+                                    class="fa fa-download"></i></a>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="other" *ngIf="!isShowPdf">
+                    <div class="content">
+                        <p class="content-title">主要内容：</p>
+                        <div class="content-con">{{fileInfos.note}}</div>
+                    </div>
+                    <div class="preview">
+                        <p class="content-title">预览：</p>
+                        <div class="content-con">
+                            <p *ngFor="let file of fileInfos.files">{{file}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--    左边详情           -->
+        <div class="y-detail-right" [@signal]="signal">
+            <!--<div class="img-postion">-->
+            <!--<img src="./assets/images/1.png" class="img">-->
+            <!--<span (click)="shrinKage()" *ngIf="close==false">收起</span>-->
+            <!--<span (click)="shrinKageShow()" *ngIf="shows==true">展开</span>-->
+            <!--</div>-->
+            <div class="file-title">
+                <div class="file-icon">
+                    <i class="icon-zip zip"></i>
+                    <span class="version">版本：{{fileInfos.version}}</span>
+                </div>
+                <div class="file-conten">
+                    <span class="file-name">{{fileInfos.name}}</span>
+                    <div class="time">
+                        <span>上传时间</span>
+                        <span>{{fileInfos.timestamp |date:"yyyy-MM-dd hh:mm:ss a"}}</span>
+                        <span style="float: right;">作者：<span>{{fileInfos.userName}}</span></span>
+                    </div>
+                    <div class="last-time">
+                        <span>最后更新时间</span>
+                        <span>{{fileInfos.lastModified |date:"yyyy-MM-dd hh:mm:ss a"}}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="detail-bg">
+                <div class="tab">
+                    <ul>
+                        <li (click)="onItemClick(4)" [class.active]="tabItem==4" *ngIf="flowData">
+                            <span [class.active1]="tabItem==4"></span>
+                            签字设置
+                        </li>
+                        <li (click)="onItemClick(0)" [class.active]="tabItem==0">
+                            <span [class.active1]="tabItem==0"></span>
+                            版本历史
+
+                        </li>
+                        <li (click)="onItemClick(1)" [class.active]="tabItem==1">
+                            <span [class.active1]="tabItem==1"></span>
+                            查看评论
+
+                        </li>
+                        <li (click)="onItemClick(2)" [class.active]="tabItem==2">
+                            <span [class.active1]="tabItem==2"></span>
+                            审计日志
+
+                        </li>
+                        <li (click)="onItemClick(3)" [class.active]="tabItem==3">
+                            <span [class.active1]="tabItem==3"></span>
+                            文档信息
+                        </li>
+                    </ul>
+                </div>
+                <div class="tab-list">
+                    <ul>
+                        <li [style.display]="tabItem==0 ? 'block' : 'none'">
+                            <div class="file" *ngFor="let historyItem of historyInfos">
+                                <div class="file-icon">
+                                    <i class="icon-zip zip"></i>
+                                    <span class="version">当前版本 {{historyItem.version}}</span>
+                                </div>
+                                <div class="file-conten">
+                                    <span class="file-name">{{historyItem.name}}</span>
+                                    <div class="time">
+                                        <span>上传时间</span>
+                                        <span>{{historyItem.timestamp | date:"yyyy-MM-dd hh:mm:ss a"}}</span>
+                                        <span style="float: right;">作者：<span>{{historyItem.userName}}</span></span>
+                                    </div>
+                                    <div class="last-time">
+                                        <span>最后更新时间</span>
+                                        <span>{{historyItem.lastModified | date:"yyyy-MM-dd hh:mm:ss a"}}</span>
+                                        <span>文件大小： <span>{{historyItem.size | byteToMb }}</span></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li [style.display]="tabItem==1 ? 'block' : 'none'">
+                            <div class="comment-werp" *ngFor="let commentInfo of commentInfos;let i =index">
+                                <div>
+                                    <div class="comment">
+                                        <div class="comment-icon">
+                                            <i class="icon-default-avatar default-avatar"></i>
+                                        </div>
+                                    </div>
+                                    <div class="comment-conten">
+                                        <div style="margin-bottom: 5px"><span
+                                                class="name">{{commentInfo.userName}}</span><span class="time">{{commentInfo.timestamp|date:"yyyy-MM-dd hh:mm:ss a"}}</span>
+                                        </div>
+                                        <span class="text">{{commentInfo.content}}</span>
+                                        <!--每条文件评论的回复按钮-->
+                                        <span class="up-reply" (click)="showReplyBox(commentInfo.id)">回复</span>
+                                        <div class="reply-btn" *ngIf="commentInfo['showreplybox']">
+                                            <input placeholder="回复" type="text" [(ngModel)]="replyVal"
+                                                   (keyup)="enterSend($event,1,commentInfo.id,commentInfo.userName)"
+                                                   (keydown)="toNewLine($event,replyVal)">
+                                            <input type="button" value="发送"
+                                                   (click)="sendReply(commentInfo.id,commentInfo.userName)">
+                                        </div>
+                                    </div>
+                                    <!--每条文件评论的回复列表-->
+                                    <div class="reply" *ngIf="commentInfo.replies.length">
+                                        <div *ngFor="let reply of commentInfo.replies">
+                                            <div><i class="icon-default-avatar"></i><span
+                                                    class="name">{{reply.userName}}</span><span
+                                                    class="time">{{reply.timestamp | date:"yyyy-MM-dd hh:mm:ss a"}}</span>
+                                            </div>
+                                            <span class="text">@{{reply.replyUser}}&nbsp;&nbsp;{{reply.content}}</span>
+                                            <!--每条文件评论回复的回复按钮-->
+                                            <span class="text-reply"
+                                                  (click)="showReplyBox(commentInfo.id,reply.id)">回复</span>
+                                            <div class="reply-btn" *ngIf="reply['showreplybox']">
+                                                <input placeholder="回复" type="text" [(ngModel)]="replyVal"
+                                                       (keyup)="enterSend($event,1,reply.id,reply.userName)"
+                                                       (keydown)="toNewLine($event,replyVal)">
+                                                <input type="button" value="发送"
+                                                       (click)="sendReply(reply.id,reply.userName)"
+                                                >
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="paginations" *ngIf="totalCountCt!==0" style="padding-bottom: 70px">
+                                <mat-paginator #paginatorForCommentLists
+                                               [(pageSize)]="pageSizeCt"
+                                               [(pageIndex)]="pageIndexCt"
+                                               [pageSizeOptions]="[ 10, 25,100]"
+                                               [length]="totalCountCt"
+                                               (page)="changeCommentListsPaginat($event)">
+                                </mat-paginator>
+                                <div></div>
+                            </div>
+                            <div class="message">
+                                <input type="text" placeholder="回车直接发送"
+                                       [(ngModel)]="commentVal"
+                                       (keyup)="enterSend($event,2)"
+                                       (keydown)="toNewLine($event,commentVal)">
+                                <input type="button" value="发送" (click)="sendComment()">
+                            </div>
+                        </li>
+                        <li [style.display]="tabItem==2 ? 'block' : 'none'">
+                            <div class="log-title">
+                                <ul>
+                                    <li>时间</li>
+                                    <li style="width: 30%">审计员</li>
+                                    <li>操作行为</li>
+                                </ul>
+                            </div>
+                            <div class="log-list" *ngFor="let logInfo of logInfos">
+                                <ul>
+                                    <li>{{logInfo.timestamp | date: "yyyy-MM-dd hh:mm:ss a"}}</li>
+                                    <li style="width: 30%">
+                                        <span>{{logInfo.userName}}</span>
+                                    </li>
+                                    <li style="width: 27%">
+                                        {{logInfo.content}}
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="paginations" *ngIf="totalCount!==0">
+                                <mat-paginator #paginatorForLogLists
+                                               [(pageSize)]="pageSize"
+                                               [(pageIndex)]="pageIndex"
+                                               [pageSizeOptions]="[ 10, 25,100]"
+                                               [length]="totalCount"
+                                               (page)="changeLogListsPaginat($event)">
+                                </mat-paginator>
+                                <div></div>
+                            </div>
+                        </li>
+                        <li [style.display]="tabItem==3 ? 'block' : 'none'">
+                            <div class="document">
+                                <span class="basic">基本信息</span>
+                                <ul>
+                                    <li><span class="font-c">文件大小：</span><span class="font-c1">{{fileInfos.size | byteToMb}}</span>
+                                    </li>
+                                    <li><span class="font-c">浏览次数：</span><span
+                                            class="font-c1">{{fileInfos.readCount}}</span></li>
+                                    <li><span class="font-c">上传人员：</span><span
+                                            class="font-c1">{{fileInfos.userName}}</span></li>
+                                    <li><span class="font-c">评论浏览：</span><span class="font-c1">{{fileInfos.commentCount}}</span>
+                                    </li>
+                                    <li><span class="font-c">下载次数：</span><span
+                                            class="font-c1">{{fileInfos.downCount}}</span></li>
+                                    <li><span class="font-c">上传时间：</span><span class="font-c1">{{fileInfos.timestamp |date:"yyyy-MM-dd hh:mm:ss a"}}</span>
+                                    </li>
+                                    <li><span class="font-c">最后修改：</span><span class="font-c1">{{fileInfos.lastModified}}</span>
+                                    </li>
+                                    <li><span class="font-c">文档版本：</span><span
+                                            class="font-c1">{{fileInfos.version}}</span></li>
+                                </ul>
+                            </div>
+                            <div class="document-1">
+                                <span class="security">权限信息</span>
+                                <ul>
+                                    <li><span class="font-c">文件标签：</span><span class="font-c1 tag"
+                                                                               *ngFor="let tagName of fileInfos.tag">{{tagName}}</span>
+                                    </li>
+                                    <li><span class="font-c">安全等级：</span><span class="font-c1">{{fileInfos.securityName}}</span>
+                                    </li>
+                                    <li><span class="font-c">文件分类：</span><span class="font-c1 category"
+                                                                               *ngFor="let category of fileInfos.category">{{category.name}}</span>
+                                    </li>
+                                    <li><span class="font-c">阅读范围：</span><span class="font-c1 scope"
+                                                                               *ngFor="let scope of fileInfos.scope">{{scope.name}}</span>
+                                    </li>
+                                    <li><span class="font-c" style="padding-left: 28px">描述：</span><span class="font-c1">{{fileInfos.note}}</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li [style.display]="tabItem==4 ? 'block' : 'none'" class="start-sign">
+                            <div class="document-1" *ngIf="signInfo.signState==1">
+                                <span class="security">签字审核</span>
+                                <div class="sign-content">
+                                    <div class="sign-header">
+                                        <div class="pic">
+                                            <img style="border-radius:50%;" src="{{(readFace&&readFace.image)?readFace.image:'assets/images/personalCenter.png'}}" width="107" height="107"
+                                                 alt="user list image">
+                                        </div>
+                                        <div class="person-info">
+                                            <div class="name">{{ctx.userName}}</div>
+                                            <div class="job">{{signInfo.department}}</div>
+                                        </div>
+                                        <div class="agent-tag" *ngIf="signInfo.isHasAgent">使用代理人</div>
+                                    </div>
+                                    <div class="sign-tt">
+                                        <textarea rows="10" placeholder="请输入对审核内容的评价" [(ngModel)]="signInfo.approveMsg"></textarea>
+                                    </div>
+                                </div>
+                                <div class="sign-btns">
+                                    <button class="cancel" (click)="handleSign($event,0)">终止流程</button>
+                                    <button class="confirm" (click)="handleSign($event,1)">确定</button>
+                                </div>
+                            </div>
+                            <div class="document">
+                                <div class="title">
+                                    <span class="basic">签字流程</span>
+                                    <span class="big-size" title="点击查看大图">
+                                    <i class="fa fa-arrows-alt" (click)="showBigFlowPic($event)"></i>
+                                </span>
+                                </div>
+                                <div class="sign-flow">
+                                    <div #diagramDiv class="myDiagramDiv" style="width:100%;height:100%;"></div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

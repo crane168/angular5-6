@@ -1,0 +1,33 @@
+
+<div style="width: 100%;height: 100%;position: fixed;overflow-y: scroll;">
+    <div class="col-md-6 col-md-offset-3 company">
+        <form  (submit)="put()"  novalidate [formGroup]="companyForm" >
+            <div class="company-name">注册公司</div>
+            <div class="form-group" >
+                <mat-form-field class="example-full-width">
+                    <input matInput placeholder="请输入公司名"  type="text" #name formControlName="name"  [(ngModel)]="model.name"
+                           [class.invalid]="!companyForm.controls.name.valid &&
+                        companyForm.controls.name.dirty"
+                    >
+                </mat-form-field>
+                <div *ngIf="!companyForm.controls.name.valid  &&  companyForm.controls.name.dirty" class="help-block"><p>公司名最小长度是2.</p></div>
+            </div>
+            <div class="form-group" >
+                <mat-form-field class="example-full-width">
+                    <input matInput placeholder="请输入公司域名"  type="text" #domain formControlName="domain"  [(ngModel)]="model.domain"
+                           [class.invalid]="!companyForm.controls.domain.valid &&
+                        companyForm.controls.domain.dirty"
+                    >
+                </mat-form-field>
+                <mat-error *ngIf="!companyForm.controls.domain.valid  &&  companyForm.controls.domain.dirty">
+                    只能由大小写字母、数字组成,长度在2-63之间。
+                </mat-error>
+            </div>
+            <div class="form-group" >
+                <button class="moreCategories mat-raised-button company-y" mat-button [disabled]="loading"   [disabled]="!companyForm.valid">提交</button>
+                <img *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+                <button class="moreCategories mat-raised-button company-y" mat-button routerLink="/login">返回</button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,38 @@
+.more-operators{
+  padding:21px 47px 0;
+  height:50%;
+  overflow: auto;
+  a{
+    color:rgba(0,0,0,0.87);
+  }
+  .operator{
+    height: 63px;
+    line-height: 63px;
+    font-size: 16px;
+    color:rgba(0,0,0,0.87);
+    padding-left:66px;
+    position: relative;
+    &:before{
+      font-size:36px;
+      position: absolute;
+      left:0;
+      top:50%;
+      margin-top:-18px;
+    }
+    i{
+      cursor:pointer;
+    }
+  }
+  .send{
+
+  }
+  .move{
+
+  }
+  .download{
+
+  }
+  .delete{
+
+  }
+}
