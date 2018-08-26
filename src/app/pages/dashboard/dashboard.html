@@ -5,20 +5,15 @@
             <!--筛选-->
             <div class="filter">
                 <ul>
-                    <li class="clearfix" [ngClass]="{'showMore':condition.isShowMore}"
-                        *ngFor="let condition of searchService.conditions,let ind =index">
+                    <li class="clearfix" [ngClass]="{'showMore':condition.isShowMore}" *ngFor="let condition of searchService.conditions,let ind =index">
                         <div class="filter-title">{{condition.label}}</div>
                         <div class="filterItemContainer">
-                            <div class="filter-item"
-                                 *ngFor="let item of condition.items,let i =index"
-                                 [ngClass]="{'active':item.isActived,'noLimits':i===0}"
-                                 (click)="renderFilterResult($event,ind,i,condition.name,item)"
-                            >{{item.label?item.label:item.value}}
+                            <div class="filter-item" *ngFor="let item of condition.items,let i =index" [ngClass]="{'active':item.isActived,'noLimits':i===0}"
+                                (click)="renderFilterResult($event,ind,i,condition.name,item)">{{item.label?item.label:item.value}}
                             </div>
                         </div>
-                        <button *ngIf="condition.isShowMore" mat-button class="moreCategories"
-                                (click)="toggleMoreCategories(ind)">更多<i class="fa fa-angle-down"
-                                                                         [ngClass]="{'fa-angle-up':condition.isShowMore}"></i>
+                        <button *ngIf="condition.isShowMore" mat-button class="moreCategories" (click)="toggleMoreCategories(ind)">更多
+                            <i class="fa fa-angle-down" [ngClass]="{'fa-angle-up':condition.isShowMore}"></i>
                         </button>
                     </li>
                 </ul>
@@ -29,21 +24,18 @@
                 <div class="search-options">其他选项</div>
                 <div class="serch-input">
                     <span>关键字</span>
-                    <select class="selectSearchType" [(ngModel)]="ctx.currentSearchType"
-                            (change)="changeSearchType($event)">
+                    <select class="selectSearchType" [(ngModel)]="ctx.currentSearchType" (change)="changeSearchType($event)">
                         <option value=1 selected>不限</option>
                         <option value=2>上传人</option>
                     </select>
                     <span>文件类型</span>
-                    <select class="selectFileType" [(ngModel)]="ctx.currentSearchFileType"
-                            (change)="changeFileType($event)">
+                    <select class="selectFileType" [(ngModel)]="ctx.currentSearchFileType" (change)="changeFileType($event)">
                         <option value="0">不限</option>
                         <option value="{{fileType.viewVal}}" *ngFor="let fileType of fileTypes">{{fileType.viewVal}}
                         </option>
                     </select>
                     <span>搜索内容</span>
-                    <input type="text" placeholder="不限" name="partSearch" (keyup)="doSearchContent($event)"
-                           [(ngModel)]="searchService.insetSearchKey">
+                    <input type="text" placeholder="不限" name="partSearch" (keyup)="doSearchContent($event)" [(ngModel)]="searchService.insetSearchKey">
                     <button type="submit" style="cursor: default">
                         <i class="icon-search"></i>
                     </button>
@@ -69,119 +61,105 @@
                 <span>文件上传时间</span>
             </mat-toolbar>
             <ul class="file-list-body" #fileListBody>
-                <li class="file-list-item"
-                    *ngFor="let file of searchService.fileLists;let i = index"
-                    (mouseenter)="contentShow(i)"
-                    (mouseleave)="contentHidden(i)"
-                >
-                            <div class="item-title-big"   *ngIf="!file.isshowTitle">
-                                <div class="panel-checkbox">
-                                    <p-checkbox name="fileListBox" value="{{file.id}}" [(ngModel)]="ctx.selectedLists"
-                                                inputId="{{file.id}}"
-                                                (onChange)="ckClick($event,file)"></p-checkbox>
-                                </div>
+                <li class="file-list-item" *ngFor="let file of searchService.fileLists;let i = index" (mouseenter)="contentShow(i,$event)"
+                    (mouseleave)="contentHidden(i)">
+                    <div class="item-title-big" *ngIf="!file.isshowTitle">
+                        <div class="panel-checkbox" #chbox>
+                            <p-checkbox name="fileListBox" value="{{file.id}}" [(ngModel)]="ctx.selectedLists" inputId="{{file.id}}" (onChange)="ckClick($event,file)">
+                            </p-checkbox>
+                        </div>
+                        <div class="classify">
+                            <i class="{{parseFileIcon(file.name)}}"></i>
+                        </div>
+                        <div class="first">
+                            {{file.name}}
+                        </div>
+                        <div class="name">
+                            {{file.userName}}
+                        </div>
+                        <div class="timer">
+                            {{file.lastModified | date:"yyyy-MM-dd hh:mm:ss a"}}
+                        </div>
+                    </div>
+                    <div class="file-content" *ngIf="file.isContent">
+
+                        <!--<div class="checkbox">-->
+                        <!--<p-checkbox name="fileListBox" value="{{file.id}}" [(ngModel)]="ctx.selectedLists"-->
+                        <!--inputId="{{file.id}}"-->
+                        <!--(onChange)="ckClick($event,file)"></p-checkbox>-->
+                        <!--</div>-->
+                        <div class="item-content">
+                            <div class="file-type">
                                 <div class="classify">
                                     <i class="{{parseFileIcon(file.name)}}"></i>
                                 </div>
-                                <div class="first">
-                                    {{file.name}}
+                                <div class="safeIcon" *ngFor="let security of securities">
+                                    <i>{{security}}</i>
                                 </div>
-                                <div class="name">
-                                    {{file.userName}}
+                                <p>版本{{file.version.toFixed(2)}}</p>
+                            </div>
+                            <div class="content-detail">
+                                <div>
+                                    <p class="item-title" (click)="showDetail($event,file.id,file.dictId)">
+                                        {{file.name}}</p>
+                                    <span>{{file.lastModified | date:"yyyy-MM-dd hh:mm:ss a"}}</span>
                                 </div>
-                                <div class="timer">
-                                    {{file.lastModified | date:"yyyy-MM-dd hh:mm:ss a"}}
+                                <!--TODO:评论暂无，暂不显示最新评论，只显示概要-->
+
+                                <div class="brief">
+                                    <i class="icon-double-quotes"></i>
+                                    {{file.content}}
+                                </div>
+                                <div class="safeIcon">
+                                    <i class="icon {{file.security}}" style="font-size:18px;vertical-align: middle;"></i>
+                                </div>
+                                <div class="security" title="{{file.scope.join()}}">阅读范围:
+                                    <span *ngFor="let itemScope of file.scope">
+                                        <span>{{itemScope}}</span>
+                                    </span>
+                                </div>
+                                <div class="tag" title="{{file.tag.join()}}">标签:
+                                    <span *ngFor="let itemTag of file.tag">
+                                        <span>{{itemTag}}</span>
+                                    </span>
+                                </div>
+                                <div class="owner" title="{{file.userName}}">所有者:
+                                    <span>
+                                        <span>{{file.userName}}</span>
+                                    </span>
                                 </div>
                             </div>
-                            <div class="file-content" *ngIf="file.isContent" >
+                            <div class="more-operators">
+                                <div class="operator-btn">
+                                    <!--<button>下载</button>-->
+                                    <!--<button (click)="fileOperators($event,file,2)">发送</button>-->
+                                    <!--<button (click)="fileOperators($event,file,1)">移动</button>-->
+                                    <!--<button (click)="authorizeOthers($event,file)">授权</button>-->
 
-                                <!--<div class="checkbox">-->
-                                    <!--<p-checkbox name="fileListBox" value="{{file.id}}" [(ngModel)]="ctx.selectedLists"-->
-                                                <!--inputId="{{file.id}}"-->
-                                                <!--(onChange)="ckClick($event,file)"></p-checkbox>-->
-                                <!--</div>-->
-                                <div class="item-content">
-                                    <div class="file-type">
-                                        <div class="classify">
-                                            <i class="{{parseFileIcon(file.name)}}"></i>
-                                        </div>
-                                        <div class="safeIcon" *ngFor="let security of securities">
-                                            <i>{{security}}</i>
-                                        </div>
-                                        <p>版本{{file.version.toFixed(2)}}</p>
-                                    </div>
-                                    <div class="content-detail">
-                                        <div>
-                                            <p class="item-title" (click)="showDetail($event,file.id,file.dictId)">
-                                                {{file.name}}</p>
-                                            <span>{{file.lastModified | date:"yyyy-MM-dd hh:mm:ss a"}}</span>
-                                        </div>
-                                        <!--TODO:评论暂无，暂不显示最新评论，只显示概要-->
-
-                                        <div class="brief">
-                                            <i class="icon-double-quotes"></i>
-                                            {{file.content}}
-                                        </div>
-                                        <div class="safeIcon">
-                                            <i class="icon {{file.security}}"
-                                               style="font-size:18px;vertical-align: middle;"></i>
-                                        </div>
-                                        <div class="security" title="{{file.scope.join()}}">阅读范围:
-                                            <span *ngFor="let itemScope of file.scope">
-                                                <span>{{itemScope}}</span>
-                                            </span>
-                                        </div>
-                                        <div class="tag" title="{{file.tag.join()}}">标签:
-                                            <span *ngFor="let itemTag of file.tag">
-                                                 <span>{{itemTag}}</span>
-                                            </span>
-                                        </div>
-                                        <div class="owner" title="{{file.userName}}">所有者:
-                                            <span>
-                                                <span>{{file.userName}}</span>
-                                            </span>
-                                        </div>
-                                    </div>
-                                    <div class="more-operators">
-                                        <div class="operator-btn">
-                                            <!--<button>下载</button>-->
-                                            <!--<button (click)="fileOperators($event,file,2)">发送</button>-->
-                                            <!--<button (click)="fileOperators($event,file,1)">移动</button>-->
-                                            <!--<button (click)="authorizeOthers($event,file)">授权</button>-->
-
-                                        </div>
-                                        <div class="operator-icon" title="收藏">
-                                            <i class="icon-move" (click)="fileOperators($event,file,1)" title="移动"></i>
-                                            <i class="icon-updated" (click)="updateUpload(file)" title="更新上传文件"></i>
-                                            <a href="{{downUriBy(file)}}"><i class="icon-group-53" title="下载"></i></a>
-                                            <i class="icon-send-msg" (click)="fileOperators($event,file,2)"
-                                               title="发送邮件"></i>
-                                            <i class="icon-shouquan" (click)="authorizeOthers($event,file)"
-                                               title="授权他人"></i>
-                                        </div>
-                                    </div>
+                                </div>
+                                <div class="operator-icon" title="收藏">
+                                    <i class="icon-move" (click)="fileOperators($event,file,1)" title="移动"></i>
+                                    <i class="icon-updated" (click)="updateUpload(file)" title="更新上传文件"></i>
+                                    <a href="{{downUriBy(file)}}">
+                                        <i class="icon-group-53" title="下载"></i>
+                                    </a>
+                                    <i class="icon-send-msg" (click)="fileOperators($event,file,2)" title="发送邮件"></i>
+                                    <i class="icon-shouquan" (click)="authorizeOthers($event,file)" title="授权他人"></i>
                                 </div>
                             </div>
+                        </div>
+                    </div>
 
                 </li>
             </ul>
             <div class="paginations">
-                <mat-paginator #paginatorForSearchLists
-                               [(pageSize)]="pageSize"
-                               [(pageIndex)]="searchService.pageIndex"
-                               [pageSizeOptions]="[ 10, 25,100]"
-                               [length]="searchService.totalCount"
-                               (page)="changeSearchListsPaginat($event)">
+                <mat-paginator #paginatorForSearchLists [(pageSize)]="pageSize" [(pageIndex)]="searchService.pageIndex" [pageSizeOptions]="[ 10, 25,100]"
+                    [length]="searchService.totalCount" (page)="changeSearchListsPaginat($event)">
                 </mat-paginator>
                 <div></div>
             </div>
         </div>
-        <app-single-file-info
-                [isShowSingle]="isShowSingle"
-                (onShowed)="onShowed($event)"
-                [isShowMultiple]="isShowMultiple"
-                [totalSize]="totalSize"
-        ></app-single-file-info>
+        <app-single-file-info [isShowSingle]="isShowSingle" (onShowed)="onShowed($event)" [isShowMultiple]="isShowMultiple" [totalSize]="totalSize"></app-single-file-info>
     </div>
 
     <div *ngIf="!ctx.isShowSearchLists">暂无文件！</div>
