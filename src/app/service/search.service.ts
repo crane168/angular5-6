@@ -4,7 +4,9 @@ import {Context} from "./context.service";
 import {HttpClient} from "@angular/common/http";
 import {HttpService} from "./http.service";
 
-@Injectable()
+@Injectable({
+    providedIn: 'root'
+  })
 export class SearchService extends HttpService {
 
     public request: any = {};

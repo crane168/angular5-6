@@ -2,9 +2,9 @@
   "name": "cloud.file",
   "version": "1.0.0",
   "license": "MIT",
-  "browser":{
-    "zlib":false
-   },
+  "browser": {
+    "zlib": false
+  },
   "scripts": {
     "ng": "ng",
     "start": "ng serve --host 0.0.0.0 --port 4200",
@@ -33,6 +33,8 @@
     "@jaspero/ng-confirmations": "^0.4.7",
     "@ng-bootstrap/ng-bootstrap": "^3.0.0",
     "@nguniversal/module-map-ngfactory-loader": "6.1.0",
+    "@ngx-translate/core": "^10.0.2",
+    "@ngx-translate/http-loader": "^3.0.1",
     "@techiediaries/ngx-qrcode": "0.0.5",
     "angular-async-local-storage": "^5.0.0",
     "core-js": "^2.5.7",

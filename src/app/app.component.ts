@@ -1,7 +1,5 @@
 import {Component, Optional, ViewEncapsulation} from '@angular/core';
-import {TranslateService} from 'ng2-translate/ng2-translate';
-import {MatDialog, MatDialogConfig, MatDialogRef, MatSnackBar} from '@angular/material';
-import {MatToolbarModule} from '@angular/material/toolbar';
+
 import {PageComponent} from './common/page.component';
 import {Context} from './service/context.service';
 import {ActivatedRoute, NavigationCancel, NavigationEnd, NavigationError, NavigationStart, Router} from '@angular/router';

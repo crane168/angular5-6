@@ -4,7 +4,9 @@ import {Context} from './context.service';
 import {HttpService} from './http.service';
 
 
-@Injectable()
+@Injectable({
+    providedIn: 'root'
+  })
 export class FolderService extends HttpService{
 
     constructor(protected context: Context, protected http: HttpClient) {

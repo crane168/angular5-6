@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
-@Injectable()
+@Injectable({
+    providedIn: 'root'
+  })
 export class PageTitleService {
     public title: BehaviorSubject<string> = new BehaviorSubject<string>(null);
 

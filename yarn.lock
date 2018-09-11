@@ -234,6 +234,18 @@
   version "6.1.0"
   resolved "http://registry.npm.taobao.org/@nguniversal/module-map-ngfactory-loader/download/@nguniversal/module-map-ngfactory-loader-6.1.0.tgz#49eb65ed4dc3a3273c920b905e0925e0ed2fbcb8"
 
+"@ngx-translate/core@^10.0.2":
+  version "10.0.2"
+  resolved "http://registry.npm.taobao.org/@ngx-translate/core/download/@ngx-translate/core-10.0.2.tgz#5eeb78f47845b476a1e892fb2fb153dbbaf72850"
+  dependencies:
+    tslib "^1.9.0"
+
+"@ngx-translate/http-loader@^3.0.1":
+  version "3.0.1"
+  resolved "http://registry.npm.taobao.org/@ngx-translate/http-loader/download/@ngx-translate/http-loader-3.0.1.tgz#20b0f98bc6c25321129d3e3302ab3cc489c0a42a"
+  dependencies:
+    tslib "^1.9.0"
+
 "@schematics/angular@0.7.4":
   version "0.7.4"
   resolved "http://registry.npm.taobao.org/@schematics/angular/download/@schematics/angular-0.7.4.tgz#03012ca1fbc161b137dabc26ba04bd31d2ca687e"

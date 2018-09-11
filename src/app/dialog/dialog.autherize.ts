@@ -4,7 +4,6 @@ import {PageComponent} from "../common/page.component";
 import {ActivatedRoute, Router} from "@angular/router";
 import {Context} from "../service/context.service";
 import {OrganizeService} from '../service/organize.service';
-import {FileService} from '../service/file.service';
 
 
 @Component({

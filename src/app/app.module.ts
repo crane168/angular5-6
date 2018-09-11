@@ -1,16 +1,13 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-import { HttpModule, Http } from "@angular/http";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { FlexLayoutModule } from "@angular/flex-layout";
 import { PerfectScrollbarModule } from "ngx-perfect-scrollbar";
 import { PerfectScrollbarConfigInterface } from "ngx-perfect-scrollbar";
-import {
-  TranslateModule,
-  TranslateLoader,
-  TranslateStaticLoader
-} from "ng2-translate/ng2-translate";
+
+import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
+import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {
   MatAutocompleteModule,
   MatButtonModule,
@@ -92,7 +89,7 @@ import { NgxEchartsModule } from "ngx-echarts";
 import { MultipleFilesInfoComponent } from "./pages/dashboard/multiple-files-info/multiple-files-info.component";
 import { FileOperatorsComponent } from "./pages/dashboard/file-operators/file-operators.component";
 import { Context } from "./service/context.service";
-import { HttpClientModule } from "@angular/common/http";
+import { HttpClientModule,HttpClient } from "@angular/common/http";
 import { ReversePipe } from "ngx-pipes";
 import { SearchService } from "./service/search.service";
 import { FileService } from "./service/file.service";
@@ -127,10 +124,10 @@ import { DlgResetPwdComponent } from "./dialog/dialog.resetpwd";
 import { DlgPermissionsComponent } from "./dialog/dialog.permissions";
 import { UserSpecialPasswordComponent } from "./pages/main/user/user.specialpassword";
 
-export function createTranslateLoader(http: Http) {
-  return new TranslateStaticLoader(http, "assets/i18n", ".json");
-}
 
+export function createTranslateLoader(http: HttpClient) {
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}
 const perfectScrollbarConfig: PerfectScrollbarConfigInterface = {
   suppressScrollX: true
 };
@@ -148,7 +145,6 @@ const perfectScrollbarConfig: PerfectScrollbarConfigInterface = {
     Ng5BreadcrumbModule.forRoot(),
     PerfectScrollbarModule,
     MenuToggleModule,
-    HttpModule,
     MatAutocompleteModule,
     MatButtonModule,
     MatButtonToggleModule,
@@ -195,10 +191,12 @@ const perfectScrollbarConfig: PerfectScrollbarConfigInterface = {
     // MatStepperModule,
     ImageCropperModule,
     TranslateModule.forRoot({
-      provide: TranslateLoader,
-      useFactory: createTranslateLoader,
-      deps: [Http]
-    })
+      loader: {
+          provide: TranslateLoader,
+          useFactory: (createTranslateLoader),
+          deps: [HttpClient]
+      }
+  })
   ],
   declarations: [
     AppComponent,
@@ -265,17 +263,17 @@ const perfectScrollbarConfig: PerfectScrollbarConfigInterface = {
     ConfirmationService,
     ReversePipe,
     BreadcrumbService,
-    PageTitleService,
-    WorkFlowService,
-    IProInstService,
-    IAgentService,
-    Context,
-    SearchService,
-    FileService,
-    FolderService,
-    OrganizeService,
-    MessageService,
-    CompanyService,
+    // PageTitleService,
+    // WorkFlowService,
+    // IProInstService,
+    // IAgentService,
+    // Context,
+    // SearchService,
+    // FileService,
+    // FolderService,
+    // OrganizeService,
+    // MessageService,
+    // CompanyService,
     { provide: MatPaginatorIntl, useValue: myPaginator() },
     AuthGuard,
     { provide: MAT_DIALOG_DATA, useValue: {} },

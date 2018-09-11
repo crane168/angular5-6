@@ -1,7 +1,7 @@
 import {AfterViewInit, OnInit} from "@angular/core";
 import {ActivatedRoute, Router} from "@angular/router";
 import {Context} from "../service/context.service";
-import {HttpEvent} from "./interfaces";
+
 
 export abstract class PageComponent implements OnInit, AfterViewInit {
     public params: any = {};

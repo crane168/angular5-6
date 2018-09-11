@@ -7,8 +7,7 @@ import {ReversePipe} from 'ngx-pipes';
 import {Buffer} from 'buffer';
 import {AlertsService} from '@jaspero/ng-alerts';
 import {ConfirmationService} from '@jaspero/ng-confirmations';
-import {TranslateService} from 'ng2-translate/ng2-translate';
-
+import {TranslateService} from '@ngx-translate/core';
 export interface ChildrenItems {
     state: string;
     name: string;
@@ -80,7 +79,9 @@ const MENUITEMS = [
     }
 ];
 
-@Injectable()
+@Injectable({
+    providedIn: 'root'
+  })
 
 export class Context {
     public userId: number = 0;

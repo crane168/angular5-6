@@ -5,7 +5,9 @@ import {Context} from "./context.service";
 import {HttpClient} from "@angular/common/http";
 import {HttpService} from "./http.service";
 
-@Injectable()
+@Injectable({
+    providedIn: 'root'
+  })
 export class MessageService extends HttpService {
     private subject = new Subject<any>();
     private keepAfterNavigationChange = false;
