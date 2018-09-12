@@ -5,7 +5,6 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { FlexLayoutModule } from "@angular/flex-layout";
 import { PerfectScrollbarModule } from "ngx-perfect-scrollbar";
 import { PerfectScrollbarConfigInterface } from "ngx-perfect-scrollbar";
-
 import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {
