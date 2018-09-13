@@ -193,12 +193,18 @@ export class UploadFileComponent extends PageComponent {
     }
 
     public doUpload(){
-        this.fileService.checkCompanyUsed({"companyId":this.context.companyId}).subscribe(res=>{
+        // const self = this;
+        this.fileService.checkCompanyUsed({"companyId":this.context.companyId})
+            .subscribe(res=>{
             if(res.xeach===true){
                 if (res.used+this.uploader.totalSize()>=res.size * 1024 * 1024){
                     return this.showError("文件超过了库空间");
                 }
                 this.uploaderFiles(res);
+                // self.router.navigate([`/portal/${self.ctx.domain}`])
+                // history.go(-1)
+                // window.self.location = document.referrer;
+
             }else{
                 this.showError(res.message);
             }
@@ -247,6 +253,19 @@ export class UploadFileComponent extends PageComponent {
         let buf = new Buffer(JSON.stringify(this.fileParam)).toString('base64');
         this.fileHeaders.push({name: "FileParam", value: buf});
         this.uploader.uploadAll();
+        this.uploader.onSuccessItem= (item, response, status, header) => {
+            console.log("上传成功")
+            if (status === 200) {
+                console.log(item)
+                // history.go(-1)
+                // window.location.reload()
+                // window.self.location = document.referrer;
+                // this.router.navigate([`/portal/${this.ctx.domain}`])
+                history.back(-1)
+            }
+        };
+
+
     }
     public seletChange($event){
         this.selectValue =$event.target.value;

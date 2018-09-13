@@ -61,11 +61,11 @@
                 <span>文件上传时间</span>
             </mat-toolbar>
             <ul class="file-list-body" #fileListBody>
-                <li class="file-list-item" *ngFor="let file of searchService.fileLists;let i = index" (mouseenter)="contentShow(i,$event)"
+                <li class="file-list-item"  *ngFor="let file of searchService.fileLists;let i = index" (mouseover)="contentShow(i,$event)"
                     (mouseleave)="contentHidden(i)">
                     <div class="item-title-big" *ngIf="!file.isshowTitle">
                         <div class="panel-checkbox" #chbox>
-                            <p-checkbox name="fileListBox" value="{{file.id}}" [(ngModel)]="ctx.selectedLists" inputId="{{file.id}}" (onChange)="ckClick($event,file)">
+                            <p-checkbox name="fileListBox" value="{{file.id}}" [(ngModel)]="ctx.selectedLists" inputId="{{file.id}}" (onChange)="ckClick($event,file)" >
                             </p-checkbox>
                         </div>
                         <div class="classify">

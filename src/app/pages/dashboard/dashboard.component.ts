@@ -330,9 +330,11 @@ export class DashboardComponent extends PageComponent {
     // this.isshowTitle= index;
     // this.isContent=index;
     // console.log(this.chbox.nativeElement);
-    if (e.target == this.chbox.nativeElement)
+      console.log(e.currentTarget)
+      console.log(e.target)
+    if (e.target === this.chbox.nativeElement)
       this.searchService.fileLists[index].isshowTitle = true;
-    this.searchService.fileLists[index].isContent = true;
+      this.searchService.fileLists[index].isContent = true;
   }
   contentHidden(index) {
     this.searchService.fileLists[index].isshowTitle = false;

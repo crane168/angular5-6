@@ -264,6 +264,8 @@ export class FileUploader {
 
     public onCompleteAll(): any {
         window["alertControl"].create('success',"上传成功");
+        // window.self.location=document.referrer;
+        // history.back()
         return void 0;
     }
 

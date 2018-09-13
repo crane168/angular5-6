@@ -1,7 +1,7 @@
 import {Component, ElementRef, ViewChild} from '@angular/core';
 import {trigger, state, style, animate, transition} from '@angular/animations';
 import {Router, ActivatedRoute, ParamMap} from '@angular/router';
-
+import {Location} from  '@angular/common';
 import {PDFDocumentProxy, PDFProgressData, PDFSource} from 'pdfjs-dist';
 
 import {Observable} from 'rxjs/Rx';
@@ -106,7 +106,9 @@ export class DetailComponent extends PageComponent {
                 protected router: Router,
                 protected fileService: FileService,
                 protected iProInstService: IProInstService,
-                protected dialog: MatDialog) {
+                protected dialog: MatDialog,
+                private location: Location
+       ) {
         super(ctx, route, router);
         ctx.isShowAllSearchDiv = false;
         this.readface();
@@ -540,8 +542,17 @@ export class DetailComponent extends PageComponent {
                     if (ans.resolved) {
                         self.fileService.deleteFile({'id': self.dictId})
                             .subscribe(res => {
+                                console.log(res)
                                 if (res.xeach === true) {
                                     self.router.navigate([`/portal/${self.ctx.domain}`])
+                                    // window.self.location = document.referrer;
+                                    // self.location.back();
+                                    // history.back();
+                                    location.reload()
+                                    // self.router.navigateByUrl(`/portal/${self.ctx.domain}`, {skipLocationChange: true}).then(
+                                    //     ()=>
+                                    //     self.router.navigate([`/portal/${self.ctx.domain}`])
+                                    // );
                                 } else {
                                     self.showError('删除失败！')
                                 }
