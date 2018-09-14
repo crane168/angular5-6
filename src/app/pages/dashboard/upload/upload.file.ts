@@ -257,11 +257,9 @@ export class UploadFileComponent extends PageComponent {
             console.log("上传成功")
             if (status === 200) {
                 console.log(item)
-                // history.go(-1)
-                // window.location.reload()
                 // window.self.location = document.referrer;
-                // this.router.navigate([`/portal/${this.ctx.domain}`])
-                history.back(-1)
+                this.router.navigate([`/portal/${this.ctx.domain}`])
+                location.reload()
             }
         };
 

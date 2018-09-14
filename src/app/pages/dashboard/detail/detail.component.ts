@@ -84,7 +84,6 @@ export class DetailComponent extends PageComponent {
         isHasAgent: false
     };
     @ViewChild('diagramDiv') diagramDiv: ElementRef;
-
     // @ViewChild(PdfViewerComponent) private pdfComponent: PdfViewerComponent;
 
     public tabItem: number = 4;
@@ -548,11 +547,7 @@ export class DetailComponent extends PageComponent {
                                     // window.self.location = document.referrer;
                                     // self.location.back();
                                     // history.back();
-                                    location.reload()
-                                    // self.router.navigateByUrl(`/portal/${self.ctx.domain}`, {skipLocationChange: true}).then(
-                                    //     ()=>
-                                    //     self.router.navigate([`/portal/${self.ctx.domain}`])
-                                    // );
+                                    location.reload();
                                 } else {
                                     self.showError('删除失败！')
                                 }

@@ -98,11 +98,13 @@ export class DashboardComponent extends PageComponent {
     this.ctx.selectedLists = [];
     // this.panel1.expanded = true;
     this.searchService.request.domain = this.ctx.domain;
+
     if (this.ctx.userId !== 1) {
       // 初始化filelist页面
       this.searchService
         .renderSearchResult(this.searchService.request)
         .subscribe(res => {
+          console.log(res.items)
           if (res["xeach"] === true && res.items.length != 0) {
             this.ctx.isShowSearchLists = true;
             this.ctx.isShowLoading = false;
@@ -111,6 +113,7 @@ export class DashboardComponent extends PageComponent {
               return item.items.unshift({ label: "不限" });
             });
             this.searchService.conditions = res.facets;
+              console.log("这是detail");
             this.searchService.conditions.forEach(condition => {
               condition.isShowMore = false;
               condition.items.map((item, num) => {
@@ -330,8 +333,8 @@ export class DashboardComponent extends PageComponent {
     // this.isshowTitle= index;
     // this.isContent=index;
     // console.log(this.chbox.nativeElement);
-      console.log(e.currentTarget)
-      console.log(e.target)
+    //   console.log(e.currentTarget)
+    //   console.log(e.target)
     if (e.target === this.chbox.nativeElement)
       this.searchService.fileLists[index].isshowTitle = true;
       this.searchService.fileLists[index].isContent = true;

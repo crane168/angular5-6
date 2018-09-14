@@ -151,9 +151,15 @@ export class MainComponent extends PageComponent {
                 }
             });
         }
+        //初始化我的文档
+        // this.onMyFolder(e:Event);
+        console.log("main insade")
+        // this.router.navigate(['/portal/' + this.ctx.domain]);
     }
 
     protected onPageRender() {
+        console.log("pageRender")
+        this.router.navigate(['/portal/' + this.ctx.domain]);
     }
 
     ngOnDestroy() {

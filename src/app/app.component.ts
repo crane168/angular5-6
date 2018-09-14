@@ -57,6 +57,7 @@ export class AppComponent extends PageComponent {
             let end: NavigationEnd = event;
             this.checkCookie();
             console.log('NavigationEnd:' + end.url);
+            // this.router.navigate(['/portal/' + this.ctx.domain]);
         } else if ((event instanceof NavigationCancel) || (event instanceof NavigationError)) {
             console.log('NavigationCancel');
         }

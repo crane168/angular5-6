@@ -28,6 +28,7 @@ export class SearchService extends HttpService {
     public renderSearchResult(oReq) {
         // oReq['debug']=true;
         return this.post('/File/search', oReq);
+
     }
 
     renderSearch(isFilter:boolean=false,req?) {
