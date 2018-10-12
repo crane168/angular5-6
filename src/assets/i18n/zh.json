@@ -4,6 +4,7 @@
     "fileCloud":"企业文件云",
     "uploadFile":"上传",
     "pendingFile":"待处理文件",
+    "myShared":"我分享的",
     "settings":{
       "value":"设置",
       "org":"组织权限设置",

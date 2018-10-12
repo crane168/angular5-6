@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="28px" height="28px" viewBox="0 0 28 28" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.2 (57519) - http://www.bohemiancoding.com/sketch -->
+    <title>待处理文件-未选中</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="1-1-首页" transform="translate(-36.000000, -260.000000)" fill-rule="nonzero" stroke="#DBECFF" stroke-width="2">
+            <g id="Group-33" transform="translate(10.000000, 245.000000)">
+                <g id="待处理文件-未选中" transform="translate(26.000000, 15.000000)">
+                    <circle id="Oval-2" cx="14" cy="14" r="13"></circle>
+                    <polyline id="Path-4" points="13.6361333 6.90677781 13.6361333 15.6742777 18.5309925 20.6077602"></polyline>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

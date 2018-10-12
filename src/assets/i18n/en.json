@@ -4,6 +4,7 @@
     "fileCloud":"FileCloud",
     "uploadFile":"UploadFile",
     "pendingFile":"PendingFile",
+    "myShared":"myShared",
     "settings":{
       "value":"Settings",
       "org":"Organization permission Settings",

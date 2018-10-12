@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="28px" height="28px" viewBox="0 0 28 28" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.2 (57519) - http://www.bohemiancoding.com/sketch -->
+    <title>我的文档-未选中</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="1-1-首页" transform="translate(-36.000000, -100.000000)" fill-rule="nonzero">
+            <g id="左侧导航" transform="translate(10.000000, 85.000000)">
+                <g id="Group-35">
+                    <g id="我的文档-已选" transform="translate(26.000000, 15.000000)">
+                        <rect id="Rectangle-5" fill="#FFCA28" opacity="0" x="0" y="0" width="28" height="28"></rect>
+                        <path d="M1,3 L1,25 L27,25 L27,7.00646872 L11.7136142,7.00646872 L7.43865967,3 L1,3 Z" id="Rectangle-68" stroke="#DBECFF" stroke-width="2"></path>
+                        <rect id="Rectangle-2" fill="#DBECFF" x="14" y="17" width="8" height="2"></rect>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

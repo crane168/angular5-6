@@ -113,6 +113,7 @@ export class DashboardComponent extends PageComponent {
               return item.items.unshift({ label: "不限" });
             });
             this.searchService.conditions = res.facets;
+            console.log(res)
               console.log("这是detail");
             this.searchService.conditions.forEach(condition => {
               condition.isShowMore = false;

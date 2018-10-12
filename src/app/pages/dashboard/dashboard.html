@@ -5,29 +5,31 @@
             <!--筛选-->
             <div class="filter">
                 <ul>
-                    <li class="clearfix" [ngClass]="{'showMore':condition.isShowMore}" *ngFor="let condition of searchService.conditions,let ind =index">
-                        <div class="filter-title">{{condition.label}}</div>
-                        <div class="filterItemContainer">
-                            <div class="filter-item" *ngFor="let item of condition.items,let i =index" [ngClass]="{'active':item.isActived,'noLimits':i===0}"
-                                (click)="renderFilterResult($event,ind,i,condition.name,item)">{{item.label?item.label:item.value}}
+                    <ng-container  *ngFor="let condition of searchService.conditions,let ind =index">
+                        <li class="clearfix" [ngClass]="{'showMore':condition.isShowMore}" *ngIf="ind===1?false:true">
+                            <div class="filter-title">{{condition.label}}</div>
+                            <div class="filterItemContainer">
+                                <div class="filter-item" *ngFor="let item of condition.items,let i =index" [ngClass]="{'active':item.isActived,'noLimits':i===0}"
+                                    (click)="renderFilterResult($event,ind,i,condition.name,item)">{{item.label?item.label:item.value}}
+                                </div>
                             </div>
-                        </div>
-                        <button *ngIf="condition.isShowMore" mat-button class="moreCategories" (click)="toggleMoreCategories(ind)">更多
-                            <i class="fa fa-angle-down" [ngClass]="{'fa-angle-up':condition.isShowMore}"></i>
-                        </button>
-                    </li>
+                            <button *ngIf="condition.isShowMore" mat-button class="moreCategories" (click)="toggleMoreCategories(ind)">更多
+                                <i class="fa fa-angle-down" [ngClass]="{'fa-angle-up':condition.isShowMore}"></i>
+                            </button>
+                        </li>
+                    </ng-container>
                 </ul>
             </div>
         </div>
         <div class="filter-body">
             <div class="search">
-                <div class="search-options">其他选项</div>
+                <div class="search-options">高级筛选</div>
                 <div class="serch-input">
-                    <span>关键字</span>
+                    <!-- <span>关键字</span>
                     <select class="selectSearchType" [(ngModel)]="ctx.currentSearchType" (change)="changeSearchType($event)">
                         <option value=1 selected>不限</option>
                         <option value=2>上传人</option>
-                    </select>
+                    </select> -->
                     <span>文件类型</span>
                     <select class="selectFileType" [(ngModel)]="ctx.currentSearchFileType" (change)="changeFileType($event)">
                         <option value="0">不限</option>

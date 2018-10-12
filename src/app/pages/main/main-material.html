@@ -1,68 +1,41 @@
 <div class="app" dir="ltr"
      [ngClass]="{'app-dark': dark, 'collapsed-sidebar': collapseSidebar, 'compact-sidebar': compactSidebar, 'customizer-in': customizerIn}">
-    <div id="logo">
-        <!--<div style="width: 15%;height: 64px;float: left;text-align: center;line-height: 64px">-->
-            <!--<img src="assets/images/logo3.png" width="160" height="42">-->
-        <!--</div>-->
-        <mat-toolbar class="gene-header-toolbar" >
-            <!--<span fxFlex></span>-->
-            <img src="assets/images/logo3.png" width="160" height="42" style="margin-left: 40px">
-            <div class="search-bar" fxFlex *ngIf="ctx.isShowAllSearchDiv">
-                <!--<form class="search-form" fxShow="false" fxShow.gt-xs>-->
-                    <!--<mat-form-field>-->
-                        <!--<input matInput-->
-                               <!--type="text"-->
-                               <!--placeholder="{{'search' |translate}}"-->
-                               <!--name="allSearch"-->
-                               <!--(keyup)="searchService.doSearch($event,1)"-->
-                               <!--[(ngModel)]="searchService.outsetSearchKey"/>-->
-                    <!--</mat-form-field>-->
-                <!--</form>-->
-                <input type="text"
-                       placeholder="{{'search' |translate}}"
-                       (keyup)="searchService.doSearch($event,1)"
-                       [(ngModel)]="searchService.outsetSearchKey"
-                >
-            </div>
-            <div class="secondary-menu">
-                <button fxHide="true" fxHide.gt-sm="false" mat-button class="fullscreen-toggle"
-                        (click)="toggleFullscreen()">
-                    <mat-icon *ngIf="!isFullscreen">fullscreen</mat-icon>
-                    <mat-icon *ngIf="isFullscreen">fullscreen_exit</mat-icon>
-                </button>
-
-                <button (click)="end.toggle()" mat-icon-button class="ml-xs overflow-visible noticeBtn">
-                    <mat-icon>notifications</mat-icon>
-                    <span class="tips"  *ngIf="hasNotices()"></span>
-                </button>
-                <button class="user-button" mat-button [matMenuTriggerFor]="menu">
-                    <div fxLayout="row" fxLayoutAlign="center center">
-                        <img class="img-responsive img-circle" src="{{readFace.image?readFace.image:'assets/images/personalCenter.png'}}" width="27" height="27"
-                             alt="user list image">
-                        <span class="gene-user-name  userName">{{ctx.userName}}</span>
-                    </div>
-                </button>
-                <!--<div class="gene-user-thumb text-center">-->
-                    <!--<img class="img-responsive img-circle" src="{{readFace.image?readFace.image:'assets/images/personalCenter.png'}}" width="27" height="27"-->
-                         <!--alt="user list image">-->
-                    <!--<span class="gene-user-name  userName">{{ctx.userName}}</span>-->
-                <!--</div>-->
-            </div>
-        </mat-toolbar>
-
-    </div>
     <mat-sidenav-container class="gene-container">
-
+        <div id="logo" fxLayout="row">
+            <mat-toolbar class="gene-header-toolbar"  >
+                <div class="search-bar" *ngIf="ctx.isShowAllSearchDiv" fxLayoutAlign="start center">
+                    <mat-icon svgIcon="searchicon" class="searchicon"></mat-icon> 
+                    <input type="text"
+                           placeholder="{{'search' |translate}}"
+                           (keyup)="searchService.doSearch($event,1)"
+                           [(ngModel)]="searchService.outsetSearchKey"
+                    >
+                </div>
+                <div class="secondary-menu" fxLayoutAlign="start center">
+                    <!-- <button fxHide="true" fxHide.gt-sm="false" mat-button class="fullscreen-toggle"
+                            (click)="toggleFullscreen()">
+                        <mat-icon *ngIf="!isFullscreen">fullscreen</mat-icon>
+                        <mat-icon *ngIf="isFullscreen">fullscreen_exit</mat-icon>
+                    </button> -->
+    
+                    <button (click)="end.toggle()" mat-icon-button class="ml-xs overflow-visible noticeBtn">
+                        <!-- <mat-icon class="noticion">notifications</mat-icon> -->
+                        <mat-icon svgIcon="message"></mat-icon>
+                        <span class="tips"  *ngIf="hasNotices()"></span>
+                    </button>
+                    <button class="user-button" mat-button [matMenuTriggerFor]="menu">
+                        <div fxLayout="row" fxLayoutAlign="center center">
+                            <img class="img-responsive img-circle" src="{{readFace.image?readFace.image:'assets/images/personalCenter.png'}}" width="28" height="28"
+                                 alt="user list image">
+                            <span class="gene-user-name  userName">{{ctx.userName}}</span>
+                        </div>
+                    </button>
+                </div>
+            </mat-toolbar>
+    
+        </div>
         <mat-sidenav #sidenav mode="side" opened="true" class="sidebar-area">
             <div class="sidebar-panel gene-sidenav" fxLayout="column">
-                <!--<mat-toolbar class="sidebar-logo">-->
-                    <!--<div class="gene-logo">-->
-                        <!--<div class="logo-sign inline-block"><img src="assets/images/logo3.png" width="255.99" height="30">-->
-                        <!--</div>-->
-                        <!--&lt;!&ndash;<div class="logo-text inline-block"><img src="assets/images/logo-text.png" width="90" height="27">&ndash;&gt;-->
-                        <!--&lt;!&ndash;</div>&ndash;&gt;-->
-                    <!--</div>-->
-                <!--</mat-toolbar>-->
                 <div class="sidebar-container">
                     <div class="sidenav-scrollbar-container" fxLayout="column">
                         <perfect-scrollbar>
@@ -70,12 +43,21 @@
                             <div class="sidebar clearfix" #sideBar id="sidebar" *ngIf="ctx.userId !== 1">
                                 <mat-accordion [displayMode]="displayMode" [multi]="true"
                                                class="mat-expansion-demo-width">
+                                               <div fxLayout="column" class="comIcon">
+                                                   <img src="assets/images/logo.png" alt="" fxFlexAlign="center">
+                                               </div>
                                     <mat-expansion-panel #panel1 [hideToggle]="hideToggle" [disabled]="disabled"
                                                          class="morePanel">
-                                        <mat-expansion-panel-header (click)="onMyFolder($event)" collapsedHeight="40px"
-                                                                    expandedHeight="40px"><i
-                                                class="icon-wenjianjia-1"></i><span
-                                                style="padding-left: 12px;font-weight: 500">{{'menu.myFolder' | translate}}</span>
+                                        <mat-expansion-panel-header 
+                                        (click)="onMyFolder($event)" 
+                                        collapsedHeight="80px"
+                                        collapseWidth="80px"
+                                        expandedHeight="80px">
+                                        <!-- <i class="icon-wenjianjia-1"></i> -->
+                                        <div fxLayout="column">
+                                            <mat-icon svgIcon="myfolder_unselected" class="leftIcon" fxFlexAlign="center"></mat-icon>
+                                            <span style="font-weight: 500">{{'menu.myFolder' | translate}}</span>
+                                        </div>
                                         </mat-expansion-panel-header>
                                         <div class="itemBody padding" *ngIf="mySideNavTree.length">
                                             <tree-root
@@ -88,10 +70,13 @@
                                     </mat-expansion-panel>
                                     <mat-expansion-panel #panel2 [hideToggle]="hideToggle"
                                                          class="morePanel">
-                                        <mat-expansion-panel-header (click)="onMyFolder($event)" collapsedHeight="40px"
-                                                                    expandedHeight="40px"><i
-                                                class="icon-wenjianyun"></i><span
-                                                style="padding-left: 12px;font-weight: 500">{{'menu.fileCloud' | translate}}</span>
+                                        <mat-expansion-panel-header (click)="onMyFolder($event)" collapsedHeight="80px"
+                                                                    expandedHeight="80px">
+                                                   <!-- <i class="icon-wenjianyun"></i> -->
+                                                   <div fxLayout="column">
+                                                       <mat-icon svgIcon="enterpriseCloud_unselected" class="leftIcon" fxFlexAlign="center"></mat-icon>
+                                                       <span style="font-weight: 500">{{'menu.fileCloud' | translate}}</span>
+                                                   </div>
                                         </mat-expansion-panel-header>
                                         <div class="itemBody">
                                             <tree-root
@@ -105,16 +90,19 @@
                             <!--/ 原sidebar html-->
                             <!--<mat-divider></mat-divider>-->
                             <mat-nav-list fxLayout="column" menuToggleDirective class="navigation">
-                                <mat-list-item menuToggleLink *ngFor="let menuitem of ctx.currentMenu">
+                                <mat-list-item menuToggleLink *ngFor="let menuitem of ctx.currentMenu" fxLayoutAlign="center center">
                                     <a menuToggle class="gene-relative" mat-ripple
                                        routerLink="/portal/{{ctx.domain}}/{{menuitem.state}}"
                                        routerLinkActive="active-link" *ngIf="menuitem.type === 'link'">
-                                        <i class="{{menuitem.icon}}"></i>
-                                        <span style="padding-left: 12px">{{ menuitem.name | translate }}</span>
+                                        <!-- <i class="{{menuitem.icon}}"></i> -->
+                                        <div fxLayout="column">
+                                            <mat-icon svgIcon="{{menuitem.icon}}" class="leftIcon" fxFlexAlign="center"></mat-icon>
+                                            <span style="padding-right:10px;">{{ menuitem.name | translate }}</span>
+                                        </div>
                                     </a>
-                                    <a menuToggle class="gene-relative" mat-ripple href="javascript:;"
+                                    <a menuToggle class="gene-relative" mat-ripple href="javascript:void();"
                                        *ngIf="menuitem.type === 'sub'">
-                                        <i class="{{menuitem.icon}}"></i>
+                                        <!-- <i class="{{menuitem.icon}}"></i> -->
                                         <span style="padding-left: 12px">{{ menuitem.name | translate }}</span>
                                         <span fxFlex></span>
                                         <mat-icon class="menu-caret">chevron_right</mat-icon>
@@ -131,73 +119,48 @@
                             </mat-nav-list>
                         </perfect-scrollbar>
                     </div>
-                    <!--<div class="language">-->
-                        <!--<div><img src="assets/images/ch.png" alt=""><span (click)="changeLanguage('zh')">{{'changeLanguage.cn' | translate}}</span>-->
-                        <!--</div>-->
-                        <!--<div><span (click)="changeLanguage('en')">{{'changeLanguage.en' | translate}}</span><img-->
-                                <!--src="assets/images/mg.png" alt=""></div>-->
-
-                    <!--</div>-->
+                    <div class="language">
+                        <div><img src="{{languagePic}}" title="切换英文"><span (click)="languageClick(0)" [class.active]="languagetype==0">{{switchlanguage | translate}}</span>
+                            <mat-icon svgIcon="switcher" style="width:30px;height:12px;vertical-align: top"></mat-icon>
+                        </div>
+                        <!-- <div><span (click)="languageClick(1)">{{'changeLanguage.en' | translate}}</span><img
+                                src="assets/images/mg.png" alt=""></div> -->
+                    </div>
                 </div>
 
             </div>
         </mat-sidenav>
 
-        <!--顶部header-->
-        <mat-toolbar class="gene-header-toolbar">
+        <!--企业地址栏头部-->
+        <mat-toolbar class="gene-header-toolbar custom-title">
             <!--切换左菜单栏-->
-            <div class="gene-ham-icon">
+            <!-- <div class="gene-ham-icon">
                 <button class="" mat-mini-fab color="primary" mat-card-icon (click)="sidenav.toggle()">
                     <mat-icon>menu</mat-icon>
                 </button>
-            </div>
+            </div> -->
+           <div fxLayout="row" class="iconToolbar">
+               <div fxLayoutAlign="start center" class="folder-container">
+                <mat-icon svgIcon="foldericon" class="foldericon" preserveAspectRatio="none"></mat-icon>
+               </div>
+               <div fxLayout="column" fxLayoutAlign="center">
+                   <div class="titleFont" fxLayout="row">
+                       <!--页面的title展示-->
+                       <a class="navbar-brand" href="javascript:;">{{header | translate}}</a>
+                       <!--面包屑-->
+                       <div class="breadheader" *ngIf="ctx.isShowAllSearchDiv">
+                           <p-breadcrumb [model]="breadcrumbItems"></p-breadcrumb>
+                       </div>
+                   </div>
+                   <div class="spaceSize">
+                       <p>
+                           <span>已用0B</span>/<span>共5.00GB</span>
+                       </p>
+                   </div>
+               </div>
+           </div>
 
-            <!--页面的title展示-->
-            <a class="navbar-brand" href="javascript:;">{{header | translate}}</a>
-
-            <!--面包屑-->
-            <!--<breadcrumb class="gene-breadcrumbs"></breadcrumb>-->
-            <!--面包屑-->
-            <div class="breadheader" *ngIf="ctx.isShowAllSearchDiv">
-                <p-breadcrumb [model]="breadcrumbItems"></p-breadcrumb>
-            </div>
-
-            <!--搜索框-->
-            <!--<span fxFlex></span>-->
-            <!--<div class="search-bar" fxFlex *ngIf="ctx.isShowAllSearchDiv">-->
-                <!--<form class="search-form" fxShow="false" fxShow.gt-xs>-->
-                    <!--<mat-form-field>-->
-                        <!--<input matInput-->
-                               <!--type="text"-->
-                               <!--placeholder="{{'search' |translate}}"-->
-                               <!--name="allSearch"-->
-                               <!--(keyup)="searchService.doSearch($event,1)"-->
-                               <!--[(ngModel)]="searchService.outsetSearchKey"/>-->
-                    <!--</mat-form-field>-->
-                <!--</form>-->
-            <!--</div>-->
-
-            <!--全屏 展示切换-->
-            <!--<div class="secondary-menu">-->
-                <!--<button fxHide="true" fxHide.gt-sm="false" mat-button class="fullscreen-toggle"-->
-                        <!--(click)="toggleFullscreen()">-->
-                    <!--<mat-icon *ngIf="!isFullscreen">fullscreen</mat-icon>-->
-                    <!--<mat-icon *ngIf="isFullscreen">fullscreen_exit</mat-icon>-->
-                <!--</button>-->
-
-                <!--<button class="user-button" mat-button [matMenuTriggerFor]="menu">-->
-                    <!--<div fxLayout="row" fxLayoutAlign="center center">-->
-                        <!--<mat-icon>account_circle</mat-icon>-->
-                    <!--</div>-->
-                <!--</button>-->
-                <!--<button (click)="end.toggle()" mat-icon-button class="ml-xs overflow-visible noticeBtn">-->
-                    <!--<mat-icon>notifications</mat-icon>-->
-                    <!--<span class="tips"  *ngIf="hasNotices()"></span>-->
-                <!--</button>-->
-                <!--&lt;!&ndash;<button mat-icon-button class="ml-xs overflow-visible" [matMenuTriggerFor]="appsmenu">&ndash;&gt;-->
-                <!--&lt;!&ndash;<mat-icon>apps</mat-icon>&ndash;&gt;-->
-                <!--&lt;!&ndash;</button>&ndash;&gt;-->
-            <!--</div>-->
+                
         </mat-toolbar>
 
         <!--点击铃铛 展示通知面板-->
@@ -314,7 +277,6 @@
 
 
         <!--中间的坑-->
-        <!--<div style="height: 20px;"></div>-->
         <div class="gene-base-container" #scrollContainer>
             <div class="inner-container">
                 <router-outlet (activate)="onActivate($event, scrollContainer)" (mycloud)="openMyCloud($event)"></router-outlet>

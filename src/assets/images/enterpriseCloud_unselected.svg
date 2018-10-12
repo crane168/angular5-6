@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="28px" height="28px" viewBox="0 0 28 28" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.2 (57519) - http://www.bohemiancoding.com/sketch -->
+    <title>企业云文件-未选中</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="1-1-首页" transform="translate(-36.000000, -340.000000)" fill-rule="nonzero">
+            <g id="Group-32" transform="translate(10.000000, 325.000000)">
+                <g id="企业云文件-未选中" transform="translate(26.000000, 15.000000)">
+                    <g id="Group-9">
+                        <g id="Group-8" transform="translate(0.000000, 6.000000)" stroke="#DBECFF" stroke-width="2">
+                            <path d="M5.93939394,15.969697 L22.9090909,15.969697 C25.1684376,15.969697 27,14.1381346 27,11.8787879 C27,9.61944118 25.1684376,7.78787879 22.9090909,7.78787879 C22.8634684,7.78787879 22.8179529,7.78862171 22.7725544,7.79010394 L21.9277209,7.81768717 L21.759843,6.98924193 C21.058465,3.52807705 18.0008148,1 14.4242424,1 C11.4065753,1 8.72031942,2.80202769 7.54664639,5.526115 L7.25235711,6.20915847 L6.51352512,6.1238246 C6.3241038,6.10194675 6.1325396,6.09090909 5.93939394,6.09090909 C3.21144199,6.09090909 1,8.30235108 1,11.030303 C1,13.758255 3.21144199,15.969697 5.93939394,15.969697 Z" id="Combined-Shape"></path>
+                            <path d="M11.8787879,12.0393939 C11.8787879,8.75915724 9.21963064,6.1 5.93939394,6.1" id="Oval-3"></path>
+                            <path d="M22.9090909,7.79 C20.0974595,7.79 17.8181818,10.0692776 17.8181818,12.8809091" id="Oval-3"></path>
+                        </g>
+                        <rect id="Rectangle-33" fill="#FFFFFF" opacity="0" x="0" y="0" width="28" height="28"></rect>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

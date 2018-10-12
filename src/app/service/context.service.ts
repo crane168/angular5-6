@@ -31,33 +31,45 @@ function _window() : any {
 
 
 const MENUITEMS = [
+    // {
+    //     state: 'uploadFile',
+    //     name: 'menu.uploadFile',
+    //     type: 'link',
+    //     icon: 'icon-shangchuan'
+    // },
     {
-        state: 'uploadFile',
-        name: 'menu.uploadFile',
-        type: 'link',
-        icon: 'icon-shangchuan'
+        state:'monitor',
+        name:'menu.control',
+        type:'link',
+        icon:'monitor_unselected'
     },
     {
         state: 'pendingFile',
         name: 'menu.pendingFile',
         type: 'link',
-        icon: 'icon-shangchuan'
+        icon: 'pendingFile_unselected'
     },
     {
-        state: 'user',
-        name: 'menu.userCenter.value',
-        type: 'sub',
-        icon: 'icon-gerenzongxing',
-        children: [
-            {state: 'userFolder', name: 'menu.userCenter.userFolder'},
-            {state: 'userProfile', name: 'menu.userCenter.userProfile'},
-            {state: 'userPassword', name: 'menu.userCenter.userPassword'},
-            {state: 'userSign', name: 'menu.userCenter.userSign'},
-            {state: 'userFace', name: 'menu.userCenter.userFace'},
-            {state: 'userAuth', name: 'menu.userCenter.userAuth'},
-            {state: 'UserSpecialPassword', name: 'menu.userCenter.UserSpecialPassword'}
-        ]
+        state: 'myShared',
+        name: 'menu.myShared',
+        type: 'link',
+        icon: 'myShared_unselected'
     },
+    // {
+    //     state: 'user',
+    //     name: 'menu.userCenter.value',
+    //     type: 'sub',
+    //     icon: 'icon-gerenzongxing',
+    //     children: [
+    //         {state: 'userFolder', name: 'menu.userCenter.userFolder'},
+    //         {state: 'userProfile', name: 'menu.userCenter.userProfile'},
+    //         {state: 'userPassword', name: 'menu.userCenter.userPassword'},
+    //         {state: 'userSign', name: 'menu.userCenter.userSign'},
+    //         {state: 'userFace', name: 'menu.userCenter.userFace'},
+    //         {state: 'userAuth', name: 'menu.userCenter.userAuth'},
+    //         {state: 'UserSpecialPassword', name: 'menu.userCenter.UserSpecialPassword'}
+    //     ]
+    // },
     {
         level:1,
         state: 'settings',

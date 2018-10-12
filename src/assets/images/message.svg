@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="20px" height="20px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.2 (57519) - http://www.bohemiancoding.com/sketch -->
+    <title>消息</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <filter x="-0.9%" y="-15.5%" width="101.8%" height="136.6%" filterUnits="objectBoundingBox" id="filter-1">
+            <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="4" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0.537254902   0 0 0 0 0.592156863   0 0 0 0 0.721568627  0 0 0 0.1 0" type="matrix" in="shadowBlurOuter1" result="shadowMatrixOuter1"></feColorMatrix>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+                <feMergeNode in="SourceGraphic"></feMergeNode>
+            </feMerge>
+        </filter>
+        <polygon id="path-2" points="1.6923973e-19 2.77556095e-15 1.6923973e-19 20 14.9837134 20 14.9837134 0"></polygon>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="1-4-首页-上传" transform="translate(-1262.000000, -25.000000)">
+            <g id="Group-49" filter="url(#filter-1)" transform="translate(100.000000, 0.000000)">
+                <g id="Group-22">
+                    <g id="Group-24" transform="translate(1162.000000, 21.000000)">
+                        <g id="Group-20">
+                            <g id="消息" transform="translate(0.000000, 4.000000)">
+                                <rect id="Rectangle-19" fill-opacity="0" fill="#FFFFFF" x="0" y="0" width="20" height="20"></rect>
+                                <g id="bells" transform="translate(2.504065, 0.000000)">
+                                    <mask id="mask-3" fill="white">
+                                        <use xlink:href="#path-2"></use>
+                                    </mask>
+                                    <g id="Clip-2"></g>
+                                    <path d="M14.2814471,16.2500687 L13.7350909,16.2500687 L13.7350909,7.49998474 C13.7350909,4.28516148 11.31196,1.63869829 8.19424492,1.28908849 L8.19424492,0.703150272 C8.19424492,0.314429095 7.88015658,0 7.49185668,0 C7.10365432,0 6.78946844,0.314429095 6.78946844,0.703150272 L6.78946844,1.28908849 C3.67177774,1.63869829 1.24862246,4.28516148 1.24862246,7.49998474 L1.24862246,16.2500687 L0.702388237,16.2500687 C0.314088334,16.2500687 0,16.5644733 0,16.9530969 C0,17.341818 0.314088334,17.6562471 0.702388237,17.6562471 L6.08720214,17.6562471 L6.08720214,18.5938215 C6.08720214,19.3711418 6.71535442,20 7.49185668,20 C8.26835893,20 8.89663315,19.3711418 8.89663315,18.5938215 L8.89663315,17.6562471 L14.2814471,17.6562471 C14.6696494,17.6562471 14.9837134,17.341818 14.9837134,16.9530969 C14.9837134,16.5644733 14.6696494,16.2500687 14.2814471,16.2500687 Z M12.3304364,16.2500687 L2.65339893,16.2500687 L2.65339893,7.49998474 C2.65339893,4.82427347 4.81904519,2.65627766 7.49185668,2.65627766 C10.1647901,2.65627766 12.3304364,4.82427347 12.3304364,7.49998474 L12.3304364,16.2500687 Z" id="Fill-1" fill="#1E1E1E" mask="url(#mask-3)"></path>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

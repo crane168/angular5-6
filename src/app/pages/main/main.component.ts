@@ -1,7 +1,7 @@
 
 import {filter} from 'rxjs/operators';
 import {Component, OnInit, OnDestroy, ViewChild, HostListener, ViewEncapsulation, ElementRef} from '@angular/core';
-import {MediaChange, ObservableMedia} from '@angular/flex-layout';
+import { MediaChange, ObservableMedia} from '@angular/flex-layout';
 import {Router, NavigationEnd, ActivatedRoute} from '@angular/router';
 import {Subscription} from 'rxjs';
 import {Ng2DeviceService} from 'ng2-device-detector';
@@ -12,12 +12,13 @@ import {PageTitleService} from '../../service/page-title.service';
 
 import {PageComponent} from '../../common/page.component';
 import {Context} from '../../service/context.service';
-import {SearchService} from '../../service/search.service';
+import { SearchService } from '../../service/search.service';
 import {FileService} from '../../service/file.service';
 import {FolderService} from '../../service/folder.service';
 import {HttpEvent} from '../../common/interfaces';
 import {IProInstService} from "../../service/iProInst.service";
-
+import {DomSanitizer} from  '@angular/platform-browser';
+ import { MatIconRegistry} from  '@angular/material' ;
 declare var $: any;
 
 const screenfull = require('screenfull');
@@ -56,7 +57,9 @@ export class MainComponent extends PageComponent {
     private _mediaSubscription: Subscription;
     private _routerEventsSubscription: Subscription;
     public noticeTabSelectedIndex:number=0;
-
+    public languagetype:number=0;
+    public languagePic: string = "assets/images/mg.png";
+    public switchlanguage: string = "changeLanguage.en";
     @ViewChild('sidenav') sidenav;
     @ViewChild('enterpriseSideTree') sideTree;
     @ViewChild('end') noticePanel;
@@ -71,9 +74,38 @@ export class MainComponent extends PageComponent {
                 private media: ObservableMedia,
                 private deviceService: Ng2DeviceService,
                 protected folderService: FolderService,
-                protected fileService: FileService) {
+                protected fileService: FileService,
+                iconRegistry: MatIconRegistry, 
+                sanitizer: DomSanitizer) {
         super(ctx, route, router);
         this.readface();
+        iconRegistry.addSvgIcon(
+            'searchicon' ,
+            sanitizer.bypassSecurityTrustResourceUrl( 'assets/images/search.svg' ));
+        iconRegistry.addSvgIcon(
+            'myfolder_unselected' ,
+            sanitizer.bypassSecurityTrustResourceUrl( 'assets/images/myfolder_unselected.svg' ));
+        iconRegistry.addSvgIcon(
+            'enterpriseCloud_unselected' ,
+            sanitizer.bypassSecurityTrustResourceUrl( 'assets/images/enterpriseCloud_unselected.svg' ));
+        iconRegistry.addSvgIcon(
+            'switcher' ,
+            sanitizer.bypassSecurityTrustResourceUrl( 'assets/images/switcher.svg' ));
+        iconRegistry.addSvgIcon(
+            'monitor_unselected' ,
+            sanitizer.bypassSecurityTrustResourceUrl( 'assets/images/monitor_unselected.svg' ));
+        iconRegistry.addSvgIcon(
+            'pendingFile_unselected' ,
+            sanitizer.bypassSecurityTrustResourceUrl( 'assets/images/pendingFile_unselected.svg' ));
+        iconRegistry.addSvgIcon(
+            'message' ,
+            sanitizer.bypassSecurityTrustResourceUrl( 'assets/images/message.svg' ));
+        iconRegistry.addSvgIcon(
+            'foldericon' ,
+            sanitizer.bypassSecurityTrustResourceUrl( 'assets/images/foldericon.svg' ));
+        iconRegistry.addSvgIcon(
+            'myShared_unselected' ,
+            sanitizer.bypassSecurityTrustResourceUrl( 'assets/images/myShared_unselected.svg' ));
     }
 
     protected onPageInit() {
@@ -153,7 +185,7 @@ export class MainComponent extends PageComponent {
         }
         //初始化我的文档
         // this.onMyFolder(e:Event);
-        console.log("main insade")
+        console.log("main inside")
         // this.router.navigate(['/portal/' + this.ctx.domain]);
     }
 
@@ -318,7 +350,6 @@ export class MainComponent extends PageComponent {
         this.searchService.request['category'] = e.node.id;
         this.searchService.request['pageIndex'] = 1;
         this.searchService.pageIndex = 0;
-        // this.breadcrumbItems.length = 1;
         this.searchService.renderSearch();
     }
 
@@ -344,8 +375,6 @@ export class MainComponent extends PageComponent {
     protected onMyFolder(e) {
         this.router.navigate(['/portal/' + this.ctx.domain]);
         this.breadcrumbItems.length = 1;
-        // this.searchService.request['folder'] = undefined;
-        // this.searchService.request['pageIndex'] = 1;
         this.ctx.currentSearchType = '1';
         this.ctx.currentSearchFileType = '0';
         this.searchService.request = {domain: this.ctx.domain};
@@ -428,27 +457,8 @@ export class MainComponent extends PageComponent {
         })
         return tmp;
     }
-    // menuMouseOver(): void {
-    //     if (window.matchMedia(`(min-width: 960px)`).matches && this.collapseSidebar) {
-    //         this.sidenav.mode = 'over';
-    //     }
-    // }
-    //
-    // menuMouseOut(): void {
-    //     if (window.matchMedia(`(min-width: 960px)`).matches && this.collapseSidebar) {
-    //         this.sidenav.mode = 'side';
-    //     }
-    // }
-    // customizerFunction() {
-    //     this.customizerIn = !this.customizerIn;
-    // }
-    // addClassOnBody(event) {
-    //     if (event.checked) {
-    //         $('body').addClass('dark-theme-active');
-    //     } else {
-    //         $('body').removeClass('dark-theme-active');
-    //     }
-    // }
+    
+    
 
     noticeTabChange(tabIndex){
         switch (tabIndex){
@@ -461,6 +471,35 @@ export class MainComponent extends PageComponent {
 
                 break;
         }
+    }
+    languageClick(type){
+        this.languagetype=type;
+
+        // switch (type) {
+        //     case 0:
+        //         this.ctx.changeLanguage('en');
+        //         break;
+        //     case 1:
+        //         this.ctx.changeLanguage('zh');
+        //         break;
+        // }
+        // if(type===0){
+        //     this.ctx.changeLanguage('zh');
+        //     this.languagePic="assets/images/ch.png"
+        //     type===1;
+        // }else{
+        //     this.ctx.changeLanguage('en');
+        //     this.languagePic="assets/images/mg.png"
+        //     type===0;
+        // }
+        this.languagePic=this.languagePic==="assets/images/mg.png"?"assets/images/ch.png":"assets/images/mg.png";
+        this.switchlanguage=this.switchlanguage==="changeLanguage.cn"?"changeLanguage.en":"changeLanguage.cn";
+        if(this.languagePic==="assets/images/mg.png"){
+            this.ctx.changeLanguage('zh')
+        }else{
+            this.ctx.changeLanguage('en');
+        }
+        
     }
 }
 
