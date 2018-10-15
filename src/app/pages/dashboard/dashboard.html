@@ -5,18 +5,36 @@
             <!--筛选-->
             <div class="filter">
                 <ul>
-                    <ng-container  *ngFor="let condition of searchService.conditions,let ind =index">
-                        <li class="clearfix" [ngClass]="{'showMore':condition.isShowMore}" *ngIf="ind===1?false:true">
-                            <div class="filter-title">{{condition.label}}</div>
-                            <div class="filterItemContainer">
-                                <div class="filter-item" *ngFor="let item of condition.items,let i =index" [ngClass]="{'active':item.isActived,'noLimits':i===0}"
-                                    (click)="renderFilterResult($event,ind,i,condition.name,item)">{{item.label?item.label:item.value}}
+                    <ng-container  *ngFor="let condition of searchService.conditions,let ind =index" >
+                        <ng-container *ngIf="!condition.isShowMore">
+                            <li class="clearfix" [ngClass]="{'showMore':condition.isShowMore}" *ngIf="ind===1?false:true" fxLayoutAlign="start center" fxLayout="row">
+                                <div class="filter-title">{{condition.label}}</div>
+                                <div class="filterItemContainer">
+                                    <div class="filter-item" *ngFor="let item of condition.items,let i =index" [ngClass]="{'active':item.isActived,'noLimits':i===0}"
+                                        (click)="renderFilterResult($event,ind,i,condition.name,item)">{{item.label?item.label:item.value}}
+                                    </div>
                                 </div>
-                            </div>
-                            <button *ngIf="condition.isShowMore" mat-button class="moreCategories" (click)="toggleMoreCategories(ind)">更多
-                                <i class="fa fa-angle-down" [ngClass]="{'fa-angle-up':condition.isShowMore}"></i>
-                            </button>
-                        </li>
+                                <button *ngIf="!condition.isShowMore" mat-button class="moreCategories" (click)="toggleMoreCategories(ind)" fxFlexAlign="center">+多选
+                                    <!-- <i class="fa fa-angle-down" [ngClass]="{'fa-angle-up':condition.isShowMore}" ></i> -->
+                                </button>
+                            </li>
+                        </ng-container>
+                        <ng-container *ngIf="ind===1?false:true" >
+                            <div *ngIf="condition.isShowMore" style="border:1px solid skyblue" fxLayout="column" fxLayoutWrap class="more-margin-container">
+                                       <div fxLayout="row">
+                                           <label  class="more-margin-header" >{{condition.label}}</label>
+                                            <section class="more-section" >
+                                                    <mat-checkbox class="more-margin"  *ngFor="let item of condition.items,let i =index" (change)="onChangeCategory($event, item)">{{item.label?item.label:item.value}}</mat-checkbox>
+                                            </section>
+                                       </div>
+                                       <div fxLayout="row" fxLayoutAlign="center center" class="button-container">
+                                           <div>
+                                               <button  mat-flat-button style="width:70px;height:30px;background-color:#40A3FF;color:white" (click)="goMoreItem($event,ind)"> 确定</button>
+                                               <button  mat-button style="width:70px;height:30px;background-color:#EEEEEE;" (click)="cancelMoreItem($event,ind)">取消</button>
+                                           </div>
+                                       </div>
+                            </div>            
+                        </ng-container>
                     </ng-container>
                 </ul>
             </div>

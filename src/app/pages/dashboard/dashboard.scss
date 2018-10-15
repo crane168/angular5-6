@@ -89,7 +89,7 @@
 }
 
 .filter-header {
-  padding-left: 5%; //background-color: rgba(240, 240, 240, 1);
+  // padding-left: 5%; //background-color: rgba(240, 240, 240, 1);
   padding-bottom: 15px;
 }
 
@@ -162,13 +162,17 @@ ul {
   }
   .moreCategories {
     margin-left: 20px;
-    outline: none;
+    // outline: none;
+    width:58px;
+    height:auto;
+    border: 1px solid #DDDDDD;
     font-size: 14px;
-    color: rgba(0, 0, 0, 0.87);
-    font-weight: 400;
-    i {
-      margin-left: 4px;
-    }
+    color: #999999;
+    // font-weight: 400;
+    // text-align: center;
+    // i {
+    //   margin-left: 4px;
+    // }
   }
   .filterItemContainer {
     float: left;
@@ -254,7 +258,7 @@ ul {
 
 .search {
   .search-options {
-    padding-left: 5.7%;
+    padding-left: .7%;
     font-size: 14px;
     color: rgba(0, 0, 0, 0.85);
     float: left;
@@ -856,4 +860,35 @@ mat-toolbar span:nth-child(3) {
 
 .hidden {
   display: none;
+}
+
+.filter{
+  .more-margin-container{
+    margin-bottom:10px;
+    .button-container{
+      button{
+        outline: none;
+        margin:0px 40px 10px 0px;
+      }
+    }
+    .more-margin-header{
+     font-size: 14px;
+     color: #333333;
+     letter-spacing: 1px;
+     margin:15px 0 50px 10px;
+     width:70px;
+     height:20px; 
+    }
+    .more-section{
+     font-size: 14px!important;
+     color: #555555;
+     letter-spacing: 1px;
+     .more-margin{
+       margin:0 10px;
+       /deep/ .mat-checkbox-layout{
+         margin:15px 30px!important;
+       }
+     }
+    }
+  }
 }

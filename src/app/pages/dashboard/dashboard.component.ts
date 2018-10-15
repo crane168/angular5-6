@@ -10,7 +10,10 @@ import { DlgAutherizeComponent } from "../../dialog/dialog.autherize";
 import { PageTitleService } from "../../service/page-title.service";
 import { Context } from "../../service/context.service";
 import { FileService } from "../../service/file.service";
-
+import {
+  FormBuilder,
+  FormGroup,
+} from '@angular/forms';
 export enum fileOperatorType {
   moveFile = 1,
   sendMail = 2,
@@ -65,7 +68,8 @@ export class DashboardComponent extends PageComponent {
   private folderInfo: any;
   private dlgSendMail: MatDialogRef<DlgSendMailComponent>;
   private dlgAutherize: MatDialogRef<DlgAutherizeComponent>;
-
+  public moreForm:FormGroup;
+  public temArr:any = {"moreItem":[]};
   @ViewChild("sideBar")
   sideBar: ElementRef;
   @ViewChild("enterpriseSideTree")
@@ -86,7 +90,8 @@ export class DashboardComponent extends PageComponent {
     protected fileService: FileService,
     private searchService: SearchService,
     private dialog: MatDialog,
-    private pageTitleService: PageTitleService
+    private pageTitleService: PageTitleService,
+    private fb: FormBuilder
   ) {
     super(ctx, route, router);
     ctx.isShowAllSearchDiv = true;
@@ -132,6 +137,7 @@ export class DashboardComponent extends PageComponent {
           }
         });
     }
+    // this.moreForm=this.fb.group
   }
 
   protected onPageRender() {}
@@ -241,7 +247,22 @@ export class DashboardComponent extends PageComponent {
     this.searchService.pageIndex = 0;
     this.searchService.renderSearch(true);
   }
-
+  //获取多选标签
+  onChangeCategory(event,item:any){
+       this.temArr.moreItem.push(item.label)
+       console.log(this.temArr)
+  }
+//帅选多个文件
+goMoreItem(event,changeId){
+  // alert("进行多个筛选");
+  this.searchService.conditions[changeId].isShowMore = false;
+  console.log(changeId)
+}
+cancelMoreItem(event,changeId){
+  // alert("进行多个筛选");
+  this.searchService.conditions[changeId].isShowMore = false;
+  console.log(changeId)
+}
   // 排序事件
   doSort(e) {
     this.sortBy = this.sortBy === "asc" ? "desc" : "asc";
@@ -254,6 +275,7 @@ export class DashboardComponent extends PageComponent {
 
   //切换更多
   toggleMoreCategories(changeId) {
+    
     this.searchService.conditions[changeId].isShowMore = !this.searchService
       .conditions[changeId].isShowMore;
   }
