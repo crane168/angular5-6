@@ -193,7 +193,7 @@ ul {
     }
     .filter-item.active {
       color: #fff;
-      background-color: #25B9C3;
+      background-color: #40A3FF;
       border-radius: 5px; //width: 60px;
     }
   }
@@ -260,16 +260,32 @@ ul {
   .search-options {
     padding-left: .7%;
     font-size: 14px;
-    color: rgba(0, 0, 0, 0.85);
-    float: left;
+    color: #333333;
+    // float: left;
   }
   .serch-input {
-    float: left;
-    position: relative;
-    span {
-      font-size: 14px;
-      color: rgba(0, 0, 0, 0.65);
-      margin-left: 15px;
+    // float: left;
+    // position: relative;
+    // span {
+    //   font-size: 14px;
+    //   color: rgba(0, 0, 0, 0.65);
+    //   margin-left: 15px;
+    // }
+    div{
+      border: 0.5px solid #DDDDDD;
+      border-radius: 2px;
+      width:100px;
+      height:27px;
+      margin-left:15px;
+      // font-size: 14px;
+      color: #555555;
+      letter-spacing: 1px;
+      span{
+        // width:10px;
+        // height:5px;
+        // background:url('assets/images/drop-down.svg')
+        padding:5px;
+      }
     }
   }
   select {

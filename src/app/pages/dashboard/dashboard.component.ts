@@ -98,7 +98,7 @@ export class DashboardComponent extends PageComponent {
   }
 
   protected onPageInit() {
-    this.pageTitleService.setTitle("header.Home");
+    this.pageTitleService.setTitle("景通科技");
     this.operateFiles = [];
     this.ctx.selectedLists = [];
     // this.panel1.expanded = true;
@@ -236,6 +236,7 @@ export class DashboardComponent extends PageComponent {
       if (conditionName === "timestamp") {
         this.searchService.request[conditionName] = {};
         this.searchService.request[conditionName]["from"] = term.from;
+        console.log(term)
         this.searchService.request[conditionName]["to"] = term.to;
       } else {
         this.searchService.request[conditionName] = term.value;
@@ -249,14 +250,35 @@ export class DashboardComponent extends PageComponent {
   }
   //获取多选标签
   onChangeCategory(event,item:any){
-       this.temArr.moreItem.push(item.label)
+       this.temArr.moreItem.push(item)
        console.log(this.temArr)
   }
-//帅选多个文件
-goMoreItem(event,changeId){
+//筛选多个文件
+goMoreItem(event,changeId,conditionName,terms){
   // alert("进行多个筛选");
+  // this.searchService.conditions[changeId].isShowMore = false;
+  // console.log(changeId)
+  terms.forEach(term => {
+    let tmpVal = term.label ? term.label : term.value;
+    if (tmpVal && tmpVal !== "不限") {
+      if (conditionName === "timestamp") {
+        this.searchService.request[conditionName] = {};
+        this.searchService.request[conditionName]["from"] = term.from;
+        console.log(term)
+        this.searchService.request[conditionName]["to"] = term.to;
+      } else {
+        this.searchService.request[conditionName] = term.value;
+      }
+    } else {
+      this.searchService.request[conditionName] = undefined;
+    }
+  });
+  this.searchService.request.pageIndex = 1;
+  this.searchService.pageIndex = 0;
+  this.searchService.renderSearch(true);
   this.searchService.conditions[changeId].isShowMore = false;
-  console.log(changeId)
+  console.log(changeId);
+  this.temArr.moreItem=[];
 }
 cancelMoreItem(event,changeId){
   // alert("进行多个筛选");

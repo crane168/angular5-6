@@ -44,6 +44,7 @@ export class SearchService extends HttpService {
                             return item.items.unshift({"label": "不限"});
                         });
                         this.conditions = res.facets;
+                        console.log(this.conditions)
                         this.conditions.forEach((condition) => {
                             condition.isShowMore = false;
                             condition.items.map((item, num) => {

@@ -5,7 +5,7 @@
             <!--筛选-->
             <div class="filter">
                 <ul>
-                    <ng-container  *ngFor="let condition of searchService.conditions,let ind =index" >
+                    <ng-container  *ngFor="let condition of searchService.conditions,let ind = index">
                         <ng-container *ngIf="!condition.isShowMore">
                             <li class="clearfix" [ngClass]="{'showMore':condition.isShowMore}" *ngIf="ind===1?false:true" fxLayoutAlign="start center" fxLayout="row">
                                 <div class="filter-title">{{condition.label}}</div>
@@ -29,7 +29,7 @@
                                        </div>
                                        <div fxLayout="row" fxLayoutAlign="center center" class="button-container">
                                            <div>
-                                               <button  mat-flat-button style="width:70px;height:30px;background-color:#40A3FF;color:white" (click)="goMoreItem($event,ind)"> 确定</button>
+                                               <button  mat-flat-button style="width:70px;height:30px;background-color:#40A3FF;color:white" (click)="goMoreItem($event,ind,condition.name,temArr.moreItem)"> 确定</button>
                                                <button  mat-button style="width:70px;height:30px;background-color:#EEEEEE;" (click)="cancelMoreItem($event,ind)">取消</button>
                                            </div>
                                        </div>
@@ -40,27 +40,36 @@
             </div>
         </div>
         <div class="filter-body">
-            <div class="search">
-                <div class="search-options">高级筛选</div>
-                <div class="serch-input">
-                    <!-- <span>关键字</span>
-                    <select class="selectSearchType" [(ngModel)]="ctx.currentSearchType" (change)="changeSearchType($event)">
-                        <option value=1 selected>不限</option>
-                        <option value=2>上传人</option>
-                    </select> -->
-                    <span>文件类型</span>
-                    <select class="selectFileType" [(ngModel)]="ctx.currentSearchFileType" (change)="changeFileType($event)">
-                        <option value="0">不限</option>
-                        <option value="{{fileType.viewVal}}" *ngFor="let fileType of fileTypes">{{fileType.viewVal}}
-                        </option>
-                    </select>
-                    <span>搜索内容</span>
-                    <input type="text" placeholder="不限" name="partSearch" (keyup)="doSearchContent($event)" [(ngModel)]="searchService.insetSearchKey">
-                    <button type="submit" style="cursor: default">
-                        <i class="icon-search"></i>
-                    </button>
+            <div class="search" fxLayout="column">
+                <div fxLayout="row">
+                    <div class="search-options">高级筛选</div>
+                    <div class="serch-input" fxLayout="row">
+                        <!-- <span>关键字</span>
+                        <select class="selectSearchType" [(ngModel)]="ctx.currentSearchType" (change)="changeSearchType($event)">
+                            <option value=1 selected>不限</option>
+                            <option value=2>上传人</option>
+                        </select> -->
+                        <!-- <span>文件类型</span>
+                        <div class="selectFileType" [(ngModel)]="ctx.currentSearchFileType" (change)="changeFileType($event)">
+                            <option value="0">不限</option>
+                            <option value="{{fileType.viewVal}}" *ngFor="let fileType of fileTypes">{{fileType.viewVal}}
+                            </option>
+                        </div> -->
+                        <!-- <span>搜索内容</span>
+                        <input type="text" placeholder="不限" name="partSearch" (keyup)="doSearchContent($event)" [(ngModel)]="searchService.insetSearchKey">
+                        <button type="submit" style="cursor: default">
+                            <i class="icon-search"></i>
+                        </button> -->
+                        <div class="file-tag"><span>文件标签</span><svg-icon src="assets/images/drop-down.svg" [svgStyle]="{'width.px':20,'height.px':15}"></svg-icon></div>
+                        <div class="file-tag"><span>文件类型</span><svg-icon src="assets/images/drop-down.svg" [svgStyle]="{'width.px':20,'height.px':15}"></svg-icon></div>
+                    </div>
                 </div>
-
+                <div class="folding-screen">
+                    <div>
+                       <span >1</span>
+                       <span >2</span>
+                    </div>
+                </div>
             </div>
             <div class="selector">
                 <!--<span class="select-all">-->

@@ -114,7 +114,7 @@ import { RoutingModule } from "./app.routing";
 
 
 //后添加的code
-
+import {AngularSvgIconModule} from 'angular-svg-icon';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -180,6 +180,7 @@ const perfectScrollbarConfig: PerfectScrollbarConfigInterface = {
     CountdownModule,
     // MatStepperModule,
     ImageCropperModule,
+    AngularSvgIconModule,
     TranslateModule.forRoot({
       loader: {
           provide: TranslateLoader,

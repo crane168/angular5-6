@@ -645,6 +645,12 @@ angular-async-local-storage@^5.0.0:
   version "5.0.2"
   resolved "http://registry.npm.taobao.org/angular-async-local-storage/download/angular-async-local-storage-5.0.2.tgz#9d6499625a7cb8c9a9fcff7f88d7d97ab45c06c8"
 
+angular-svg-icon@^6.0.0:
+  version "6.0.0"
+  resolved "http://registry.npm.taobao.org/angular-svg-icon/download/angular-svg-icon-6.0.0.tgz#99d8d48c9d7df8edbb8cb8f038062a515a007929"
+  dependencies:
+    tslib "^1.9.0"
+
 ansi-escapes@^3.0.0:
   version "3.1.0"
   resolved "http://registry.npm.taobao.org/ansi-escapes/download/ansi-escapes-3.1.0.tgz#f73207bb81207d75fd6c83f125af26eea378ca30"
@@ -4384,10 +4390,6 @@ ng2-pdf-viewer@^5.1.1:
   dependencies:
     "@types/pdfjs-dist" "^0.1.2"
     pdfjs-dist "2.0.550"
-
-ng2-translate@5.0.0:
-  version "5.0.0"
-  resolved "http://registry.npm.taobao.org/ng2-translate/download/ng2-translate-5.0.0.tgz#0adbb510eb5007a2d6ded5f5d26888c14760aca5"
 
 ng5-breadcrumb@0.0.6:
   version "0.0.6"
