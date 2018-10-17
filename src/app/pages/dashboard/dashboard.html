@@ -24,7 +24,9 @@
                                        <div fxLayout="row">
                                            <label  class="more-margin-header" >{{condition.label}}</label>
                                             <section class="more-section" >
-                                                    <mat-checkbox class="more-margin"  *ngFor="let item of condition.items,let i =index" (change)="onChangeCategory($event, item)">{{item.label?item.label:item.value}}</mat-checkbox>
+                                                <ng-container *ngFor="let item of condition.items,let i =index">
+                                                    <mat-checkbox class="more-margin"   (change)="onChangeCategory($event, item)"  #checkb>{{item.label?item.label:item.value}}</mat-checkbox>
+                                                </ng-container>
                                             </section>
                                        </div>
                                        <div fxLayout="row" fxLayoutAlign="center center" class="button-container">
@@ -41,7 +43,7 @@
         </div>
         <div class="filter-body">
             <div class="search" fxLayout="column">
-                <div fxLayout="row">
+                <div fxLayout="row" class="search-high">
                     <div class="search-options">高级筛选</div>
                     <div class="serch-input" fxLayout="row">
                         <!-- <span>关键字</span>
@@ -60,15 +62,41 @@
                         <button type="submit" style="cursor: default">
                             <i class="icon-search"></i>
                         </button> -->
-                        <div class="file-tag"><span>文件标签</span><svg-icon src="assets/images/drop-down.svg" [svgStyle]="{'width.px':20,'height.px':15}"></svg-icon></div>
-                        <div class="file-tag"><span>文件类型</span><svg-icon src="assets/images/drop-down.svg" [svgStyle]="{'width.px':20,'height.px':15}"></svg-icon></div>
+                        <div class="file-tag" (click)="onUnfold(0)" [class.active]="unfoldTag===true"><span>文件标签</span><svg-icon src="{{unfoldSrc0}}" [svgStyle]="{'width.px':20,'height.px':15}"></svg-icon></div>
+                        <div class="file-type" (click)="onUnfold(1)" [class.active]="unfoldType===true"><span>文件类型</span><svg-icon src="{{unfoldSrc1}}" [svgStyle]="{'width.px':20,'height.px':15}"></svg-icon></div>
                     </div>
                 </div>
-                <div class="folding-screen">
-                    <div>
-                       <span >1</span>
-                       <span >2</span>
+                <div class="folding-screen" *ngFor="let condition of searchService.conditions,let ind = index">
+                    <ng-container *ngIf="ind===1?true:false" >
+                        <div *ngIf="unfoldTag===true?true:false" class="unfoldTag-container" fxLayout="row">
+                           <span *ngFor="let item of condition.items,let i =index" fxFlexAlign="center">{{item.label?item.label:item.value}}</span>
+                        </div>                 
+                        <div *ngIf="unfoldType===true?true:false" class="unfoldType-container" fxLayout="row" (change)="changeFileType($event)">
+                                <span  fxFlexAlign="center" *ngFor="let fileType of fileTypes,let i =index">{{fileType.viewVal}}</span>
+                        </div>
+                    </ng-container>
+                </div>
+                <div class="filter-result" fxLayout="row" *ngIf="temArr.moreItem.length>0">
+                    <div class="filter-options">筛选结果</div>
+                    <div class="filter-result-bread" fxLayout="row">
+                            <div class="file-tag"   fxLayoutAlign="center center">
+                                <span >文件分类:</span>
+                                <div *ngFor="let item of temArr.moreItem" class="filter-bread">
+                                    <span [style.display]="item.label?'block':'none'">{{item.label?item.label:""}}</span>
+                                </div>
+                                <svg-icon src="assets/images/closedIcon.svg" fxLayout="row" fxLayoutAlign="center center" [svgStyle]="{'width.px':20,'height.px':20}" ></svg-icon>
+                            </div>
+                            <div class="file-type"  fxLayoutAlign="center center" >
+                                <span>更新日期:</span>
+                                <div *ngFor="let item of temArr.moreItem" class="filter-bread">
+                                        <span [style.display]="item.label?'none':'block'">{{item.label?"":item.value}}</span>
+                                </div>
+                                <svg-icon src="assets/images/closedIcon.svg" fxLayoutAlign="center center" [svgStyle]="{'width.px':20,'height.px':20}"></svg-icon>
+                            </div>
                     </div>
+                    <!-- <div *ngIf="unfoldTag===false|unfoldType===false" class="unfoldTag-container" fxLayout="row">
+                            <span *ngFor="let item of condition.items,let i =index" fxFlexAlign="center">{{item.label?item.label:item.value}}</span>
+                    </div>  -->
                 </div>
             </div>
             <div class="selector">

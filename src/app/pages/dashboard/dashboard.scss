@@ -257,6 +257,12 @@ ul {
 }
 
 .search {
+  margin:3px 0px 15px 0px;
+  border-bottom:1px solid #EEEEEE;
+  height:auto!important;
+  .search-high{
+    margin-bottom:10px;
+  }
   .search-options {
     padding-left: .7%;
     font-size: 14px;
@@ -274,17 +280,59 @@ ul {
     div{
       border: 0.5px solid #DDDDDD;
       border-radius: 2px;
-      width:100px;
-      height:27px;
+      width:auto;
+      height:29px;
       margin-left:15px;
-      // font-size: 14px;
+      font-size: 14px;
       color: #555555;
       letter-spacing: 1px;
       span{
-        // width:10px;
-        // height:5px;
-        // background:url('assets/images/drop-down.svg')
         padding:5px;
+      }
+    }
+    div.active{
+        border:.5px solid #40A3FF;
+        border-bottom:none;
+        color:#40A3FF;
+    }
+  }
+  .folding-screen{
+    div{
+        border:.5px solid #40A3FF;
+        // margin-top:27px;
+        background: #FFFFFF;
+        span{
+          display: block;
+          // width:30px;
+          // height:20px;
+          padding:20px;
+          font-size: 14px;
+          color: #555555;
+          letter-spacing: 1px;
+      }
+    }
+  }
+  .filter-result{
+    font-size: 14px;
+    color: #999999;
+    // letter-spacing: 1px;
+    margin:13px 0px;
+    .filter-options{
+      padding-left: .7%;
+    }
+    .filter-result-bread{
+      >div{
+        border: 0.5px solid #DDDDDD;
+        border-radius: 2px;
+        width:auto;
+        height:29px;
+        margin-left:15px;
+        .filter-bread{
+          color: #40A3FF;;
+        }
+        span{
+          padding:5px;
+        }
       }
     }
   }

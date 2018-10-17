@@ -68,8 +68,13 @@ export class DashboardComponent extends PageComponent {
   private folderInfo: any;
   private dlgSendMail: MatDialogRef<DlgSendMailComponent>;
   private dlgAutherize: MatDialogRef<DlgAutherizeComponent>;
-  public moreForm:FormGroup;
+  public moreForm : FormGroup;
   public temArr:any = {"moreItem":[]};
+  public unfoldTag:boolean = false;
+  public unfoldType:boolean = false;
+  public unfoldSrc0:string = "assets/images/drop-down.svg";
+  public unfoldSrc1:string = "assets/images/drop-down.svg";
+  public checked=false;
   @ViewChild("sideBar")
   sideBar: ElementRef;
   @ViewChild("enterpriseSideTree")
@@ -82,7 +87,8 @@ export class DashboardComponent extends PageComponent {
   fileListBody: ElementRef;
   @ViewChild("chbox")
   chbox: ElementRef;
-
+  @ViewChild("checkb")
+  checkb:ElementRef;
   constructor(
     public ctx: Context,
     protected route: ActivatedRoute,
@@ -250,15 +256,27 @@ export class DashboardComponent extends PageComponent {
   }
   //获取多选标签
   onChangeCategory(event,item:any){
-       this.temArr.moreItem.push(item)
-       console.log(this.temArr)
+    if(event.checked){
+      this.temArr.moreItem.push(item)
+      console.log(this.temArr)
+    }else{
+      this.temArr.moreItem.map((value,index)=>{
+        if(this.temArr.moreItem[index]===item){
+          this.temArr.moreItem.splice(index,1)
+        }
+      })
+      console.log(this.temArr.moreItem) 
+    }
   }
 //筛选多个文件
 goMoreItem(event,changeId,conditionName,terms){
   // alert("进行多个筛选");
   // this.searchService.conditions[changeId].isShowMore = false;
   // console.log(changeId)
-  terms.forEach(term => {
+  terms.forEach((term,index) => {
+    // if(terms[index]===term){
+    //   terms.splice(index,1)
+    // }
     let tmpVal = term.label ? term.label : term.value;
     if (tmpVal && tmpVal !== "不限") {
       if (conditionName === "timestamp") {
@@ -278,12 +296,28 @@ goMoreItem(event,changeId,conditionName,terms){
   this.searchService.renderSearch(true);
   this.searchService.conditions[changeId].isShowMore = false;
   console.log(changeId);
-  this.temArr.moreItem=[];
+  // this.temArr.moreItem=[];
 }
 cancelMoreItem(event,changeId){
   // alert("进行多个筛选");
   this.searchService.conditions[changeId].isShowMore = false;
   console.log(changeId)
+}
+// 展开更多选项内容-标签
+onUnfold(type){
+  switch(type){
+    case 0://文件标签
+    this.unfoldType=this.unfoldType===false?false:false;
+    this.unfoldSrc1="assets/images/drop-down.svg"
+    this.unfoldTag = this.unfoldTag===false?true:false;
+    this.unfoldSrc0 = this.unfoldTag===true?"assets/images/packup.svg":"assets/images/drop-down.svg";
+    break;
+    case 1://文件分类
+    this.unfoldTag=this.unfoldTag===false?false:false;
+    this.unfoldSrc0="assets/images/drop-down.svg";
+    this.unfoldType = this.unfoldType===false?true:false;
+    this.unfoldSrc1 = this.unfoldType===true?"assets/images/packup.svg":"assets/images/drop-down.svg";
+  }
 }
   // 排序事件
   doSort(e) {
