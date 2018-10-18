@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.2 (57519) - http://www.bohemiancoding.com/sketch -->
+    <title>上传</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="1-1-首页" transform="translate(-233.000000, -362.000000)" fill-rule="nonzero">
+            <g id="上传" transform="translate(233.000000, 362.000000)">
+                <g id="Group-14" transform="translate(2.000000, 3.000000)">
+                    <rect id="Rectangle-37" fill="#1890FF" x="5.3" y="1" width="1.4" height="6"></rect>
+                    <rect id="Rectangle-38" fill="#8BC7FF" x="0" y="9" width="12" height="1.4"></rect>
+                    <polyline id="Rectangle-36" stroke="#1890FF" stroke-width="1.4" transform="translate(6.000000, 3.000000) rotate(-315.000000) translate(-6.000000, -3.000000) " points="4 5 4 1 8 1"></polyline>
+                </g>
+                <rect id="Rectangle-39" fill="#FFFFFF" opacity="0" x="0" y="0" width="16" height="16"></rect>
+            </g>
+        </g>
+    </g>
+</svg>

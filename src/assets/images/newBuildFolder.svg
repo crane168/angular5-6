@@ -1,0 +1,21 @@
+
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.2 (57519) - http://www.bohemiancoding.com/sketch -->
+    <title>新建-文件夹</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="1-3-首页-新建" transform="translate(-160.000000, -443.000000)">
+            <g id="Group-58" transform="translate(150.000000, 430.000000)">
+                <g id="新建-文件夹" transform="translate(10.000000, 13.000000)">
+                    <g id="Group-10" transform="translate(0.000000, 1.000000)" fill-rule="nonzero">
+                        <polygon id="Rectangle-32" fill="#FFEDB5" points="0 0 5.87469076 0 7.29315751 1.47368421 16 1.47368421 16 14 0 14"></polygon>
+                        <rect id="Rectangle-32" fill="#FFCA28" x="0" y="2.94736842" width="16" height="11.0526316"></rect>
+                    </g>
+                    <rect id="Rectangle-21" fill="#D8D8D8" opacity="0" x="0" y="0" width="16" height="16"></rect>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

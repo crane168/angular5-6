@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="6px" height="6px" viewBox="0 0 6 6" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.2 (57519) - http://www.bohemiancoding.com/sketch -->
+    <title>新建箭头</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="1-1-首页" transform="translate(-207.000000, -367.000000)">
+            <g id="新建箭头" transform="translate(207.000000, 367.000000)">
+                <rect id="Rectangle-23" fill="#D8D8D8" opacity="0" x="0" y="0" width="6" height="6"></rect>
+                <path d="M0.073220304,4.37711503 L2.79396967,1.09511819 C2.90747414,0.968293938 3.10627489,0.968293938 3.21977937,1.09511819 L5.92709624,4.37711503 C6.09097253,4.56097664 5.96067745,4.85220269 5.71419139,4.85220269 L0.28545353,4.85220269 C0.0396390974,4.85220269 -0.0913276085,4.56097664 0.073220304,4.37711503 Z" id="Shape" fill="#B2B7CA" fill-rule="nonzero" transform="translate(3.000000, 2.926101) rotate(-180.000000) translate(-3.000000, -2.926101) "></path>
+            </g>
+        </g>
+    </g>
+</svg>

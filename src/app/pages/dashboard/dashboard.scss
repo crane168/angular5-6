@@ -247,12 +247,46 @@ ul {
   line-height: 28px;
   position: relative; //padding-top:15px;
 }
-
-.select-all {
-  font-size: 16px;
-  padding-left: 3%;
-  a {
-    color: rgba(0, 0, 0, 0.87);
+.selector{
+  // .logos{
+  //   background:url("assets/images/logo.png")
+  // }
+  .select-all {
+    font-size: 16px;
+    padding-left: 2%;
+    width:12px;
+    height:12px;
+    a {
+      color: rgba(0, 0, 0, 0.87);
+    }
+  }
+  .new-container{
+      margin-left:28px;
+      font-size:14px;
+      font-family:PingFangSC-Regular;
+      font-weight:400;
+      color:rgba(51,51,51,1);
+      div{
+        margin-right:18px;
+        span{
+          margin:5px;
+        }
+      }
+  }
+  .new-build-doc{
+     div{
+       width:auto;
+       height:auto;
+       position:absolute;
+     }
+     div.filter-doc{
+       left:4%;
+       top: 76%;
+     }
+     div.filter-upload{
+       left:10%;
+       top: 76%;
+     }
   }
 }
 
@@ -328,7 +362,13 @@ ul {
         height:29px;
         margin-left:15px;
         .filter-bread{
-          color: #40A3FF;;
+          color: #40A3FF;
+          span{
+            padding:5px 0px 5px 5px;
+            >span{
+              padding:0px!important;
+            }
+          }
         }
         span{
           padding:5px;
@@ -637,7 +677,7 @@ mat-expansion-panel {
   white-space: nowrap;
   overflow: hidden;
   cursor: pointer;
-  ont-family: PingFangSC-Regular;
+  font-family: PingFangSC-Regular;
   font-size: 14px;
   color: rgba(0, 0, 0, 0.85);
 }
@@ -755,8 +795,8 @@ mat-expansion-panel {
     width: 20px;
     height: 20px;
     .ui-chkbox-box {
-      width: 100%;
-      height: 100%;
+      // width: 100%;
+      // height: 100%;
     }
   }
 }
@@ -846,7 +886,7 @@ mat-expansion-panel {
 
 :host ::ng-deep .ui-chkbox-box.ui-state-active,
 .ui-radiobutton-box.ui-state-active {
-  background-color: rgba(16, 142, 233, 1);
+  background-color: #40A3FF!important;
   border: none;
   box-shadow: none;
   .fa.fa-check {
@@ -856,7 +896,7 @@ mat-expansion-panel {
 }
 
 :host ::ng-deep .ui-state-active {
-  background-color: rgba(16, 142, 233, 1);
+  background-color: #40A3FF;
 }
 
 :host ::ng-deep .ui-state-focus {
@@ -870,11 +910,11 @@ mat-expansion-panel {
   top: 50%;
   transform: translate(-50%);
   .ui-chkbox {
-    width: 27px;
-    height: 27px;
+    // width: 27px;
+    // height: 27px;
     .ui-chkbox-box {
-      width: 100%;
-      height: 100%;
+      // width: 100%;
+      // height: 100%;
     }
   }
 }
@@ -884,11 +924,11 @@ mat-expansion-panel {
     margin-bottom: 0;
   }
   .ui-chkbox {
-    width: 27px;
-    height: 27px;
+    // width: 27px;
+    // height: 27px;
     .ui-chkbox-box {
-      width: 100%;
-      height: 100%;
+      // width: 100%;
+      // height: 100%;
     }
   }
 }

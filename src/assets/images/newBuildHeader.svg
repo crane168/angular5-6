@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.2 (57519) - http://www.bohemiancoding.com/sketch -->
+    <title>新建</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="1-1-首页" transform="translate(-152.000000, -362.000000)" fill-rule="nonzero">
+            <g id="新建" transform="translate(152.000000, 362.000000)">
+                <path d="M9.66356261,13.3 L13.3,8.75445326 L13.3,2.7 L0.7,2.7 L0.7,13.3 L9.66356261,13.3 Z" id="Combined-Shape" stroke="#8BC7FF" stroke-width="1.4"></path>
+                <rect id="Rectangle-41" fill="#8BC7FF" x="2" y="5" width="10" height="1.4"></rect>
+                <rect id="Rectangle-43" fill="#1890FF" x="12.6" y="11" width="1.4" height="5"></rect>
+                <rect id="Rectangle-43" fill="#1890FF" transform="translate(13.300000, 13.300000) rotate(-270.000000) translate(-13.300000, -13.300000) " x="12.6" y="10.8" width="1.4" height="5"></rect>
+                <rect id="Rectangle-39" fill="#FFFFFF" opacity="0" x="0" y="0" width="16" height="16"></rect>
+            </g>
+        </g>
+    </g>
+</svg>

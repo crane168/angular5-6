@@ -25,9 +25,11 @@
               "src/lib/tree/angular-tree-component.css",
               "src/assets/font/styles.css",
               "src/assets/css/styles.css",
-              "node_modules/primeng/resources/themes/omega/theme.css",
+              "node_modules/font-awesome/scss/font-awesome.scss",
               "node_modules/primeng/resources/primeng.min.css",
-              "node_modules/font-awesome/scss/font-awesome.scss"
+              "node_modules/primeicons/primeicons.css",
+              "node_modules/primeng/resources/themes/nova-light/theme.css",
+              "node_modules/ng-zorro-antd/ng-zorro-antd.min.css"
             ],
             "scripts": [
               "node_modules/jquery/dist/jquery.min.js",
@@ -90,9 +92,11 @@
               "src/lib/tree/angular-tree-component.css",
               "src/assets/font/styles.css",
               "src/assets/css/styles.css",
-              "node_modules/primeng/resources/themes/omega/theme.css",
               "node_modules/primeng/resources/primeng.min.css",
-              "node_modules/font-awesome/scss/font-awesome.scss"
+              "node_modules/font-awesome/scss/font-awesome.scss",
+              "node_modules/primeicons/primeicons.css",
+              "node_modules/primeng/resources/themes/nova-light/theme.css",
+              "node_modules/ng-zorro-antd/ng-zorro-antd.min.css"
             ],
             "assets": [
               "src/assets"

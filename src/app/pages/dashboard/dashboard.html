@@ -82,35 +82,51 @@
                             <div class="file-tag"   fxLayoutAlign="center center">
                                 <span >文件分类:</span>
                                 <div *ngFor="let item of temArr.moreItem" class="filter-bread">
-                                    <span [style.display]="item.label?'block':'none'">{{item.label?item.label:""}}</span>
+                                    <span [style.display]="item.label?'block':'none'">{{item.label?item.label:""}}<span>、</span></span>
+                                    
                                 </div>
                                 <svg-icon src="assets/images/closedIcon.svg" fxLayout="row" fxLayoutAlign="center center" [svgStyle]="{'width.px':20,'height.px':20}" ></svg-icon>
                             </div>
                             <div class="file-type"  fxLayoutAlign="center center" >
                                 <span>更新日期:</span>
                                 <div *ngFor="let item of temArr.moreItem" class="filter-bread">
-                                        <span [style.display]="item.label?'none':'block'">{{item.label?"":item.value}}</span>
+                                        <span [style.display]="item.label?'none':'block'">{{item.label?"":item.value}}<span>、</span></span>
                                 </div>
                                 <svg-icon src="assets/images/closedIcon.svg" fxLayoutAlign="center center" [svgStyle]="{'width.px':20,'height.px':20}"></svg-icon>
                             </div>
                     </div>
-                    <!-- <div *ngIf="unfoldTag===false|unfoldType===false" class="unfoldTag-container" fxLayout="row">
-                            <span *ngFor="let item of condition.items,let i =index" fxFlexAlign="center">{{item.label?item.label:item.value}}</span>
-                    </div>  -->
                 </div>
             </div>
-            <div class="selector">
-                <!--<span class="select-all">-->
-                <!--<p-checkbox name="fileListBox" value="allChosedOrNot" label="全选" [(ngModel)]="selectedLists" inputId="ChosedOrNot" (onChange)="selectAllOrNot($event)"></p-checkbox>-->
-
-                <!--</span>-->
-                <div class="filter-operaters">
-                    <a routerLink="/portal/{{ctx.domain}}/uploadFile">
-                        <i class="icon-upload">上传</i>
-                    </a>
-                    <i class="icon-sort" (click)="doSort($event)">排序</i>
+            <div class="selector" fxLayout="column" >
+                <div fxLayout="row" fxLayoutAlign="start center">
+                    <span class="select-all" fxLayout="row">
+                        <p-checkbox name="fileListBox" value="allChosedOrNot"  [(ngModel)]="ctx.selectedLists" inputId="ChosedOrNot" fxLayoutAlign="center center"></p-checkbox>
+                        <!-- <p-checkbox name="group1" value="New York" label="纽约"  inputId="ny"></p-checkbox> -->
+                    </span>
+                    <!-- <div class="filter-operaters">
+                        <a routerLink="/portal/{{ctx.domain}}/uploadFile">
+                            <i class="icon-upload">上传</i>
+                        </a>
+                        <i class="icon-sort" (click)="doSort($event)">排序</i>
+                    </div> -->
+                    <!-- <p-menubar [model]="items"></p-menubar> -->
+                    <div class="new-container" fxLayout="row" >
+                        <div fxLayout="row" fxLayoutAlign="center center" (click)="onUnfold(2)">
+                            <svg-icon src="assets/images/newBuildHeader.svg" [svgStyle]="{'width.px':25,'height.px':22}" fxLayoutAlign="center center"></svg-icon>
+                            <span>新建</span>
+                            <svg-icon src="assets/images/new-arrow.svg"></svg-icon>
+                        </div>
+                        <div fxLayout="row" fxLayoutAlign="center center" (click)="onUnfold(3)">
+                            <svg-icon src="assets/images/new-upload.svg" fxLayoutAlign="center center"></svg-icon>
+                            <span>上传</span>
+                            <svg-icon src="assets/images/new-arrow.svg"></svg-icon>
+                        </div>
+                    </div>
                 </div>
-
+                <div class="new-build-doc"  style="border:1px solid red" fxLayout="row">
+                    <div class="filter-doc" *ngIf="unfoldDoc===true?true:false">筛选文档</div>
+                    <div class="filter-upload" *ngIf="unfoldUpload===true?true:false">上传文件</div>
+                </div>
             </div>
             <mat-toolbar>
                 <span>文件名</span>

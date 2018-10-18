@@ -107,6 +107,12 @@
   dependencies:
     tslib "^1.9.0"
 
+"@angular/cdk@^6.0.0":
+  version "6.4.7"
+  resolved "http://registry.npm.taobao.org/@angular/cdk/download/@angular/cdk-6.4.7.tgz#1549b304dd412e82bd854cc55a7d5c6772ee0411"
+  dependencies:
+    tslib "^1.7.1"
+
 "@angular/cdk@^6.4.6":
   version "6.4.6"
   resolved "http://registry.npm.taobao.org/@angular/cdk/download/@angular/cdk-6.4.6.tgz#478ec4010b193a0fb4c246768af4ab6854799a49"
@@ -1832,6 +1838,10 @@ dashdash@^1.12.0:
   resolved "http://registry.npm.taobao.org/dashdash/download/dashdash-1.14.1.tgz#853cfa0f7cbe2fed5de20326b8dd581035f6e2f0"
   dependencies:
     assert-plus "^1.0.0"
+
+date-fns@^1.29.0:
+  version "1.29.0"
+  resolved "http://registry.npm.taobao.org/date-fns/download/date-fns-1.29.0.tgz#12e609cdcb935127311d04d33334e2960a2a54e6"
 
 date-format@^1.2.0:
   version "1.2.0"
@@ -4374,6 +4384,14 @@ next-tick@1:
   version "1.0.0"
   resolved "http://registry.npm.taobao.org/next-tick/download/next-tick-1.0.0.tgz#ca86d1fe8828169b0120208e3dc8424b9db8342c"
 
+ng-zorro-antd@^1.6.0:
+  version "1.6.0"
+  resolved "http://registry.npm.taobao.org/ng-zorro-antd/download/ng-zorro-antd-1.6.0.tgz#28e5dd602bf0e59676ec032824e19049046d8999"
+  dependencies:
+    "@angular/cdk" "^6.0.0"
+    date-fns "^1.29.0"
+    tslib "^1.9.0"
+
 ng2-device-detector@^1.0.1:
   version "1.0.1"
   resolved "http://registry.npm.taobao.org/ng2-device-detector/download/ng2-device-detector-1.0.1.tgz#5abbc6380eac8b265f7dded9451a2672c18c8eaf"
@@ -5181,9 +5199,13 @@ pretty-error@^2.0.2:
     renderkid "^2.0.1"
     utila "~0.4"
 
-primeng@^6.1.2:
-  version "6.1.2"
-  resolved "http://registry.npm.taobao.org/primeng/download/primeng-6.1.2.tgz#b13e6f27ab36482dc4f3657d20aa29f48428a9cb"
+primeicons@^1.0.0:
+  version "1.0.0"
+  resolved "http://registry.npm.taobao.org/primeicons/download/primeicons-1.0.0.tgz#90061f168ef6227f21f0a7db8204ffa85cd27aec"
+
+primeng@^6.1.5:
+  version "6.1.5"
+  resolved "http://registry.npm.taobao.org/primeng/download/primeng-6.1.5.tgz#915cb29ea299b1f9d299d2557410c9ab1769cb58"
 
 process-nextick-args@~1.0.6:
   version "1.0.7"

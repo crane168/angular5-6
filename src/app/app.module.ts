@@ -21,7 +21,9 @@ import { NgxEchartsModule } from "ngx-echarts";
 import { HttpClientModule,HttpClient } from "@angular/common/http";
 import { ReversePipe } from "ngx-pipes";
 import { PdfViewerModule } from "ng2-pdf-viewer";
-import { BreadcrumbModule, CheckboxModule } from "primeng/primeng";
+// import { BreadcrumbModule, CheckboxModule } from "primeng/primeng";
+import { CheckboxModule } from "primeng/checkbox";
+import { BreadcrumbModule } from "primeng/breadcrumb";
 import {
   MatAutocompleteModule,
   MatButtonModule,
@@ -115,7 +117,8 @@ import { RoutingModule } from "./app.routing";
 
 //后添加的code
 import {AngularSvgIconModule} from 'angular-svg-icon';
-
+import {MenubarModule} from 'primeng/menubar';
+import { NgZorroAntdModule} from 'ng-zorro-antd';
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
@@ -181,6 +184,8 @@ const perfectScrollbarConfig: PerfectScrollbarConfigInterface = {
     // MatStepperModule,
     ImageCropperModule,
     AngularSvgIconModule,
+    MenubarModule,
+    NgZorroAntdModule,
     TranslateModule.forRoot({
       loader: {
           provide: TranslateLoader,

@@ -14,6 +14,8 @@ import {
   FormBuilder,
   FormGroup,
 } from '@angular/forms';
+//后加的code
+import {MenuItem} from 'primeng/api';
 export enum fileOperatorType {
   moveFile = 1,
   sendMail = 2,
@@ -74,7 +76,10 @@ export class DashboardComponent extends PageComponent {
   public unfoldType:boolean = false;
   public unfoldSrc0:string = "assets/images/drop-down.svg";
   public unfoldSrc1:string = "assets/images/drop-down.svg";
+  public unfoldDoc:boolean = false;
+  public unfoldUpload:boolean = false;
   public checked=false;
+  public items:MenuItem[];
   @ViewChild("sideBar")
   sideBar: ElementRef;
   @ViewChild("enterpriseSideTree")
@@ -143,8 +148,22 @@ export class DashboardComponent extends PageComponent {
           }
         });
     }
-    // this.moreForm=this.fb.group
-  }
+    // 新建和上传
+    this.items = [
+      {
+          label: '新建',
+          icon:'logos',
+          items: [{
+                  label: '文件夹', 
+                  icon: 'fa fa-plus',
+              },
+              {label: 'World文档(.docx)'},
+              {label: 'PowerPoint文档(.pptx)'},
+              {label: 'Excel文档(.xlsx)'}
+          ]
+      }
+  ];
+}
 
   protected onPageRender() {}
 
@@ -317,6 +336,15 @@ onUnfold(type){
     this.unfoldSrc0="assets/images/drop-down.svg";
     this.unfoldType = this.unfoldType===false?true:false;
     this.unfoldSrc1 = this.unfoldType===true?"assets/images/packup.svg":"assets/images/drop-down.svg";
+    break;
+    case 2:
+    this.unfoldUpload=this.unfoldUpload===false?false:false;
+    this.unfoldDoc=this.unfoldDoc===false?true:false;
+    break;
+    case 3:
+    this.unfoldDoc=this.unfoldDoc===false?false:false;
+    this.unfoldUpload=this.unfoldUpload===false?true:false;
+    break;
   }
 }
   // 排序事件
@@ -331,7 +359,6 @@ onUnfold(type){
 
   //切换更多
   toggleMoreCategories(changeId) {
-    
     this.searchService.conditions[changeId].isShowMore = !this.searchService
       .conditions[changeId].isShowMore;
   }
