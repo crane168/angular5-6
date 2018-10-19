@@ -114,7 +114,7 @@ export class Context {
     public isShowSearchLists: boolean = false;
     public developMode: boolean = false;
     public siteDomain: string;
-    private window: any;
+    public window: any;
     public breadcrumbItems: any[] = [
         {label: '我的文档'}
     ];
@@ -126,7 +126,9 @@ export class Context {
         this.window['alertControl'] = alert;
         this.siteDomain = this.window.location.hostname;
     }
-
+    get nativeWindow():any{
+        return _window();
+    }
     public isLogined() {
         return this.userId !== 0;
     }

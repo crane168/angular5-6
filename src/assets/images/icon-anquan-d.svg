@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="14px" height="14px" viewBox="0 0 14 14" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.2 (57519) - http://www.bohemiancoding.com/sketch -->
+    <title>D级</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="14" height="14"></rect>
+        <rect id="path-3" x="0" y="0" width="14" height="14"></rect>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="1-1-首页" transform="translate(-242.000000, -635.000000)">
+            <g id="Group-15" transform="translate(242.000000, 635.000000)">
+                <g id="D级">
+                    <mask id="mask-2" fill="white">
+                        <use xlink:href="#path-1"></use>
+                    </mask>
+                    <use id="Mask" fill="#D8D8D8" opacity="0" xlink:href="#path-1"></use>
+                    <path d="M7.22470097,13 L7.15884431,12.9810286 C2.19537839,11.5563342 2.00590506,8.59611306 2.00030438,8.47078423 L2,8.45712938 L2,2.07256238 L7.24830904,1 L12.2850586,2.07451307 L12.2851195,2.31092941 C12.2862274,8.55785143 12.2862274,8.55785143 12.281199,8.58857803 L12.2761219,8.61342706 C11.9253612,10.0186017 10.9483231,11.2211465 9.4506291,12.0910791 C8.33532736,12.7388494 7.33356108,12.974845 7.291556,12.9846367 L7.22470097,13 Z" id="Shape" fill="#E13F53" fill-rule="nonzero" mask="url(#mask-2)"></path>
+                    <text id="D" mask="url(#mask-2)" font-family="PingFangSC-Regular, PingFang SC" font-size="8" font-weight="normal" line-spacing="14" fill="#FFFFFF">
+                        <tspan x="4.176" y="7">D</tspan>
+                    </text>
+                    <mask id="mask-4" fill="white">
+                        <use xlink:href="#path-3"></use>
+                    </mask>
+                    <use id="Mask-Copy-4" fill="#D8D8D8" opacity="0" xlink:href="#path-3"></use>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -66,6 +66,20 @@ export class DashboardComponent extends PageComponent {
     { viewVal: "tar.bz2" },
     { viewVal: "data" }
   ];
+  public newBuildMenu : any[]=[
+      {"srcurl":"assets/images/newBuildFolder.svg",
+       "content":"文件夹"
+     },
+      {"srcurl":"assets/images/newBuildWord.svg",
+       "content":"World文档(.docx)"
+     },
+      {"srcurl":"assets/images/newBuildPpt.svg",
+      "content": "PowerPoint文档(.pptx)"
+     },
+      {"srcurl":"assets/images/newBuildExcel.svg",
+      "content":"Excel文档(.xlsx)"
+      }
+  ];
   private dlgFolder: MatDialogRef<DlgFolderComponent>;
   private folderInfo: any;
   private dlgSendMail: MatDialogRef<DlgSendMailComponent>;
@@ -80,6 +94,7 @@ export class DashboardComponent extends PageComponent {
   public unfoldUpload:boolean = false;
   public checked=false;
   public items:MenuItem[];
+  public sorticonurl:string = "assets/images/sort-down.svg"
   @ViewChild("sideBar")
   sideBar: ElementRef;
   @ViewChild("enterpriseSideTree")
@@ -106,6 +121,7 @@ export class DashboardComponent extends PageComponent {
   ) {
     super(ctx, route, router);
     ctx.isShowAllSearchDiv = true;
+    
   }
 
   protected onPageInit() {
@@ -140,6 +156,7 @@ export class DashboardComponent extends PageComponent {
             });
             // 渲染列表数据
             this.searchService.fileLists = res.items;
+            console.log(this.searchService.fileLists)
             // 渲染分页
             this.searchService.totalCount = res["totalCount"];
             this.ctx.selectedLists.length = 0;
@@ -163,6 +180,13 @@ export class DashboardComponent extends PageComponent {
           ]
       }
   ];
+  //点击隐藏新建菜单
+  console.log(this.ctx.nativeWindow)
+  this.ctx.nativeWindow.document.onClick=function(){
+    console.log("点击")
+    this.unfoldDoc = false;
+    this.unfoldUpload =false;
+  }
 }
 
   protected onPageRender() {}

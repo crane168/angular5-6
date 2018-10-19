@@ -123,45 +123,80 @@
                         </div>
                     </div>
                 </div>
-                <div class="new-build-doc"  style="border:1px solid red" fxLayout="row">
-                    <div class="filter-doc" *ngIf="unfoldDoc===true?true:false">筛选文档</div>
-                    <div class="filter-upload" *ngIf="unfoldUpload===true?true:false">上传文件</div>
-                </div>
+                <div class="new-build-doc"   fxLayout="row">
+                    <div class="filter-doc" *ngIf="unfoldDoc===true?true:false" fxLayout="column" >
+                        <div *ngFor="let buildmenu of newBuildMenu" fxLayout="row"  class="doc-line" fxLayoutAlign="start center">
+                            <svg-icon src="{{buildmenu.srcurl}}"></svg-icon>
+                            <span style="padding-left:10px;display: block;">{{buildmenu.content}}</span>
+                        </div>
+                    </div>
+                    <div class="filter-upload" *ngIf="unfoldUpload===true?true:false">
+                            <div  fxLayout="row"  class="doc-line" fxLayoutAlign="start center">
+                                    <svg-icon src="assets/images/newBuildHeader.svg"></svg-icon>
+                                    <a routerLink="/portal/{{ctx.domain}}/uploadFile"><span style="padding-left:10px;display: block;">文件</span></a>
+                            </div>
+                    </div>
             </div>
             <mat-toolbar>
                 <span>文件名</span>
                 <span>文件上传者</span>
-                <span>文件上传时间</span>
+                <span>版本</span>
+                <span>修改时间<svg-icon src="{{sorticonurl}}" [svgStyle]="{'width.px':10,'height.px':10,'padding-left.px':4}"></svg-icon></span>
             </mat-toolbar>
             <ul class="file-list-body" #fileListBody>
-                <li class="file-list-item"  *ngFor="let file of searchService.fileLists;let i = index" (mouseover)="contentShow(i,$event)"
+                <li class="file-list-item"  *ngFor="let file of searchService.fileLists;let i = index" (mouseover)="contentShow(i,$event)" fxLayout="row" fxLayoutAlign="start center"
                     (mouseleave)="contentHidden(i)">
-                    <div class="item-title-big" *ngIf="!file.isshowTitle">
+                    <div class="item-title-big" *ngIf="!file.isshowTitle" fxLayout="row" fxLayoutAlign="start center">
                         <div class="panel-checkbox" #chbox>
                             <p-checkbox name="fileListBox" value="{{file.id}}" [(ngModel)]="ctx.selectedLists" inputId="{{file.id}}" (onChange)="ckClick($event,file)" >
                             </p-checkbox>
                         </div>
-                        <div class="classify">
+                        <div class="classify" title="文件类别">
                             <i class="{{parseFileIcon(file.name)}}"></i>
                         </div>
-                        <div class="first">
-                            {{file.name}}
+                        <div class="fileName" title="文件名" fxLayoutAlign="start center">
+                            <span>{{file.name.substring(0,file.name.lastIndexOf(".")).substr(0,9)+'...'}}</span>
+                            <!-- <span>{{file.name.substring(0,file.name.lastIndexOf("."))}}</span> -->
+                            <div class="safeIcon" title="安全级别">
+                                    <i class="icon {{file.security}}" style="font-size:18px;vertical-align: middle;"></i>
+                            </div>
                         </div>
-                        <div class="name">
-                            {{file.userName}}
+                        <div class="fileAndbrief">
+                            <div class="tag" title="文件标签" style="display:block">
+                                <span *ngFor="let itemTag of file.tag">
+                                    <span>{{itemTag}}</span>
+                                </span>
+                            </div>
+                            <div class="brief" style="display:none">
+                                    <i class="icon-double-quotes"></i>
+                                    {{file.content}}
+                            </div>
                         </div>
-                        <div class="timer">
-                            {{file.lastModified | date:"yyyy-MM-dd hh:mm:ss a"}}
+                        <div class="userAndscope">
+                            <div class="userName" title="用户名">
+                                {{file.userName}}
+                            </div>
+                            <div class="itemScope" title="项目角色" *ngIf="false">
+                                <span *ngFor="let itemScope of file.scope">
+                                    <span>{{itemScope}}</span>
+                                </span>
+                           </div>
+                        </div>
+                        <div class="fileVersion" title="文件版本">
+                                {{file.version.toFixed(2)}}        
+                        </div>
+                        <div class="timer" title="最后更新时间">
+                            {{file.lastModified | date:"yyyy-MM-dd hh:mm:ss"}}
                         </div>
                     </div>
-                    <div class="file-content" *ngIf="file.isContent">
+                    <!-- <div class="file-content" *ngIf="file.isContent"> -->
 
                         <!--<div class="checkbox">-->
                         <!--<p-checkbox name="fileListBox" value="{{file.id}}" [(ngModel)]="ctx.selectedLists"-->
                         <!--inputId="{{file.id}}"-->
                         <!--(onChange)="ckClick($event,file)"></p-checkbox>-->
                         <!--</div>-->
-                        <div class="item-content">
+                        <!-- <div class="item-content">
                             <div class="file-type">
                                 <div class="classify">
                                     <i class="{{parseFileIcon(file.name)}}"></i>
@@ -174,13 +209,12 @@
                             <div class="content-detail">
                                 <div>
                                     <p class="item-title" (click)="showDetail($event,file.id,file.dictId)">
-                                    <!--<p class="item-title" (click)="editor(file)">-->
                                         {{file.name}}</p>
                                     <span>{{file.lastModified | date:"yyyy-MM-dd hh:mm:ss a"}}</span>
-                                </div>
+                                </div> -->
                                 <!--TODO:评论暂无，暂不显示最新评论，只显示概要-->
 
-                                <div class="brief">
+                                <!-- <div class="brief">
                                     <i class="icon-double-quotes"></i>
                                     {{file.content}}
                                 </div>
@@ -204,13 +238,13 @@
                                 </div>
                             </div>
                             <div class="more-operators">
-                                <div class="operator-btn">
+                                <div class="operator-btn"> -->
                                     <!--<button>下载</button>-->
                                     <!--<button (click)="fileOperators($event,file,2)">发送</button>-->
                                     <!--<button (click)="fileOperators($event,file,1)">移动</button>-->
                                     <!--<button (click)="authorizeOthers($event,file)">授权</button>-->
 
-                                </div>
+                                <!-- </div>
                                 <div class="operator-icon" title="收藏">
                                     <i class="icon-move" (click)="fileOperators($event,file,1)" title="移动"></i>
                                     <i class="icon-updated" (click)="updateUpload(file)" title="更新上传文件"></i>
@@ -222,7 +256,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
 
                 </li>
             </ul>
