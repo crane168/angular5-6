@@ -11,25 +11,25 @@
                            [(ngModel)]="searchService.outsetSearchKey"
                     >
                 </div>
-                <div class="secondary-menu" fxLayoutAlign="start center">
+                <div class="secondary-menu" fxLayout="row" fxLayoutAlign="start center">
                     <!-- <button fxHide="true" fxHide.gt-sm="false" mat-button class="fullscreen-toggle"
                             (click)="toggleFullscreen()">
                         <mat-icon *ngIf="!isFullscreen">fullscreen</mat-icon>
                         <mat-icon *ngIf="isFullscreen">fullscreen_exit</mat-icon>
                     </button> -->
     
-                    <button (click)="end.toggle()" mat-icon-button class="ml-xs overflow-visible noticeBtn">
+                    <div (click)="end.toggle()" fxLayout="row" class="ml-xs overflow-visible noticeBtn">
                         <!-- <mat-icon class="noticion">notifications</mat-icon> -->
-                        <mat-icon svgIcon="message"></mat-icon>
+                        <mat-icon svgIcon="message" fxFlexAlign="center center"></mat-icon>
                         <span class="tips"  *ngIf="hasNotices()"></span>
-                    </button>
-                    <button class="user-button" mat-button [matMenuTriggerFor]="menu">
-                        <div fxLayout="row" fxLayoutAlign="center center">
-                            <img class="img-responsive img-circle" src="{{readFace.image?readFace.image:'assets/images/personalCenter.png'}}" width="28" height="28"
+                    </div>
+                    <div class="user-button" mat-button [matMenuTriggerFor]="menu" fxLayoutAlign="start center">
+                        <div fxLayout="row" fxLayoutAlign="start center">
+                            <img class="img-responsive img-circle" src="{{readFace.image?readFace.image:'assets/images/personalCenter.png'}}" fxFlexAlign="center" width="28" height="28"
                                  alt="user list image">
-                            <span class="gene-user-name  userName">{{ctx.userName}}</span>
+<span class="gene-user-name  userName" fxFlexAlign="left">{{ctx.userName}}</span>
                         </div>
-                    </button>
+                    </div>
                 </div>
             </mat-toolbar>
     

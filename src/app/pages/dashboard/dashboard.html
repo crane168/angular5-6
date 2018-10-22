@@ -4,38 +4,47 @@
 
             <!--筛选-->
             <div class="filter">
-                <ul>
-                    <ng-container  *ngFor="let condition of searchService.conditions,let ind = index">
+                <ul class="filter-list-item">
+                    <ng-container *ngFor="let condition of searchService.conditions,let ind = index">
                         <ng-container *ngIf="!condition.isShowMore">
-                            <li class="clearfix" [ngClass]="{'showMore':condition.isShowMore}" *ngIf="ind===1?false:true" fxLayoutAlign="start center" fxLayout="row">
+                            <li class="clearfix" [ngClass]="{'showMore':condition.isShowMore}" *ngIf="ind===1?false:true"
+                                fxLayoutAlign="start center" fxLayout="row">
                                 <div class="filter-title">{{condition.label}}</div>
                                 <div class="filterItemContainer">
-                                    <div class="filter-item" *ngFor="let item of condition.items,let i =index" [ngClass]="{'active':item.isActived,'noLimits':i===0}"
-                                        (click)="renderFilterResult($event,ind,i,condition.name,item)">{{item.label?item.label:item.value}}
+                                    <div class="filter-item" *ngFor="let item of condition.items,let i =index"
+                                        [ngClass]="{'active':item.isActived,'noLimits':i===0}" (click)="renderFilterResult($event,ind,i,condition.name,item)">{{item.label?item.label:item.value}}
                                     </div>
                                 </div>
-                                <button *ngIf="!condition.isShowMore" mat-button class="moreCategories" (click)="toggleMoreCategories(ind)" fxFlexAlign="center">+多选
+                                <button *ngIf="!condition.isShowMore" 
+                                class="moreCategories" 
+                                (click)="toggleMoreCategories(ind)"
+                                fxLayoutAlign="center center"
+                                    ><span > +多选</span>  
                                     <!-- <i class="fa fa-angle-down" [ngClass]="{'fa-angle-up':condition.isShowMore}" ></i> -->
                                 </button>
                             </li>
                         </ng-container>
-                        <ng-container *ngIf="ind===1?false:true" >
-                            <div *ngIf="condition.isShowMore" style="border:1px solid skyblue" fxLayout="column" fxLayoutWrap class="more-margin-container">
-                                       <div fxLayout="row">
-                                           <label  class="more-margin-header" >{{condition.label}}</label>
-                                            <section class="more-section" >
-                                                <ng-container *ngFor="let item of condition.items,let i =index">
-                                                    <mat-checkbox class="more-margin"   (change)="onChangeCategory($event, item)"  #checkb>{{item.label?item.label:item.value}}</mat-checkbox>
-                                                </ng-container>
-                                            </section>
-                                       </div>
-                                       <div fxLayout="row" fxLayoutAlign="center center" class="button-container">
-                                           <div>
-                                               <button  mat-flat-button style="width:70px;height:30px;background-color:#40A3FF;color:white" (click)="goMoreItem($event,ind,condition.name,temArr.moreItem)"> 确定</button>
-                                               <button  mat-button style="width:70px;height:30px;background-color:#EEEEEE;" (click)="cancelMoreItem($event,ind)">取消</button>
-                                           </div>
-                                       </div>
-                            </div>            
+                        <ng-container *ngIf="ind===1?false:true">
+                            <div *ngIf="condition.isShowMore" style="border:1px solid skyblue" fxLayout="column"
+                                fxLayoutWrap class="more-margin-container">
+                                <div fxLayout="row">
+                                    <label class="more-margin-header">{{condition.label}}</label>
+                                    <section class="more-section">
+                                        <ng-container *ngFor="let item of condition.items,let i =index">
+                                            <mat-checkbox class="more-margin" (change)="onChangeCategory($event, item)"
+                                                #checkb>{{item.label?item.label:item.value}}</mat-checkbox>
+                                        </ng-container>
+                                    </section>
+                                </div>
+                                <div fxLayout="row" fxLayoutAlign="center center" class="button-container">
+                                    <div>
+                                        <button mat-flat-button style="width:70px;height:30px;background-color:#40A3FF;color:white"
+                                            (click)="goMoreItem($event,ind,condition.name,temArr.moreItem)"> 确定</button>
+                                        <button mat-button style="width:70px;height:30px;background-color:#EEEEEE;"
+                                            (click)="cancelMoreItem($event,ind)">取消</button>
+                                    </div>
+                                </div>
+                            </div>
                         </ng-container>
                     </ng-container>
                 </ul>
@@ -44,8 +53,8 @@
         <div class="filter-body">
             <div class="search" fxLayout="column">
                 <div fxLayout="row" class="search-high">
-                    <div class="search-options">高级筛选</div>
-                    <div class="serch-input" fxLayout="row">
+                <div class="search-options" fxFlexAlign="center">高级筛选</div>
+                    <div class="serch-input" fxLayout="row" >
                         <!-- <span>关键字</span>
                         <select class="selectSearchType" [(ngModel)]="ctx.currentSearchType" (change)="changeSearchType($event)">
                             <option value=1 selected>不限</option>
@@ -62,45 +71,55 @@
                         <button type="submit" style="cursor: default">
                             <i class="icon-search"></i>
                         </button> -->
-                        <div class="file-tag" (click)="onUnfold(0)" [class.active]="unfoldTag===true"><span>文件标签</span><svg-icon src="{{unfoldSrc0}}" [svgStyle]="{'width.px':20,'height.px':15}"></svg-icon></div>
-                        <div class="file-type" (click)="onUnfold(1)" [class.active]="unfoldType===true"><span>文件类型</span><svg-icon src="{{unfoldSrc1}}" [svgStyle]="{'width.px':20,'height.px':15}"></svg-icon></div>
+                        <div class="file-tag" (click)="onUnfold(0)" [class.active]="unfoldTag===true" fxLayoutAlign="start center">
+                            <span >文件标签</span>
+                            <svg-icon src="{{unfoldSrc0}}" [svgStyle]="{'width.px':20,'height.px':15}"></svg-icon>
+                        </div>
+                        <div class="file-type" (click)="onUnfold(1)" [class.active]="unfoldType===true" fxLayoutAlign="start center" >
+                            <span>文件类型</span>
+                            <svg-icon src="{{unfoldSrc1}}" [svgStyle]="{'width.px':20,'height.px':15}" 
+                                (change)="changeFileType($event)">
+                            </svg-icon>
+                        </div>
                     </div>
                 </div>
                 <div class="folding-screen" *ngFor="let condition of searchService.conditions,let ind = index">
-                    <ng-container *ngIf="ind===1?true:false" >
-                        <div *ngIf="unfoldTag===true?true:false" class="unfoldTag-container" fxLayout="row">
-                           <span *ngFor="let item of condition.items,let i =index" fxFlexAlign="center">{{item.label?item.label:item.value}}</span>
-                        </div>                 
+                    <ng-container *ngIf="ind===1?true:false">
+                        <div *ngIf="unfoldTag===true?true:false" class="unfoldTag-container" fxLayout="row" fxLayout.xs="wrap">
+                            <span *ngFor="let item of condition.items,let i =index" fxFlexAlign="center">{{item.label?item.label:item.value}}</span>
+                        </div>
                         <div *ngIf="unfoldType===true?true:false" class="unfoldType-container" fxLayout="row" (change)="changeFileType($event)">
-                                <span  fxFlexAlign="center" *ngFor="let fileType of fileTypes,let i =index">{{fileType.viewVal}}</span>
+                            <span fxFlexAlign="center" *ngFor="let fileType of fileTypes,let i =index">{{fileType.viewVal}}</span>
                         </div>
                     </ng-container>
                 </div>
                 <div class="filter-result" fxLayout="row" *ngIf="temArr.moreItem.length>0">
                     <div class="filter-options">筛选结果</div>
                     <div class="filter-result-bread" fxLayout="row">
-                            <div class="file-tag"   fxLayoutAlign="center center">
-                                <span >文件分类:</span>
-                                <div *ngFor="let item of temArr.moreItem" class="filter-bread">
-                                    <span [style.display]="item.label?'block':'none'">{{item.label?item.label:""}}<span>、</span></span>
-                                    
-                                </div>
-                                <svg-icon src="assets/images/closedIcon.svg" fxLayout="row" fxLayoutAlign="center center" [svgStyle]="{'width.px':20,'height.px':20}" ></svg-icon>
+                        <div class="file-tag" fxLayoutAlign="center center">
+                            <span>文件分类:</span>
+                            <div *ngFor="let item of temArr.moreItem" class="filter-bread">
+                                <span [style.display]="item.label?'block':'none'">{{item.label?item.label:""}}<span>、</span></span>
+
                             </div>
-                            <div class="file-type"  fxLayoutAlign="center center" >
-                                <span>更新日期:</span>
-                                <div *ngFor="let item of temArr.moreItem" class="filter-bread">
-                                        <span [style.display]="item.label?'none':'block'">{{item.label?"":item.value}}<span>、</span></span>
-                                </div>
-                                <svg-icon src="assets/images/closedIcon.svg" fxLayoutAlign="center center" [svgStyle]="{'width.px':20,'height.px':20}"></svg-icon>
+                            <svg-icon src="assets/images/closedIcon.svg" fxLayout="row" fxLayoutAlign="center center"
+                                [svgStyle]="{'width.px':20,'height.px':20}"></svg-icon>
+                        </div>
+                        <div class="file-type" fxLayoutAlign="center center">
+                            <span>更新日期:</span>
+                            <div *ngFor="let item of temArr.moreItem" class="filter-bread">
+                                <span [style.display]="item.label?'none':'block'">{{item.label?"":item.value}}<span>、</span></span>
                             </div>
+                            <svg-icon src="assets/images/closedIcon.svg" fxLayoutAlign="center center" [svgStyle]="{'width.px':20,'height.px':20}"></svg-icon>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="selector" fxLayout="column" >
+            <div class="selector" fxLayout="column">
                 <div fxLayout="row" fxLayoutAlign="start center">
                     <span class="select-all" fxLayout="row">
-                        <p-checkbox name="fileListBox" value="allChosedOrNot"  [(ngModel)]="ctx.selectedLists" inputId="ChosedOrNot" fxLayoutAlign="center center"></p-checkbox>
+                        <p-checkbox name="fileListBox" value="allChosedOrNot" [(ngModel)]="ctx.selectedLists" inputId="ChosedOrNot"
+                            fxLayoutAlign="center center"></p-checkbox>
                         <!-- <p-checkbox name="group1" value="New York" label="纽约"  inputId="ny"></p-checkbox> -->
                     </span>
                     <!-- <div class="filter-operaters">
@@ -110,9 +129,10 @@
                         <i class="icon-sort" (click)="doSort($event)">排序</i>
                     </div> -->
                     <!-- <p-menubar [model]="items"></p-menubar> -->
-                    <div class="new-container" fxLayout="row" >
+                    <div class="new-container" fxLayout="row">
                         <div fxLayout="row" fxLayoutAlign="center center" (click)="onUnfold(2)">
-                            <svg-icon src="assets/images/newBuildHeader.svg" [svgStyle]="{'width.px':25,'height.px':22}" fxLayoutAlign="center center"></svg-icon>
+                            <svg-icon src="assets/images/newBuildHeader.svg" [svgStyle]="{'width.px':25,'height.px':22}"
+                                fxLayoutAlign="center center"></svg-icon>
                             <span>新建</span>
                             <svg-icon src="assets/images/new-arrow.svg"></svg-icon>
                         </div>
@@ -123,73 +143,101 @@
                         </div>
                     </div>
                 </div>
-                <div class="new-build-doc"   fxLayout="row">
-                    <div class="filter-doc" *ngIf="unfoldDoc===true?true:false" fxLayout="column" >
-                        <div *ngFor="let buildmenu of newBuildMenu" fxLayout="row"  class="doc-line" fxLayoutAlign="start center">
+                <div class="new-build-doc" fxLayout="row">
+                    <div class="filter-doc" *ngIf="unfoldDoc===true?true:false" fxLayout="column">
+                        <div *ngFor="let buildmenu of newBuildMenu" fxLayout="row" class="doc-line" fxLayoutAlign="start center">
                             <svg-icon src="{{buildmenu.srcurl}}"></svg-icon>
                             <span style="padding-left:10px;display: block;">{{buildmenu.content}}</span>
                         </div>
                     </div>
                     <div class="filter-upload" *ngIf="unfoldUpload===true?true:false">
-                            <div  fxLayout="row"  class="doc-line" fxLayoutAlign="start center">
-                                    <svg-icon src="assets/images/newBuildHeader.svg"></svg-icon>
-                                    <a routerLink="/portal/{{ctx.domain}}/uploadFile"><span style="padding-left:10px;display: block;">文件</span></a>
-                            </div>
-                    </div>
-            </div>
-            <mat-toolbar>
-                <span>文件名</span>
-                <span>文件上传者</span>
-                <span>版本</span>
-                <span>修改时间<svg-icon src="{{sorticonurl}}" [svgStyle]="{'width.px':10,'height.px':10,'padding-left.px':4}"></svg-icon></span>
-            </mat-toolbar>
-            <ul class="file-list-body" #fileListBody>
-                <li class="file-list-item"  *ngFor="let file of searchService.fileLists;let i = index" (mouseover)="contentShow(i,$event)" fxLayout="row" fxLayoutAlign="start center"
-                    (mouseleave)="contentHidden(i)">
-                    <div class="item-title-big" *ngIf="!file.isshowTitle" fxLayout="row" fxLayoutAlign="start center">
-                        <div class="panel-checkbox" #chbox>
-                            <p-checkbox name="fileListBox" value="{{file.id}}" [(ngModel)]="ctx.selectedLists" inputId="{{file.id}}" (onChange)="ckClick($event,file)" >
-                            </p-checkbox>
-                        </div>
-                        <div class="classify" title="文件类别">
-                            <i class="{{parseFileIcon(file.name)}}"></i>
-                        </div>
-                        <div class="fileName" title="文件名" fxLayoutAlign="start center">
-                            <span>{{file.name.substring(0,file.name.lastIndexOf(".")).substr(0,9)+'...'}}</span>
-                            <!-- <span>{{file.name.substring(0,file.name.lastIndexOf("."))}}</span> -->
-                            <div class="safeIcon" title="安全级别">
-                                    <i class="icon {{file.security}}" style="font-size:18px;vertical-align: middle;"></i>
-                            </div>
-                        </div>
-                        <div class="fileAndbrief">
-                            <div class="tag" title="文件标签" style="display:block">
-                                <span *ngFor="let itemTag of file.tag">
-                                    <span>{{itemTag}}</span>
-                                </span>
-                            </div>
-                            <div class="brief" style="display:none">
-                                    <i class="icon-double-quotes"></i>
-                                    {{file.content}}
-                            </div>
-                        </div>
-                        <div class="userAndscope">
-                            <div class="userName" title="用户名">
-                                {{file.userName}}
-                            </div>
-                            <div class="itemScope" title="项目角色" *ngIf="false">
-                                <span *ngFor="let itemScope of file.scope">
-                                    <span>{{itemScope}}</span>
-                                </span>
-                           </div>
-                        </div>
-                        <div class="fileVersion" title="文件版本">
-                                {{file.version.toFixed(2)}}        
-                        </div>
-                        <div class="timer" title="最后更新时间">
-                            {{file.lastModified | date:"yyyy-MM-dd hh:mm:ss"}}
+                        <div fxLayout="row" class="doc-line" fxLayoutAlign="start center">
+                            <svg-icon src="assets/images/newBuildHeader.svg"></svg-icon>
+                            <a routerLink="/portal/{{ctx.domain}}/uploadFile"><span style="padding-left:10px;display: block;">文件</span></a>
                         </div>
                     </div>
-                    <!-- <div class="file-content" *ngIf="file.isContent"> -->
+                </div>
+                <mat-toolbar>
+                    <span>文件名</span>
+                    <span>文件上传者</span>
+                    <span>版本</span>
+                    <span>修改时间<svg-icon src="{{sorticonurl}}" [svgStyle]="{'width.px':10,'height.px':10,'padding-left.px':4}"></svg-icon></span>
+                </mat-toolbar>
+                <ul class="file-list-body" #fileListBody>
+                    <li class="file-list-item" *ngFor="let file of searchService.fileLists;let i = index" 
+                    (mouseover)="file.hoverVisual=true"
+                    (mouseleave)="file.hoverVisual=false"
+                        fxLayout="row" fxLayoutAlign="start center" >
+                        <div class="item-title-big" *ngIf="!file.isshowTitle" fxLayout="row" fxLayoutAlign="start center">
+                            <div class="panel-checkbox" #chbox>
+                                <p-checkbox name="fileListBox" value="{{file.id}}" [(ngModel)]="ctx.selectedLists"
+                                    inputId="{{file.id}}" (onChange)="ckClick($event,file)">
+                                </p-checkbox>
+                            </div>
+                            <div class="classify" title="文件类别">
+                                <i class="{{parseFileIcon(file.name)}}"></i>
+                            </div>
+                            <div class="clickValid" fxLayoutAlign="start center" (click)="showDetail($event,file.id,file.dictId)">
+                                <div class="fileName" title="{{file.name}}" fxLayoutAlign="start center">
+                                    <span>{{file.name.substring(0,file.name.lastIndexOf(".")).substr(0,9)+'...'}}</span>
+                                    <!-- <span>{{file.name.substring(0,file.name.lastIndexOf("."))}}</span> -->
+                                    <div class="safeIcon" title="安全级别">
+                                        <i class="icon {{file.security}}" style="font-size:18px;vertical-align: middle;"></i>
+                                    </div>
+                                </div>
+                                <div class="fileAndbrief" fxLayoutAlign="start center">
+                                    <div class="tag" title="文件标签" *ngIf="file.hoverVisual===true?false:true">
+                                        <div *ngFor="let itemTag of file.tag">
+                                            <span>{{itemTag}}</span>
+                                        </div>
+                                    </div>
+                                    <div class="brief" title="文件简介" *ngIf="file.hoverVisual===true?true:false"
+                                        fxLayout="row">
+                                        <!-- <i class="icon-double-quotes"></i> -->
+                                        <svg-icon src="assets/images/up-quote.svg" [svgStyle]="{'width.px':10,'height.px':10}"></svg-icon>
+                                        <div>{{file.content}}</div>
+                                        <!-- <i class="icon-double-quotes"></i> -->
+                                        <svg-icon src="assets/images/down-quote.svg" [svgStyle]="{'width.px':10,'height.px':10}"></svg-icon>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="userAndscope">
+                                <div class="userNames" title="用户名" *ngIf="file.hoverVisual===true?false:true">
+                                    {{file.userName}}
+                                </div>
+                                <div class="itemScope" title="项目角色"  *ngIf="file.hoverVisual===true?true:false">
+                                    <span *ngFor="let itemScope of file.scope">
+                                        <span>{{itemScope}}</span>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="fileVersion" title="文件版本">
+                                {{file.version.toFixed(2)}}
+                            </div>
+                            <div class="timerAndmore" fxLayoutAlign="start center">
+                                <div class="timer" title="最后更新时间" *ngIf="file.hoverVisual===true?false:true">
+                                    {{file.lastModified | date:"yyyy-MM-dd hh:mm:ss"}}
+                                </div>
+                                <div class="moreType" *ngIf="file.hoverVisual===true?true:false" fxFlexAlign="center">
+                                    <a href="{{downUriBy(file)}}">
+                                        <svg-icon src="assets/images/downicon.svg" [svgStyle]="{'width.px':16,'height.px':16}"
+                                            title="下载"></svg-icon>
+                                    </a>
+                                    <svg-icon src="assets/images/moreType.svg" (click)=onUnfold(4)></svg-icon>
+                                    <div *ngIf="unfoldItem===true&&file.hoverVisual===true?true:false" class="unfold-moreType">
+                                        <!-- <div *ngIf="i=0" class="unfold-moreType"> -->
+                                        <div *ngFor="let item of moreTypeCheck" fxLayout="column">
+                                            <a routerLink="/portal/{{ctx.domain}}/uploadFile"><span>{{item.upload}}</span></a>
+                                            <span (click)="fileOperators($event,file,2)">{{item.share}}</span>
+                                            <span (click)="authorizeOthers($event,file)">{{item.auth}}</span>
+                                            <span>{{item.delete}}</span>
+                                            <span>{{item.editor}}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- <div class="file-content" *ngIf="file.isContent"> -->
 
                         <!--<div class="checkbox">-->
                         <!--<p-checkbox name="fileListBox" value="{{file.id}}" [(ngModel)]="ctx.selectedLists"-->
@@ -212,9 +260,9 @@
                                         {{file.name}}</p>
                                     <span>{{file.lastModified | date:"yyyy-MM-dd hh:mm:ss a"}}</span>
                                 </div> -->
-                                <!--TODO:评论暂无，暂不显示最新评论，只显示概要-->
+                        <!--TODO:评论暂无，暂不显示最新评论，只显示概要-->
 
-                                <!-- <div class="brief">
+                        <!-- <div class="brief">
                                     <i class="icon-double-quotes"></i>
                                     {{file.content}}
                                 </div>
@@ -239,12 +287,12 @@
                             </div>
                             <div class="more-operators">
                                 <div class="operator-btn"> -->
-                                    <!--<button>下载</button>-->
-                                    <!--<button (click)="fileOperators($event,file,2)">发送</button>-->
-                                    <!--<button (click)="fileOperators($event,file,1)">移动</button>-->
-                                    <!--<button (click)="authorizeOthers($event,file)">授权</button>-->
+                        <!--<button>下载</button>-->
+                        <!--<button (click)="fileOperators($event,file,2)">发送</button>-->
+                        <!--<button (click)="fileOperators($event,file,1)">移动</button>-->
+                        <!--<button (click)="authorizeOthers($event,file)">授权</button>-->
 
-                                <!-- </div>
+                        <!-- </div>
                                 <div class="operator-icon" title="收藏">
                                     <i class="icon-move" (click)="fileOperators($event,file,1)" title="移动"></i>
                                     <i class="icon-updated" (click)="updateUpload(file)" title="更新上传文件"></i>
@@ -258,17 +306,21 @@
                         </div>
                     </div> -->
 
-                </li>
-            </ul>
-            <div class="paginations">
-                <mat-paginator #paginatorForSearchLists [(pageSize)]="pageSize" [(pageIndex)]="searchService.pageIndex" [pageSizeOptions]="[ 10, 25,100]"
-                    [length]="searchService.totalCount" (page)="changeSearchListsPaginat($event)">
-                </mat-paginator>
-                <div></div>
+                    </li>
+                </ul>
+                <div class="paginations">
+                    <!-- <mat-paginator #paginatorForSearchLists [(pageSize)]="pageSize" [(pageIndex)]="searchService.pageIndex"
+                        [pageSizeOptions]="[ 10, 25,100]" [length]="searchService.totalCount" (page)="changeSearchListsPaginat($event)">
+                    </mat-paginator> -->
+                    <nz-pagination [nzPageIndex]="searchService.pageIndex" [nzTotal]="searchService.totalCount"
+                        [nzPageSize]="10" nzShowQuickJumper (nzPageIndexChange)="changeSearchListsPaginat($event)">
+                    </nz-pagination>
+                    <!-- <div></div>  -->
+                </div>
             </div>
+            <app-single-file-info [isShowSingle]="isShowSingle" (onShowed)="onShowed($event)" [isShowMultiple]="isShowMultiple"
+                [totalSize]="totalSize"></app-single-file-info>
         </div>
-        <app-single-file-info [isShowSingle]="isShowSingle" (onShowed)="onShowed($event)" [isShowMultiple]="isShowMultiple" [totalSize]="totalSize"></app-single-file-info>
-    </div>
 
-    <div *ngIf="!ctx.isShowSearchLists">暂无文件！</div>
-</div>
+        <div *ngIf="!ctx.isShowSearchLists">暂无文件！</div>
+    </div>
